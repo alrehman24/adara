@@ -1,0 +1,26 @@
+{
+    "sourceFile": "resources/views/admin/index.blade.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1746362670185,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746362679570,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,1 @@\n-@extend\n+@extend()\n"
+                },
+                {
+                    "date": 1746362685303,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,1 @@\n-@extend('admin')\n+@extend('admin/la')\n"
+                }
+            ],
+            "date": 1746362670185,
+            "name": "Commit-0",
+            "content": "@\n"
+        }
+    ]
+}

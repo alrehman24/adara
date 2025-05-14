@@ -1,0 +1,26 @@
+{
+    "sourceFile": "app/Models/color.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1746731474520,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746731483932,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n \n class color extends Model\n {\n     use HasFactory;\n-    prote $fillable=['text','value'];\n+    protec $fillable=['text','value'];\n }\n"
+                },
+                {
+                    "date": 1746732396489,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,5 +7,6 @@\n \n class Color extends Model\n {\n     use HasFactory;\n+    protected $fillable = ['name', 'code'];\n }\n"
+                }
+            ],
+            "date": 1746731474520,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass color extends Model\n{\n    use HasFactory;\n    proteched $fillable=['text','value'];\n}\n"
+        }
+    ]
+}

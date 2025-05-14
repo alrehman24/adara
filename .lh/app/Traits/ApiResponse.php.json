@@ -1,0 +1,18 @@
+{
+    "sourceFile": "app/Traits/ApiResponse.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1746445505393,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1746445505393,
+            "name": "Commit-0",
+            "content": "<?php\r\n\r\nnamespace App\\Traits;\r\n\r\nuse Carbon\\Carbon;\r\n\r\n/*\r\n|--------------------------------------------------------------------------\r\n| Api Responser Trait\r\n|--------------------------------------------------------------------------\r\n|\r\n| This trait will be used for any response we sent to clients.\r\n|\r\n*/\r\n\r\ntrait ApiResponse\r\n{\r\n    /**\r\n     * Return a success JSON response.\r\n     *\r\n     * @param  array|string  $data\r\n     * @param  string  $message\r\n     * @param  int|null  $code\r\n     * @return \\Illuminate\\Http\\JsonResponse\r\n     */\r\n    protected function success($data, string $message = null, int $code = 200)\r\n    {\r\n        return response()->json([\r\n            'status' => 'Success',\r\n            'message' => $message,\r\n            'data' => $data\r\n        ], $code);\r\n    }\r\n\r\n    /**\r\n     * Return an error JSON response.\r\n     *\r\n     * @param  string  $message\r\n     * @param  int  $code\r\n     * @param  array|string|null  $data\r\n     * @return \\Illuminate\\Http\\JsonResponse\r\n     */\r\n    protected function error(string $message = null, int $code, $data = null)\r\n    {\r\n        return response()->json([\r\n            'status' => 'Error',\r\n            'message' => $message,\r\n            'data' => $data\r\n        ], $code);\r\n    }\r\n\r\n}\r\n"
+        }
+    ]
+}

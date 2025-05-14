@@ -1,0 +1,30 @@
+{
+    "sourceFile": "database/migrations/2025_05_11_084508_create_attribute_values_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1746959167920,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746959203452,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     public function up(): void\n     {\n         Schema::create('attribute_values', function (Blueprint $table) {\n             $table->id();\n-            \n+            $table->\n             $table->timestamps();\n         });\n     }\n \n"
+                },
+                {
+                    "date": 1746959213814,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     public function up(): void\n     {\n         Schema::create('attribute_values', function (Blueprint $table) {\n             $table->id();\n-            $table->uns\n+            $table->unsignedBigInteger('attribute_id');\n             $table->timestamps();\n         });\n     }\n \n"
+                },
+                {
+                    "date": 1746959244657,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,10 @@\n     {\n         Schema::create('attribute_values', function (Blueprint $table) {\n             $table->id();\n             $table->unsignedBigInteger('attribute_id');\n-            \n+            $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');\n+            $table->string('value')->nullable();\n             $table->timestamps();\n         });\n     }\n \n"
+                }
+            ],
+            "date": 1746959167920,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::create('attribute_values', function (Blueprint $table) {\n            $table->id();\n            \n            $table->timestamps();\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::dropIfExists('attribute_values');\n    }\n};\n"
+        }
+    ]
+}

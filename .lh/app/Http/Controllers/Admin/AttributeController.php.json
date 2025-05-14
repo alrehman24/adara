@@ -1,0 +1,62 @@
+{
+    "sourceFile": "app/Http/Controllers/Admin/AttributeController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 11,
+            "patches": [
+                {
+                    "date": 1746959417951,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746959438866,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,7 @@\n use Illuminate\\Http\\Request;\n \n class AttributeController extends Controller\n {\n-    pu\n+    public function index()\n+    \n }\n"
+                },
+                {
+                    "date": 1746959830458,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,12 @@\n \n class AttributeController extends Controller\n {\n     public function index()\n-    \n+    {\n+        return view('admin.attribute.index');\n+    }\n+    public function store_attribute_value()\n+    {\n+        return view('admin.attribute.create');\n+    }\n }\n"
+                },
+                {
+                    "date": 1746959838916,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,13 +6,13 @@\n use Illuminate\\Http\\Request;\n \n class AttributeController extends Controller\n {\n-    public function index()\n+    public function index_attribute_name()\n     {\n         return view('admin.attribute.index');\n     }\n-    public function store_attribute_value()\n+    public function store_attribute_name()\n     {\n         return view('admin.attribute.create');\n     }\n }\n"
+                },
+                {
+                    "date": 1746959873464,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,13 +6,53 @@\n use Illuminate\\Http\\Request;\n \n class AttributeController extends Controller\n {\n-    public function index_attribute_name()\n+    public function index()\n     {\n-        return view('admin.attribute.index');\n+        $data=color::get();\n+        return view('admin.Color.color',get_defined_vars());\n     }\n-    public function store_attribute_name()\n+    public function store(Request $request)\n     {\n-        return view('admin.attribute.create');\n+        $validationRules = [\n+            'text' => 'required|string',\n+             'value' => 'required|string'\n+        ];\n+\n+\n+\n+        $validation = Validator::make($request->all(), $validationRules);\n+\n+        if ($validation->fails()) {\n+            return response()->json([\n+                'status' => 400,\n+                'errors' => $validation->messages()\n+            ]);\n+        }\n+\n+        $userData = [\n+            'text' => $request->text,\n+            'value' => $request->text\n+\n+        ];\n+\n+\n+\n+        try {\n+            color::updateOrCreate(\n+                ['id' => $request->id],\n+                $userData\n+            );\n+\n+            return response()->json([\n+                'status' => 200,\n+                'message' => 'Color updated successfully'\n+            ]);\n+        } catch (\\Exception $e) {\n+            return response()->json([\n+                'status' => 500,\n+                'message' => 'Error updating color: ' . $e->getMessage()\n+            ]);\n+        }\n     }\n }\n"
+                },
+                {
+                    "date": 1746959888790,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n use Illuminate\\Http\\Request;\n \n class AttributeController extends Controller\n {\n-    public function index()\n+    public function index_attribute_name()\n     {\n         $data=color::get();\n         return view('admin.Color.color',get_defined_vars());\n     }\n"
+                },
+                {
+                    "date": 1746959893945,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n     {\n         $data=color::get();\n         return view('admin.Color.color',get_defined_vars());\n     }\n-    public function store(Request $request)\n+    public function store_attribute_value(Request $request)\n     {\n         $validationRules = [\n             'text' => 'required|string',\n              'value' => 'required|string'\n"
+                },
+                {
+                    "date": 1746959901944,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,5 +54,53 @@\n                 'message' => 'Error updating color: ' . $e->getMessage()\n             ]);\n         }\n     }\n+    public function index_attribute_name()\n+    {\n+        $data=color::get();\n+        return view('admin.Color.color',get_defined_vars());\n+    }\n+    public function store_attribute_name(Request $request)\n+    {\n+        $validationRules = [\n+            'text' => 'required|string',\n+             'value' => 'required|string'\n+        ];\n+\n+\n+\n+        $validation = Validator::make($request->all(), $validationRules);\n+\n+        if ($validation->fails()) {\n+            return response()->json([\n+                'status' => 400,\n+                'errors' => $validation->messages()\n+            ]);\n+        }\n+\n+        $userData = [\n+            'text' => $request->text,\n+            'value' => $request->text\n+\n+        ];\n+\n+\n+\n+        try {\n+            color::updateOrCreate(\n+                ['id' => $request->id],\n+                $userData\n+            );\n+\n+            return response()->json([\n+                'status' => 200,\n+                'message' => 'Color updated successfully'\n+            ]);\n+        } catch (\\Exception $e) {\n+            return response()->json([\n+                'status' => 500,\n+                'message' => 'Error updating color: ' . $e->getMessage()\n+            ]);\n+        }\n+    }\n }\n"
+                },
+                {
+                    "date": 1746959911200,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n     {\n         $data=color::get();\n         return view('admin.Color.color',get_defined_vars());\n     }\n-    public function store_attribute_value(Request $request)\n+    public function store_attribute_name(Request $request)\n     {\n         $validationRules = [\n             'text' => 'required|string',\n              'value' => 'required|string'\n@@ -59,9 +59,9 @@\n     {\n         $data=color::get();\n         return view('admin.Color.color',get_defined_vars());\n     }\n-    public function store_attribute_name(Request $request)\n+    public function store_attribute_value(Request $request)\n     {\n         $validationRules = [\n             'text' => 'required|string',\n              'value' => 'required|string'\n"
+                },
+                {
+                    "date": 1746959942876,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n \n namespace App\\Http\\Controllers\\Admin;\n \n use App\\Http\\Controllers\\Controller;\n+\n use Illuminate\\Http\\Request;\n \n class AttributeController extends Controller\n {\n@@ -54,9 +55,9 @@\n                 'message' => 'Error updating color: ' . $e->getMessage()\n             ]);\n         }\n     }\n-    public function index_attribute_name()\n+    public function index_attribute_value()\n     {\n         $data=color::get();\n         return view('admin.Color.color',get_defined_vars());\n     }\n"
+                },
+                {
+                    "date": 1746959949024,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n namespace App\\Http\\Controllers\\Admin;\n \n use App\\Http\\Controllers\\Controller;\n use App\\Models\\color;\n+use Illuminate\\Support\\Facades\\Validator;\n \n use Illuminate\\Http\\Request;\n \n class AttributeController extends Controller\n"
+                },
+                {
+                    "date": 1746959960429,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \n use App\\Http\\Controllers\\Controller;\n use App\\Models\\color;\n use Illuminate\\Support\\Facades\\Validator;\n-use\n+use App\n use Illuminate\\Http\\Request;\n \n class AttributeController extends Controller\n {\n"
+                }
+            ],
+            "date": 1746959417951,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Http\\Controllers\\Admin;\n\nuse App\\Http\\Controllers\\Controller;\nuse Illuminate\\Http\\Request;\n\nclass AttributeController extends Controller\n{\n    pu\n}\n"
+        }
+    ]
+}

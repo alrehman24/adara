@@ -1,0 +1,26 @@
+{
+    "sourceFile": "app/Console/Commands/createViewFile.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1746457931643,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746457937721,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n      * The name and signature of the console command.\n      *\n      * @var string\n      */\n-    protected $signature = 'make:';\n+    protected $signature = 'make:view';\n \n     /**\n      * The console command description.\n      *\n"
+                },
+                {
+                    "date": 1746457943325,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n      * The name and signature of the console command.\n      *\n      * @var string\n      */\n-    protected $signature = 'make:view ';\n+    protected $signature = 'make:view {}/';\n \n     /**\n      * The console command description.\n      *\n"
+                }
+            ],
+            "date": 1746457931643,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Console\\Commands;\n\nuse Illuminate\\Console\\Command;\n\nclass createViewFile extends Command\n{\n    /**\n     * The name and signature of the console command.\n     *\n     * @var string\n     */\n    protected $signature = '';\n\n    /**\n     * The console command description.\n     *\n     * @var string\n     */\n    protected $description = 'Command description';\n\n    /**\n     * Execute the console command.\n     */\n    public function handle()\n    {\n        //\n    }\n}\n"
+        }
+    ]
+}

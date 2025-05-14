@@ -1,0 +1,26 @@
+{
+    "sourceFile": "app/Models/HomeBanner.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1746561295284,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746561301315,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n \n class HomeBanner extends Model\n {\n     use HasFactory;\n-    \n+    $fi\n }\n"
+                },
+                {
+                    "date": 1746561352127,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,10 @@\n \n class HomeBanner extends Model\n {\n     use HasFactory;\n-    $fi\n+    protected $fillable = [\n+        'text',\n+        'link',\n+        'image'\n+    ];\n }\n"
+                }
+            ],
+            "date": 1746561295284,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass HomeBanner extends Model\n{\n    use HasFactory;\n    \n}\n"
+        }
+    ]
+}

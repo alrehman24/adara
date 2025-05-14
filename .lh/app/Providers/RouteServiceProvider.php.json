@@ -1,0 +1,22 @@
+{
+    "sourceFile": "app/Providers/RouteServiceProvider.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1746386462522,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746386495124,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,12 +34,12 @@\n                 ->group(base_path('routes/api.php'));\n \n             Route::middleware('web')\n                 ->group(base_path('routes/web.php'));\n-                Route::middleware('api')\n+                Route::middleware('admin')\n                 ->prefix('api')\n                 ->group(base_path('routes/api.php'));\n \n-                \n+\n         });\n     }\n }\n"
+                }
+            ],
+            "date": 1746386462522,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Providers;\n\nuse Illuminate\\Cache\\RateLimiting\\Limit;\nuse Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider as ServiceProvider;\nuse Illuminate\\Http\\Request;\nuse Illuminate\\Support\\Facades\\RateLimiter;\nuse Illuminate\\Support\\Facades\\Route;\n\nclass RouteServiceProvider extends ServiceProvider\n{\n    /**\n     * The path to your application's \"home\" route.\n     *\n     * Typically, users are redirected here after authentication.\n     *\n     * @var string\n     */\n    public const HOME = '/home';\n\n    /**\n     * Define your route model bindings, pattern filters, and other route configuration.\n     */\n    public function boot(): void\n    {\n        RateLimiter::for('api', function (Request $request) {\n            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());\n        });\n\n        $this->routes(function () {\n            Route::middleware('api')\n                ->prefix('api')\n                ->group(base_path('routes/api.php'));\n\n            Route::middleware('web')\n                ->group(base_path('routes/web.php'));\n                \n        });\n    }\n}\n"
+        }
+    ]
+}

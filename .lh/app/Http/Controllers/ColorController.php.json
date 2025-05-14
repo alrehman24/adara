@@ -1,0 +1,50 @@
+{
+    "sourceFile": "app/Http/Controllers/ColorController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1746731540301,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746731548432,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n \n namespace App\\Http\\Controllers;\n \n use Illuminate\\Http\\Request;\n-\n+use vali\n class ColorController extends Controller\n {\n     / public function index()\n     {\n"
+                },
+                {
+                    "date": 1746731559938,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,10 @@\n \n namespace App\\Http\\Controllers;\n \n use Illuminate\\Http\\Request;\n-use vali\n+use Validator;\n+use App\\Models\\color;\n class ColorController extends Controller\n {\n     / public function index()\n     {\n"
+                },
+                {
+                    "date": 1746731574811,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n class ColorController extends Controller\n {\n     / public function index()\n     {\n-        $data=Size::get();\n+        $data=color::get();\n         return view('admin.Size.size',get_defined_vars());\n     }\n     public function store(Request $request)\n     {\n@@ -35,9 +35,9 @@\n \n \n \n         try {\n-            Size::updateOrCreate(\n+            color::updateOrCreate(\n                 ['id' => $request->id],\n                 $userData\n             );\n \n"
+                },
+                {
+                    "date": 1746731590134,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,9 +42,9 @@\n             );\n \n             return response()->json([\n                 'status' => 200,\n-                'message' => 'Size updated successfully'\n+                'message' => 'Color updated successfully'\n             ]);\n         } catch (\\Exception $e) {\n             return response()->json([\n                 'status' => 500,\n"
+                },
+                {
+                    "date": 1746731595463,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,9 +47,9 @@\n             ]);\n         } catch (\\Exception $e) {\n             return response()->json([\n                 'status' => 500,\n-                'message' => 'Error updating size: ' . $e->getMessage()\n+                'message' => 'Error updating color: ' . $e->getMessage()\n             ]);\n         }\n     }\n }\n"
+                },
+                {
+                    "date": 1746731640674,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n {\n     / public function index()\n     {\n         $data=color::get();\n-        return view('admin.Size.size',get_defined_vars());\n+        return view('admin.Color.size',get_defined_vars());\n     }\n     public function store(Request $request)\n     {\n         $validationRules = [\n"
+                },
+                {
+                    "date": 1746731889588,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n use Validator;\n use App\\Models\\color;\n class ColorController extends Controller\n {\n-    / public function index()\n+    public function index()\n     {\n         $data=color::get();\n         return view('admin.Color.color',get_defined_vars());\n     }\n"
+                },
+                {
+                    "date": 1746732560850,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n     }\n     public function store(Request $request)\n     {\n         $validationRules = [\n-            'text' => 'required|string'\n+            'text' => 'required|string',\n              'text' => 'required|string'\n         ];\n \n \n"
+                }
+            ],
+            "date": 1746731540301,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Http\\Controllers;\n\nuse Illuminate\\Http\\Request;\n\nclass ColorController extends Controller\n{\n    / public function index()\n    {\n        $data=Size::get();\n        return view('admin.Size.size',get_defined_vars());\n    }\n    public function store(Request $request)\n    {\n        $validationRules = [\n            'text' => 'required|string'\n        ];\n\n\n\n        $validation = Validator::make($request->all(), $validationRules);\n\n        if ($validation->fails()) {\n            return response()->json([\n                'status' => 400,\n                'errors' => $validation->messages()\n            ]);\n        }\n\n        $userData = [\n            'text' => $request->text\n        ];\n\n\n\n        try {\n            Size::updateOrCreate(\n                ['id' => $request->id],\n                $userData\n            );\n\n            return response()->json([\n                'status' => 200,\n                'message' => 'Size updated successfully'\n            ]);\n        } catch (\\Exception $e) {\n            return response()->json([\n                'status' => 500,\n                'message' => 'Error updating size: ' . $e->getMessage()\n            ]);\n        }\n    }\n}\n"
+        }
+    ]
+}

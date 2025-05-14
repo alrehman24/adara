@@ -1,0 +1,26 @@
+{
+    "sourceFile": "app/Http/Controllers/Admin/ProfileController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1746429264060,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746429271293,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,5 +7,8 @@\n \n class ProfileController extends Controller\n {\n    public function index()\n+   {\n+    \n+   }\n }\n"
+                },
+                {
+                    "date": 1746429421117,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n      * Display a listing of the resource.\n      */\n     public function index()\n     {\n-        return view()\n+        return view('admin.profile');\n     }\n \n     /**\n      * Show the form for creating a new resource.\n"
+                }
+            ],
+            "date": 1746429264060,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Http\\Controllers\\Admin;\n\nuse App\\Http\\Controllers\\Controller;\nuse Illuminate\\Http\\Request;\n\nclass ProfileController extends Controller\n{\n   \n}\n"
+        }
+    ]
+}

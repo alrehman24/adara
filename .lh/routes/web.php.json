@@ -1,0 +1,54 @@
+{
+    "sourceFile": "routes/web.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1746363565451,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746363764431,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,6 +13,6 @@\n |\n */\n \n Route::get('/', function () {\n-    return view('admin/');\n+    return view('admin.index');\n });\n"
+                },
+                {
+                    "date": 1746363778697,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,6 +13,6 @@\n |\n */\n \n Route::get('/', function () {\n-    return view('admin.index');\n+    return view('admin/index');\n });\n"
+                },
+                {
+                    "date": 1746371692627,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,6 +13,7 @@\n |\n */\n \n Route::get('/', function () {\n-    return view('admin/index');\n+    return view('admin.index');\n });\n+\n"
+                },
+                {
+                    "date": 1746371702288,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,5 +15,5 @@\n \n Route::get('/', function () {\n     return view('admin.index');\n });\n-\n+Route::get\n"
+                },
+                {
+                    "date": 1746371716398,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,5 +15,5 @@\n \n Route::get('/', function () {\n     return view('admin.index');\n });\n-Route::get\n+Route::get('/')\n"
+                },
+                {
+                    "date": 1746371722178,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,5 +15,5 @@\n \n Route::get('/', function () {\n     return view('admin.index');\n });\n-Route::get('/')\n+Route::get('/createRole')\n"
+                },
+                {
+                    "date": 1746371730654,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,5 +15,7 @@\n \n Route::get('/', function () {\n     return view('admin.index');\n });\n-Route::get('/createRole')\n+Route::get('/createRole',function(){\n+\n+})\n"
+                },
+                {
+                    "date": 1746371738107,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,6 +16,6 @@\n Route::get('/', function () {\n     return view('admin.index');\n });\n Route::get('/createRole',function(){\n-\n+$role=\n });\n"
+                },
+                {
+                    "date": 1746371747093,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,6 +16,6 @@\n Route::get('/', function () {\n     return view('admin.index');\n });\n Route::get('/createRole',function(){\n-$role=\n+$role=new Role\n });\n"
+                }
+            ],
+            "date": 1746363565451,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Support\\Facades\\Route;\n\n/*\n|--------------------------------------------------------------------------\n| Web Routes\n|--------------------------------------------------------------------------\n|\n| Here is where you can register web routes for your application. These\n| routes are loaded by the RouteServiceProvider and all of them will\n| be assigned to the \"web\" middleware group. Make something great!\n|\n*/\n\nRoute::get('/', function () {\n    return view('admin/');\n});\n"
+        }
+    ]
+}

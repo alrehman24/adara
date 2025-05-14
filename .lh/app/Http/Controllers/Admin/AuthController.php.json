@@ -1,0 +1,26 @@
+{
+    "sourceFile": "app/Http/Controllers/Admin/AuthController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1746372132672,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746372140793,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,11 @@\n \n use App\\Http\\Controllers\\Controller;\n use Illuminate\\Http\\Request;\n user Auth;\n+use App\\Models\\User;\n+use App\\Models\\Role;\n+use Illuminate\\Support\\Facades\\Hash;\n class AuthController extends Controller\n {\n     //\n }\n"
+                },
+                {
+                    "date": 1746372147906,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n use Illuminate\\Http\\Request;\n user Auth;\n use App\\Models\\User;\n use App\\Models\\Role;\n-use Illuminate\\Support\\Facades\\Hash;\n+use Hash;\n class AuthController extends Controller\n {\n     //\n }\n"
+                }
+            ],
+            "date": 1746372132672,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Http\\Controllers\\Admin;\n\nuse App\\Http\\Controllers\\Controller;\nuse Illuminate\\Http\\Request;\nuser Auth\nclass AuthController extends Controller\n{\n    //\n}\n"
+        }
+    ]
+}

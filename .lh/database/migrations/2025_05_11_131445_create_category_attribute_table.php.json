@@ -1,0 +1,22 @@
+{
+    "sourceFile": "database/migrations/2025_05_11_131445_create_category_attribute_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1746969312496,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746969318075,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,12 @@\n     public function up(): void\n     {\n         Schema::create('category_attribute', function (Blueprint $table) {\n             $table->id();\n-            \n+            $table->unsignedBigInteger('category_id');\n+            $table->unsignedBigInteger('attribute_id');\n+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');\n+            $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');\n             $table->timestamps();\n         });\n     }\n \n"
+                }
+            ],
+            "date": 1746969312496,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::create('category_attribute', function (Blueprint $table) {\n            $table->id();\n            \n            $table->timestamps();\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::dropIfExists('category_attribute');\n    }\n};\n"
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "sourceFile": "app/Http/Middleware/AdminAuth.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1746385858234,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746385864005,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,9 @@\n use Closure;\n use Illuminate\\Http\\Request;\n use Symfony\\Component\\HttpFoundation\\Response;\n \n+\n class AdminAuth\n {\n     /**\n      * Handle an incoming request.\n@@ -20,7 +21,7 @@\n         } else {\n             Auth::logout();\n             return response()->json(['status' => 400, 'message' => 'you are not admin']);\n         }\n-        return $next($request);\n+       // return $next($request);\n     }\n }\n"
+                },
+                {
+                    "date": 1746385873335,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,10 +4,10 @@\n \n use Closure;\n use Illuminate\\Http\\Request;\n use Symfony\\Component\\HttpFoundation\\Response;\n+use Auth;\n \n-\n class AdminAuth\n {\n     /**\n      * Handle an incoming request.\n"
+                },
+                {
+                    "date": 1746385890954,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,8 @@\n      */\n     public function handle(Request $request, Closure $next): Response\n     {\n         if (Auth::user()->hasRole('admin')) {\n-            return response()->json(['status' => 200, 'message' => 'login success', 'user' => $user]);\n         } else {\n             Auth::logout();\n             return response()->json(['status' => 400, 'message' => 'you are not admin']);\n         }\n"
+                },
+                {
+                    "date": 1746385896424,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n      */\n     public function handle(Request $request, Closure $next): Response\n     {\n         if (Auth::user()->hasRole('admin')) {\n-\n+            return $next($request);\n         } else {\n             Auth::logout();\n             return response()->json(['status' => 400, 'message' => 'you are not admin']);\n         }\n"
+                },
+                {
+                    "date": 1746385906663,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n     {\n         if (Auth::user()->hasRole('admin')) {\n             return $next($request);\n         } else {\n-            Auth::logout();\n+            //Auth::logout();\n             //return response()->json(['status' => 400, 'message' => 'you are not admin']);\n         }\n        // return $next($request);\n     }\n"
+                }
+            ],
+            "date": 1746385858234,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Http\\Middleware;\n\nuse Closure;\nuse Illuminate\\Http\\Request;\nuse Symfony\\Component\\HttpFoundation\\Response;\n\nclass AdminAuth\n{\n    /**\n     * Handle an incoming request.\n     *\n     * @param  \\Closure(\\Illuminate\\Http\\Request): (\\Symfony\\Component\\HttpFoundation\\Response)  $next\n     */\n    public function handle(Request $request, Closure $next): Response\n    {\n        if (Auth::user()->hasRole('admin')) {\n            return response()->json(['status' => 200, 'message' => 'login success', 'user' => $user]);\n        } else {\n            Auth::logout();\n            return response()->json(['status' => 400, 'message' => 'you are not admin']);\n        }\n        return $next($request);\n    }\n}\n"
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+{
+    "sourceFile": "resources/views/admin/HomeBanner/home_banner.blade.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1746458603280,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746458782551,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,7 +32,7 @@\n                 </div>\n             </div>\n         </div>\n     </div>\n-    </div>\n+    \n     <!--end page wrapper -->\n @endsection\n"
+                },
+                {
+                    "date": 1746458793076,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,9 +30,12 @@\n                         </div>\n                     </div>\n                 </div>\n             </div>\n+\n+\n+\n         </div>\n     </div>\n-    \n+\n     <!--end page wrapper -->\n @endsection\n"
+                },
+                {
+                    "date": 1746459162910,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -524,5 +524,28 @@\n         </div>\n     </div>\n \n     <!--end page wrapper -->\n+    <!--plugins-->\n+\t<script src=\"assets/js/jquery.min.js\"></script>\n+\t<script src=\"assets/plugins/simplebar/js/simplebar.min.js\"></script>\n+\t<script src=\"assets/plugins/metismenu/js/metisMenu.min.js\"></script>\n+\t<script src=\"assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js\"></script>\n+\t<script src=\"assets/plugins/datatable/js/jquery.dataTables.min.js\"></script>\n+\t<script src=\"assets/plugins/datatable/js/dataTables.bootstrap5.min.js\"></script>\n+\t<script>\n+\t\t$(document).ready(function() {\n+\t\t\t$('#example').DataTable();\n+\t\t  } );\n+\t</script>\n+\t<script>\n+\t\t$(document).ready(function() {\n+\t\t\tvar table = $('#example2').DataTable( {\n+\t\t\t\tlengthChange: false,\n+\t\t\t\tbuttons: [ 'copy', 'excel', 'pdf', 'print']\n+\t\t\t} );\n+\n+\t\t\ttable.buttons().container()\n+\t\t\t\t.appendTo( '#example2_wrapper .col-md-6:eq(0)' );\n+\t\t} );\n+\t</script>\n @endsection\n"
+                },
+                {
+                    "date": 1746459184352,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -525,9 +525,8 @@\n     </div>\n \n     <!--end page wrapper -->\n     <!--plugins-->\n-\t<script src=\"assets/js/jquery.min.js\"></script>\n \t<script src=\"assets/plugins/simplebar/js/simplebar.min.js\"></script>\n \t<script src=\"assets/plugins/metismenu/js/metisMenu.min.js\"></script>\n \t<script src=\"assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js\"></script>\n \t<script src=\"assets/plugins/datatable/js/jquery.dataTables.min.js\"></script>\n"
+                },
+                {
+                    "date": 1746459191712,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -525,9 +525,9 @@\n     </div>\n \n     <!--end page wrapper -->\n     <!--plugins-->\n-\t<script src=\"assets/plugins/simplebar/js/simplebar.min.js\"></script>\n+\t<script src=\"{{ asset(assets/plugins/simplebar/js/simplebar.min.js\"></script>\n \t<script src=\"assets/plugins/metismenu/js/metisMenu.min.js\"></script>\n \t<script src=\"assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js\"></script>\n \t<script src=\"assets/plugins/datatable/js/jquery.dataTables.min.js\"></script>\n \t<script src=\"assets/plugins/datatable/js/dataTables.bootstrap5.min.js\"></script>\n"
+                },
+                {
+                    "date": 1746459202238,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -526,9 +526,9 @@\n \n     <!--end page wrapper -->\n     <!--plugins-->\n \t<script src=\"{{ asset('assets/plugins/simplebar/js/simplebar.min.js\"></script>\n-\t<script src=\"assets/plugins/metismenu/js/metisMenu.min.js\"></script>\n+\t<script src=\"{{ asset('assets/plugins/metismenu/js/metisMenu.min.js\"></script>\n \t<script src=\"assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js\"></script>\n \t<script src=\"assets/plugins/datatable/js/jquery.dataTables.min.js\"></script>\n \t<script src=\"assets/plugins/datatable/js/dataTables.bootstrap5.min.js\"></script>\n \t<script>\n"
+                },
+                {
+                    "date": 1746459207792,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -529,9 +529,9 @@\n \t<script src=\"{{ asset('assets/plugins/simplebar/js/simplebar.min.js\"></script>\n \t<script src=\"{{ asset('assets/plugins/metismenu/js/metisMenu.min.js\"></script>\n \t<script src=\"{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js\"></script>\n \t<script src=\"{{ asset('assets/plugins/datatable/js/jquery.dataTables.min.js\"></script>\n-\t<script src=\"assets/plugins/datatable/js/dataTables.bootstrap5.min.js\"></script>\n+\t<script src=\"{{ asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js\"></script>\n \t<script>\n \t\t$(document).ready(function() {\n \t\t\t$('#example').DataTable();\n \t\t  } );\n"
+                }
+            ],
+            "date": 1746458603280,
+            "name": "Commit-0",
+            "content": "@extends('admin/layout')\n@section('content')\n    <div class=\"page-wrapper\">\n        <div class=\"page-content\">\n            <!--breadcrumb-->\n            <div class=\"page-breadcrumb d-none d-sm-flex align-items-center mb-3\">\n                <div class=\"breadcrumb-title pe-3\">User Profile</div>\n                <div class=\"ps-3\">\n                    <nav aria-label=\"breadcrumb\">\n                        <ol class=\"breadcrumb mb-0 p-0\">\n                            <li class=\"breadcrumb-item\"><a href=\"javascript:;\"><i class=\"bx bx-home-alt\"></i></a>\n                            </li>\n                            <li class=\"breadcrumb-item active\" aria-current=\"page\">User Profilep</li>\n                        </ol>\n                    </nav>\n                </div>\n                <div class=\"ms-auto\">\n                    <div class=\"btn-group\">\n                        <button type=\"button\" class=\"btn btn-primary\">Settings</button>\n                        <button type=\"button\"\n                            class=\"btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split\"\n                            data-bs-toggle=\"dropdown\"> <span class=\"visually-hidden\">Toggle Dropdown</span>\n                        </button>\n                        <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-lg-end\"> <a class=\"dropdown-item\"\n                                href=\"javascript:;\">Action</a>\n                            <a class=\"dropdown-item\" href=\"javascript:;\">Another action</a>\n                            <a class=\"dropdown-item\" href=\"javascript:;\">Something else here</a>\n                            <div class=\"dropdown-divider\"></div> <a class=\"dropdown-item\" href=\"javascript:;\">Separated\n                                link</a>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    </div>\n    <!--end page wrapper -->\n@endsection\n"
+        }
+    ]
+}

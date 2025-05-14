@@ -1,0 +1,30 @@
+{
+    "sourceFile": "app/Models/Category.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1746970883498,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746970889500,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n \n class Category extends Model\n {\n     use HasFactory;\n-    \n+    public $fill\n }\n"
+                },
+                {
+                    "date": 1746970895112,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n \n class Category extends Model\n {\n     use HasFactory;\n-    public $fillable = ['name','slug','status','image'];\n+    public $fillable = ['name','slug','status';\n }\n"
+                },
+                {
+                    "date": 1746989167866,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n \n class Category extends Model\n {\n     use HasFactory;\n-    public $fillable = ['name','slug',''];\n+    public $fillable = ['name','slug','p'];\n }\n"
+                }
+            ],
+            "date": 1746970883498,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass Category extends Model\n{\n    use HasFactory;\n    \n}\n"
+        }
+    ]
+}

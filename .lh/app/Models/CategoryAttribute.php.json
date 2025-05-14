@@ -1,0 +1,46 @@
+{
+    "sourceFile": "app/Models/CategoryAttribute.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1747074296253,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1747074301637,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n \n class CategoryAttribute extends Model\n {\n     use HasFactory;\n-    \n+    protected\n }\n"
+                },
+                {
+                    "date": 1747074406864,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,10 @@\n \n class CategoryAttribute extends Model\n {\n     use HasFactory;\n-    protected\n+    protected $table = 'category_attribute';\n+    public function attribute()\n+    {\n+        return $this->belongsToMany(Attribute::class, 'category_attribute');\n+    }\n }\n"
+                },
+                {
+                    "date": 1747074477607,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,16 @@\n+<?php\n+\n+namespace App\\Models;\n+\n+use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n+use Illuminate\\Database\\Eloquent\\Model;\n+\n+class CategoryAttribute extends Model\n+{\n+    use HasFactory;\n+    protected $table = 'category_attribute';\n+    public function S()\n+    {\n+        return $this->belongsToMany(Attribute::class, 'category_attribute');\n+    }\n+}\n"
+                },
+                {
+                    "date": 1747074487199,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,25 +8,9 @@\n class CategoryAttribute extends Model\n {\n     use HasFactory;\n     protected $table = 'category_attribute';\n-    public function S()\n+    public function singleCategory()\n     {\n         return $this->belongsToMany(Attribute::class, 'category_attribute');\n     }\n }\n-<?php\n-\n-namespace App\\Models;\n-\n-use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n-use Illuminate\\Database\\Eloquent\\Model;\n-\n-class CategoryAttribute extends Model\n-{\n-    use HasFactory;\n-    protected $table = 'category_attribute';\n-    public function attribute()\n-    {\n-        return $this->belongsToMany(Attribute::class, 'category_attribute');\n-    }\n-}\n"
+                },
+                {
+                    "date": 1747074516792,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,7 +10,7 @@\n     use HasFactory;\n     protected $table = 'category_attribute';\n     public function singleCategory()\n     {\n-        return $this->belongsToMany(Attribute::class, 'category_attribute');\n+        return $this->has(Attribute::class, 'category_attribute');\n     }\n }\n"
+                },
+                {
+                    "date": 1747074533149,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,7 +10,7 @@\n     use HasFactory;\n     protected $table = 'category_attribute';\n     public function singleCategory()\n     {\n-        return $this->hasOne(Attribute::class, 'category_attribute');\n+        return $this->hasOne(Attribute::class, 'attribute');\n     }\n }\n"
+                },
+                {
+                    "date": 1747074544431,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,7 +10,7 @@\n     use HasFactory;\n     protected $table = 'category_attribute';\n     public function singleCategory()\n     {\n-        return $this->hasOne(Attribute::class, ,'attribute_id');\n+        return $this->hasOne(Attribute::class, '','attribute_id');\n     }\n }\n"
+                }
+            ],
+            "date": 1747074296253,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass CategoryAttribute extends Model\n{\n    use HasFactory;\n    \n}\n"
+        }
+    ]
+}

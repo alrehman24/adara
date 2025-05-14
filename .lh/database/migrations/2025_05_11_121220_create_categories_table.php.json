@@ -1,0 +1,30 @@
+{
+    "sourceFile": "database/migrations/2025_05_11_121220_create_categories_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1746965560666,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746965566430,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     public function up(): void\n     {\n         Schema::create('categories', function (Blueprint $table) {\n             $table->id();\n-            \n+            $table->string('name');\n             $table->timestamps();\n         });\n     }\n \n"
+                },
+                {
+                    "date": 1746965579449,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,8 +13,9 @@\n     {\n         Schema::create('categories', function (Blueprint $table) {\n             $table->id();\n             $table->string('name')->nullable();\n+            \n             $table->timestamps();\n         });\n     }\n \n"
+                },
+                {
+                    "date": 1746965696322,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,30 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+return new class extends Migration\n+{\n+    /**\n+     * Run the migrations.\n+     */\n+    public function up(): void\n+    {\n+        Schema::create('categories', function (Blueprint $table) {\n+            $table->id();\n+            $table->string('name')->nullable();\n+            $table->string('slug')->nullable();\n+            \n+            $table->timestamps();\n+        });\n+    }\n+\n+    /**\n+     * Reverse the migrations.\n+     */\n+    public function down(): void\n+    {\n+        Schema::dropIfExists('categories');\n+    }\n+};\n"
+                }
+            ],
+            "date": 1746965560666,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::create('categories', function (Blueprint $table) {\n            $table->id();\n            \n            $table->timestamps();\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::dropIfExists('categories');\n    }\n};\n"
+        }
+    ]
+}

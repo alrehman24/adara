@@ -1,0 +1,30 @@
+{
+    "sourceFile": "app/Http/Controllers/Admin/CategoryController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1746969553442,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746969561758,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n namespace App\\Http\\Controllers\\Admin;\n \n use App\\Http\\Controllers\\Controller;\n use Illuminate\\Http\\Request;\n-\n+use \n class CategoryController extends Controller\n {\n     public function index_attribute_name()\n     {\n"
+                },
+                {
+                    "date": 1746969567412,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,9 @@\n use App\\Http\\Controllers\\Controller;\n use Illuminate\\Http\\Request;\n use App\\Models\\Attribute;\n use Validator;\n+\n class CategoryController extends Controller\n {\n     public function index_attribute_name()\n     {\n"
+                },
+                {
+                    "date": 1746969576256,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,10 +5,10 @@\n use App\\Http\\Controllers\\Controller;\n use Illuminate\\Http\\Request;\n use App\\Models\\Attribute;\n use Validator;\n+use \n \n-\n class CategoryController extends Controller\n {\n     public function index_attribute_name()\n     {\n"
+                }
+            ],
+            "date": 1746969553442,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Http\\Controllers\\Admin;\n\nuse App\\Http\\Controllers\\Controller;\nuse Illuminate\\Http\\Request;\n\nclass CategoryController extends Controller\n{\n    public function index_attribute_name()\n    {\n        $data=Attribute::get();\n        return view('admin.Attribute.attribute',get_defined_vars());\n    }\n    public function store_attribute_name(Request $request)\n    {\n        $validationRules = [\n            'name' => 'required|string'\n        ];\n\n        $validation = Validator::make($request->all(), $validationRules);\n\n        if ($validation->fails()) {\n            return response()->json([\n                'status' => 400,\n                'errors' => $validation->messages()\n            ]);\n        }\n\n        $userData = [\n            'name' => $request->name,\n            'slug' => $request->slug\n\n        ];\n\n\n\n        try {\n            Attribute::updateOrCreate(\n                ['id' => $request->id],\n                $userData\n            );\n\n            return response()->json([\n                'status' => 200,\n                'message' => 'Attribute updated successfully'\n            ]);\n        } catch (\\Exception $e) {\n            return response()->json([\n                'status' => 500,\n                'message' => 'Error updating attribute: ' . $e->getMessage()\n            ]);\n        }\n    }\n}\n"
+        }
+    ]
+}

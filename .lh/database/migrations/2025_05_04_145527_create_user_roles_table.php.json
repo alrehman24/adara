@@ -1,0 +1,30 @@
+{
+    "sourceFile": "database/migrations/2025_05_04_145527_create_user_roles_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1746370593336,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746370599020,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     public function up(): void\n     {\n         Schema::create('user_roles', function (Blueprint $table) {\n             $table->id();\n-            \n+            $table->\n             $table->timestamps();\n         });\n     }\n \n"
+                },
+                {
+                    "date": 1746370611096,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,4 +24,5 @@\n     public function down(): void\n     {\n         Schema::dropIfExists('user_roles');\n     }\n+};\n"
+                },
+                {
+                    "date": 1746370619547,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,12 @@\n     public function up(): void\n     {\n         Schema::create('user_roles', function (Blueprint $table) {\n             $table->id();\n-            $table->\n+            $table->unsignedBigInteger('user_id');\n+            $table->unsignedBigInteger('role_id');\n+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');\n+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');\n             $table->timestamps();\n         });\n     }\n \n@@ -25,5 +28,4 @@\n     {\n         Schema::dropIfExists('user_roles');\n     }\n };\n-};\n"
+                }
+            ],
+            "date": 1746370593336,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::create('user_roles', function (Blueprint $table) {\n            $table->id();\n            \n            $table->timestamps();\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::dropIfExists('user_roles');\n    }\n};\n"
+        }
+    ]
+}

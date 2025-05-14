@@ -1,0 +1,34 @@
+{
+    "sourceFile": "composer.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1747073416359,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1747073438354,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,10 +23,9 @@\n     \"autoload\": {\n         \"psr-4\": {\n             \"App\\\\\": \"app/\",\n             \"Database\\\\Factories\\\\\": \"database/factories/\",\n-            \"Database\\\\Seeders\\\\\": \"database/seeders/\",\n-            \n+            \"Database\\\\Seeders\\\\\": \"database/seeders/\"\n         }\n     },\n     \"autoload-dev\": {\n         \"psr-4\": {\n"
+                },
+                {
+                    "date": 1747073444940,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,11 @@\n         \"psr-4\": {\n             \"App\\\\\": \"app/\",\n             \"Database\\\\Factories\\\\\": \"database/factories/\",\n             \"Database\\\\Seeders\\\\\": \"database/seeders/\"\n-        }\n+        },\n+        \n+\n     },\n     \"autoload-dev\": {\n         \"psr-4\": {\n             \"Tests\\\\\": \"tests/\"\n"
+                },
+                {
+                    "date": 1747073455017,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n             \"App\\\\\": \"app/\",\n             \"Database\\\\Factories\\\\\": \"database/factories/\",\n             \"Database\\\\Seeders\\\\\": \"database/seeders/\"\n         },\n-        \n+        \"files\": [\"\"]\n \n     },\n     \"autoload-dev\": {\n         \"psr-4\": {\n"
+                },
+                {
+                    "date": 1747073613492,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n             \"App\\\\\": \"app/\",\n             \"Database\\\\Factories\\\\\": \"database/factories/\",\n             \"Database\\\\Seeders\\\\\": \"database/seeders/\"\n         },\n-        \"files\": [\"app/Helpers/helpers.php\"]\n+        \"files\": [\"app/Common/helpers.php\"]\n \n     },\n     \"autoload-dev\": {\n         \"psr-4\": {\n"
+                }
+            ],
+            "date": 1747073416359,
+            "name": "Commit-0",
+            "content": "{\n    \"name\": \"laravel/laravel\",\n    \"type\": \"project\",\n    \"description\": \"The skeleton application for the Laravel framework.\",\n    \"keywords\": [\"laravel\", \"framework\"],\n    \"license\": \"MIT\",\n    \"require\": {\n        \"php\": \"^8.1\",\n        \"guzzlehttp/guzzle\": \"^7.2\",\n        \"laravel/framework\": \"^10.10\",\n        \"laravel/sanctum\": \"^3.3\",\n        \"laravel/tinker\": \"^2.8\"\n    },\n    \"require-dev\": {\n        \"fakerphp/faker\": \"^1.9.1\",\n        \"laravel/pint\": \"^1.0\",\n        \"laravel/sail\": \"^1.18\",\n        \"mockery/mockery\": \"^1.4.4\",\n        \"nunomaduro/collision\": \"^7.0\",\n        \"phpunit/phpunit\": \"^10.1\",\n        \"spatie/laravel-ignition\": \"^2.0\"\n    },\n    \"autoload\": {\n        \"psr-4\": {\n            \"App\\\\\": \"app/\",\n            \"Database\\\\Factories\\\\\": \"database/factories/\",\n            \"Database\\\\Seeders\\\\\": \"database/seeders/\",\n            \n        }\n    },\n    \"autoload-dev\": {\n        \"psr-4\": {\n            \"Tests\\\\\": \"tests/\"\n        }\n    },\n    \"scripts\": {\n        \"post-autoload-dump\": [\n            \"Illuminate\\\\Foundation\\\\ComposerScripts::postAutoloadDump\",\n            \"@php artisan package:discover --ansi\"\n        ],\n        \"post-update-cmd\": [\n            \"@php artisan vendor:publish --tag=laravel-assets --ansi --force\"\n        ],\n        \"post-root-package-install\": [\n            \"@php -r \\\"file_exists('.env') || copy('.env.example', '.env');\\\"\"\n        ],\n        \"post-create-project-cmd\": [\n            \"@php artisan key:generate --ansi\"\n        ]\n    },\n    \"extra\": {\n        \"laravel\": {\n            \"dont-discover\": []\n        }\n    },\n    \"config\": {\n        \"optimize-autoloader\": true,\n        \"preferred-install\": \"dist\",\n        \"sort-packages\": true,\n        \"allow-plugins\": {\n            \"pestphp/pest-plugin\": true,\n            \"php-http/discovery\": true\n        }\n    },\n    \"minimum-stability\": \"stable\",\n    \"prefer-stable\": true\n}\n"
+        }
+    ]
+}

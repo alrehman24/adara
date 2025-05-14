@@ -1,0 +1,62 @@
+{
+    "sourceFile": "app/Http/Controllers/Admin/sizeController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 11,
+            "patches": [
+                {
+                    "date": 1746728944053,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746728951837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,5 +11,53 @@\n     {\n         $data=HomeBanner::get();\n         return view('admin.HomeBanner.home_banner',get_defined_vars());\n     }\n+    public function store(Request $request)\n+    {\n+        $validationRules = [\n+            'text' => 'required|string',\n+            'link' => 'required|string'\n+        ];\n+\n+        if ($request->hasFile('image')) {\n+            $validationRules['image'] = 'image|mimes:jpeg,png,jpg,gif,svg|max:2048';\n+        }\n+\n+        $validation = Validator::make($request->all(), $validationRules);\n+\n+        if ($validation->fails()) {\n+            return response()->json([\n+                'status' => 400,\n+                'errors' => $validation->messages()\n+            ]);\n+        }\n+\n+        $userData = [\n+            'text' => $request->text,\n+            'link' => $request->link\n+        ];\n+\n+        if ($request->hasFile('image')) {\n+            $image_name = $request->name . time() . '.' . $request->image->extension();\n+            $request->image->move(public_path('images/'), $image_name);\n+            $userData['image'] = 'images/'.$image_name;\n+        }\n+\n+        try {\n+            HomeBanner::updateOrCreate(\n+                ['id' => $request->id],\n+                $userData\n+            );\n+\n+            return response()->json([\n+                'status' => 200,\n+                'message' => 'Banner updated successfully'\n+            ]);\n+        } catch (\\Exception $e) {\n+            return response()->json([\n+                'status' => 500,\n+                'message' => 'Error updating banner: ' . $e->getMessage()\n+            ]);\n+        }\n+    }\n }\n"
+                },
+                {
+                    "date": 1746728958974,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n namespace App\\Http\\Controllers\\Admin;\n \n use App\\Http\\Controllers\\Controller;\n use Illuminate\\Http\\Request;\n-\n+use Validator;\n class sizeController extends Controller\n {\n     public function index()\n     {\n"
+                },
+                {
+                    "date": 1746728964670,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n class sizeController extends Controller\n {\n     public function index()\n     {\n-        $data=HomeBanner::get();\n+        $data=Si::get();\n         return view('admin.HomeBanner.home_banner',get_defined_vars());\n     }\n     public function store(Request $request)\n     {\n"
+                },
+                {
+                    "date": 1746728972338,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n \n namespace App\\Http\\Controllers\\Admin;\n \n use App\\Http\\Controllers\\Controller;\n+use App\\Models\\Size;\n use Illuminate\\Http\\Request;\n use Validator;\n class sizeController extends Controller\n {\n"
+                },
+                {
+                    "date": 1746728983906,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n class sizeController extends Controller\n {\n     public function index()\n     {\n-        $data=Si::get();\n+        $data=Size::get();\n         return view('admin.HomeBanner.home_banner',get_defined_vars());\n     }\n     public function store(Request $request)\n     {\n@@ -44,9 +44,9 @@\n             $userData['image'] = 'images/'.$image_name;\n         }\n \n         try {\n-            HomeBanner::updateOrCreate(\n+            Size::updateOrCreate(\n                 ['id' => $request->id],\n                 $userData\n             );\n \n"
+                },
+                {
+                    "date": 1746729080672,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n {\n     public function index()\n     {\n         $data=Size::get();\n-        return view('admin.HomeBanner.home_banner',get_defined_vars());\n+        return view('admin.Size.home_banner',get_defined_vars());\n     }\n     public function store(Request $request)\n     {\n         $validationRules = [\n"
+                },
+                {
+                    "date": 1746729336794,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,15 +10,14 @@\n {\n     public function index()\n     {\n         $data=Size::get();\n-        return view('admin.Size.home_banner',get_defined_vars());\n+        return view('admin.Size.size',get_defined_vars());\n     }\n     public function store(Request $request)\n     {\n         $validationRules = [\n-            'text' => 'required|string',\n-            'link' => 'required|string'\n+            'text' => 'required|string'\n         ];\n \n         if ($request->hasFile('image')) {\n             $validationRules['image'] = 'image|mimes:jpeg,png,jpg,gif,svg|max:2048';\n"
+                },
+                {
+                    "date": 1746729344948,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,12 +18,10 @@\n         $validationRules = [\n             'text' => 'required|string'\n         ];\n \n-        if ($request->hasFile('image')) {\n-            $validationRules['image'] = 'image|mimes:jpeg,png,jpg,gif,svg|max:2048';\n-        }\n \n+\n         $validation = Validator::make($request->all(), $validationRules);\n \n         if ($validation->fails()) {\n             return response()->json([\n"
+                },
+                {
+                    "date": 1746729355807,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,10 +30,9 @@\n             ]);\n         }\n \n         $userData = [\n-            'text' => $request->text,\n-            'link' => $request->link\n+            'text' => $request->text\n         ];\n \n         if ($request->hasFile('image')) {\n             $image_name = $request->name . time() . '.' . $request->image->extension();\n"
+                },
+                {
+                    "date": 1746730563939,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,9 @@\n             );\n \n             return response()->json([\n                 'status' => 200,\n-                'message' => 'Banner updated successfully'\n+                'message' => 'Size updated successfully'\n             ]);\n         } catch (\\Exception $e) {\n             return response()->json([\n                 'status' => 500,\n"
+                },
+                {
+                    "date": 1746730574801,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,14 +33,10 @@\n         $userData = [\n             'text' => $request->text\n         ];\n \n-        if ($request->hasFile('image')) {\n-            $image_name = $request->name . time() . '.' . $request->image->extension();\n-            $request->image->move(public_path('images/'), $image_name);\n-            $userData['image'] = 'images/'.$image_name;\n-        }\n \n+\n         try {\n             Size::updateOrCreate(\n                 ['id' => $request->id],\n                 $userData\n@@ -52,9 +48,9 @@\n             ]);\n         } catch (\\Exception $e) {\n             return response()->json([\n                 'status' => 500,\n-                'message' => 'Error updating banner: ' . $e->getMessage()\n+                'message' => 'Error updating size: ' . $e->getMessage()\n             ]);\n         }\n     }\n }\n"
+                }
+            ],
+            "date": 1746728944053,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Http\\Controllers\\Admin;\n\nuse App\\Http\\Controllers\\Controller;\nuse Illuminate\\Http\\Request;\n\nclass sizeController extends Controller\n{\n    public function index()\n    {\n        $data=HomeBanner::get();\n        return view('admin.HomeBanner.home_banner',get_defined_vars());\n    }\n}\n"
+        }
+    ]
+}

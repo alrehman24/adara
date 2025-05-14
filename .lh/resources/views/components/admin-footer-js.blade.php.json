@@ -1,0 +1,46 @@
+{
+    "sourceFile": "resources/views/components/admin-footer-js.blade.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1746363036808,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746363364767,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,14 @@\n  <!-- Bootstrap JS -->\n- <script src=\"assets/js/bootstrap.bundle.min.js\"></script>\n+ <script src=\"assets/js/bootstrap.bundle.min.js')}}\"></script>\n  <!--plugins-->\n- <script src=\"assets/js/jquery.min.js\"></script>\n- <script src=\"assets/plugins/simplebar/js/simplebar.min.js\"></script>\n- <script src=\"assets/plugins/metismenu/js/metisMenu.min.js\"></script>\n- <script src=\"assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js\"></script>\n- <script src=\"assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js\"></script>\n- <script src=\"assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js\"></script>\n- <script src=\"assets/plugins/chartjs/js/Chart.min.js\"></script>\n- <script src=\"assets/plugins/chartjs/js/Chart.extension.js\"></script>\n- <script src=\"assets/js/index.js\"></script>\n+ <script src=\"assets/js/jquery.min.js')}}\"></script>\n+ <script src=\"assets/plugins/simplebar/js/simplebar.min.js')}}\"></script>\n+ <script src=\"assets/plugins/metismenu/js/metisMenu.min.js')}}\"></script>\n+ <script src=\"assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}\"></script>\n+ <script src=\"assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js')}}\"></script>\n+ <script src=\"assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js')}}\"></script>\n+ <script src=\"assets/plugins/chartjs/js/Chart.min.js')}}\"></script>\n+ <script src=\"assets/plugins/chartjs/js/Chart.extension.js')}}\"></script>\n+ <script src=\"assets/js/index.js')}}\"></script>\n  <!--app JS-->\n- <script src=\"assets/js/app.js\"></script>\n+ <script src=\"assets/js/app.js')}}\"></script>\n"
+                },
+                {
+                    "date": 1746363407885,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,14 @@\n+ <!-- Bootstrap JS -->\n+ <script src=\"{{asset('assets/js/bootstrap.bundle.min.js')}}\"></script>\n+ <!--plugins-->\n+ <script src=\"{{asset('assets/js/jquery.min.js')}}\"></script>\n+ <script src=\"{{asset('assets/plugins/simplebar/js/simplebar.min.js')}}\"></script>\n+ <script src=\"{{asset('assets/plugins/metismenu/js/metisMenu.min.js')}}\"></script>\n+ <script src=\"{{asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}\"></script>\n+ <script src=\"{{asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js')}}\"></script>\n+ <script src=\"{{asset('assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js')}}\"></script>\n+ <script src=\"{{asset('assets/plugins/chartjs/js/Chart.min.js')}}\"></script>\n+ <script src=\"{{asset('assets/plugins/chartjs/js/Chart.extension.js')}}\"></script>\n+ <script src=\"{{asset('assets/js/index.js')}}\"></script>\n+ <!--app JS-->\n+ <script src=\"{{asset('assets/js/app.js')}}\"></script>\n"
+                },
+                {
+                    "date": 1746378777186,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,4 +11,20 @@\n  <script src=\"{{asset('assets/plugins/chartjs/js/Chart.extension.js')}}\"></script>\n  <script src=\"{{asset('assets/js/index.js')}}\"></script>\n  <!--app JS-->\n  <script src=\"{{asset('assets/js/app.js')}}\"></script>\n+ <script>\n+    $(document).ready(function () {\n+        $(\"#show_hide_password a\").on('click', function (event) {\n+            event.preventDefault();\n+            if ($('#show_hide_password input').attr(\"type\") == \"text\") {\n+                $('#show_hide_password input').attr('type', 'password');\n+                $('#show_hide_password i').addClass(\"bx-hide\");\n+                $('#show_hide_password i').removeClass(\"bx-show\");\n+            } else if ($('#show_hide_password input').attr(\"type\") == \"password\") {\n+                $('#show_hide_password input').attr('type', 'text');\n+                $('#show_hide_password i').removeClass(\"bx-hide\");\n+                $('#show_hide_password i').addClass(\"bx-show\");\n+            }\n+        });\n+    });\n+</script>\n"
+                },
+                {
+                    "date": 1746379612930,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n  <!-- Bootstrap JS -->\n  <script src=\"{{asset('assets/js/bootstrap.bundle.min.js')}}\"></script>\n  <!--plugins-->\n- <script src=\"{{asset('assets/js/jquery.min.js')}}\"></script>\n  <script src=\"{{asset('assets/plugins/simplebar/js/simplebar.min.js')}}\"></script>\n  <script src=\"{{asset('assets/plugins/metismenu/js/metisMenu.min.js')}}\"></script>\n  <script src=\"{{asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}\"></script>\n  <script src=\"{{asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js')}}\"></script>\n"
+                },
+                {
+                    "date": 1746379669341,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,10 @@\n  <script src=\"{{asset('assets/plugins/chartjs/js/Chart.extension.js')}}\"></script>\n  <script src=\"{{asset('assets/js/index.js')}}\"></script>\n  <!--app JS-->\n  <script src=\"{{asset('assets/js/app.js')}}\"></script>\n+\n+ \n  <script>\n     $(document).ready(function () {\n         $(\"#show_hide_password a\").on('click', function (event) {\n             event.preventDefault();\n"
+                },
+                {
+                    "date": 1746379675791,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,5 +31,5 @@\n                 $('#show_hide_password i').addClass(\"bx-show\");\n             }\n         });\n     });\n-</scr\n\\ No newline at end of file\n+</script>\n"
+                },
+                {
+                    "date": 1746379682106,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,8 @@\n  <link rel=\"stylesheet\" href=\"https://developercodez.com/developerCorner/parsley/parsley.css\" >\n \n     <!-- Js -->\n     <script src=\"https://code.jquery.com/jquery-3.6.1.min.js\" crossorigin=\"anonymous\"></script>\n-    \n  <script>\n     $(document).ready(function () {\n         $(\"#show_hide_password a\").on('click', function (event) {\n             event.preventDefault();\n"
+                }
+            ],
+            "date": 1746363036808,
+            "name": "Commit-0",
+            "content": " <!-- Bootstrap JS -->\n <script src=\"assets/js/bootstrap.bundle.min.js\"></script>\n <!--plugins-->\n <script src=\"assets/js/jquery.min.js\"></script>\n <script src=\"assets/plugins/simplebar/js/simplebar.min.js\"></script>\n <script src=\"assets/plugins/metismenu/js/metisMenu.min.js\"></script>\n <script src=\"assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js\"></script>\n <script src=\"assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js\"></script>\n <script src=\"assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js\"></script>\n <script src=\"assets/plugins/chartjs/js/Chart.min.js\"></script>\n <script src=\"assets/plugins/chartjs/js/Chart.extension.js\"></script>\n <script src=\"assets/js/index.js\"></script>\n <!--app JS-->\n <script src=\"assets/js/app.js\"></script>\n"
+        }
+    ]
+}

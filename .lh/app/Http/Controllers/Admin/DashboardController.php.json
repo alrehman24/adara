@@ -1,0 +1,42 @@
+{
+    "sourceFile": "app/Http/Controllers/Admin/DashboardController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1746428225133,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746428260038,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,9 @@\n use Illuminate\\Http\\Request;\n \n class DashboardController extends Controller\n {\n-    pub\n+    public function index()\n+    {\n+        return view('admin.index');\n+    }\n }\n"
+                },
+                {
+                    "date": 1746644141450,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,5 +10,6 @@\n     public function index()\n     {\n         return view('admin.index');\n     }\n+    public function deleteData\n }\n"
+                },
+                {
+                    "date": 1746644155392,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n namespace App\\Http\\Controllers\\Admin;\n-\n+use\n use App\\Http\\Controllers\\Controller;\n use Illuminate\\Http\\Request;\n \n class DashboardController extends Controller\n"
+                },
+                {
+                    "date": 1746644163633,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n <?php\n \n namespace App\\Http\\Controllers\\Admin;\n-use\n+use DB;\n use App\\Http\\Controllers\\Controller;\n use Illuminate\\Http\\Request;\n \n class DashboardController extends Controller\n@@ -10,6 +10,11 @@\n     public function index()\n     {\n         return view('admin.index');\n     }\n-    public function deleteData\n+    public function deleteData($id, $table)\n+    {\n+        if ($table == 'home_banner') {\n+            $data = HomeBanner::find($id);\n+        }\n+        if\n }\n"
+                },
+                {
+                    "date": 1746644169370,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,6 +15,6 @@\n     {\n         if ($table == 'home_banner') {\n             $data = HomeBanner::find($id);\n         }\n-        if\n+\n }\n"
+                },
+                {
+                    "date": 1746644175555,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,7 @@\n         return view('admin.index');\n     }\n     public function deleteData($id, $table)\n     {\n-        if ($table == 'home_banner') {\n-            $data = HomeBanner::find($id);\n-        }\n+        DB::\n \n }\n"
+                }
+            ],
+            "date": 1746428225133,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Http\\Controllers\\Admin;\n\nuse App\\Http\\Controllers\\Controller;\nuse Illuminate\\Http\\Request;\n\nclass DashboardController extends Controller\n{\n    pub\n}\n"
+        }
+    ]
+}

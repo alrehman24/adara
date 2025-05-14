@@ -1,0 +1,42 @@
+{
+    "sourceFile": "app/Http/Controllers/Admin/HomeBannerController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1746457370125,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746457392442,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n      * Display a listing of the resource.\n      */\n     public function index()\n     {\n-        $data\n+        $data=H\n     }\n \n     /**\n      * Show the form for creating a new resource.\n"
+                },
+                {
+                    "date": 1746457405911,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n \n namespace App\\Http\\Controllers\\Admin;\n \n use App\\Http\\Controllers\\Controller;\n+use App\\Models\\HomeBanner;\n use Illuminate\\Http\\Request;\n \n class HomeBannerController extends Controller\n {\n@@ -11,9 +12,9 @@\n      * Display a listing of the resource.\n      */\n     public function index()\n     {\n-        $data=H\n+        $data=HomeBanner::\n     }\n \n     /**\n      * Show the form for creating a new resource.\n"
+                },
+                {
+                    "date": 1746457416057,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,10 @@\n      * Display a listing of the resource.\n      */\n     public function index()\n     {\n-        $data=HomeBanner::\n+        $data=HomeBanner::get();\n+        return view('admin.')\n     }\n \n     /**\n      * Show the form for creating a new resource.\n"
+                },
+                {
+                    "date": 1746457433386,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,67 @@\n+<?php\n+\n+namespace App\\Http\\Controllers\\Admin;\n+\n+use App\\Http\\Controllers\\Controller;\n+use App\\Models\\HomeBanner;\n+use Illuminate\\Http\\Request;\n+\n+class HomeBannerController extends Controller\n+{\n+    /**\n+     * Display a listing of the resource.\n+     */\n+    public function index()\n+    {\n+        $data=HomeBanner::get();\n+        return view('admin.home')\n+    }\n+\n+    /**\n+     * Show the form for creating a new resource.\n+     */\n+    public function create()\n+    {\n+        //\n+    }\n+\n+    /**\n+     * Store a newly created resource in storage.\n+     */\n+    public function store(Request $request)\n+    {\n+        //\n+    }\n+\n+    /**\n+     * Display the specified resource.\n+     */\n+    public function show(string $id)\n+    {\n+        //\n+    }\n+\n+    /**\n+     * Show the form for editing the specified resource.\n+     */\n+    public function edit(string $id)\n+    {\n+        //\n+    }\n+\n+    /**\n+     * Update the specified resource in storage.\n+     */\n+    public function update(Request $request, string $id)\n+    {\n+        //\n+    }\n+\n+    /**\n+     * Remove the specified resource from storage.\n+     */\n+    public function destroy(string $id)\n+    {\n+        //\n+    }\n+}\n"
+                },
+                {
+                    "date": 1746457445601,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n      */\n     public function index()\n     {\n         $data=HomeBanner::get();\n-        return view('admin.homeBanner')\n+        return view('admin.homeBanner',)\n     }\n \n     /**\n      * Show the form for creating a new resource.\n"
+                },
+                {
+                    "date": 1746457452248,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n      */\n     public function index()\n     {\n         $data=HomeBanner::get();\n-        return view('admin.homeBanner',)\n+        return view('admin.homeBanner',);\n     }\n \n     /**\n      * Show the form for creating a new resource.\n"
+                }
+            ],
+            "date": 1746457370125,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Http\\Controllers\\Admin;\n\nuse App\\Http\\Controllers\\Controller;\nuse Illuminate\\Http\\Request;\n\nclass HomeBannerController extends Controller\n{\n    /**\n     * Display a listing of the resource.\n     */\n    public function index()\n    {\n        $data\n    }\n\n    /**\n     * Show the form for creating a new resource.\n     */\n    public function create()\n    {\n        //\n    }\n\n    /**\n     * Store a newly created resource in storage.\n     */\n    public function store(Request $request)\n    {\n        //\n    }\n\n    /**\n     * Display the specified resource.\n     */\n    public function show(string $id)\n    {\n        //\n    }\n\n    /**\n     * Show the form for editing the specified resource.\n     */\n    public function edit(string $id)\n    {\n        //\n    }\n\n    /**\n     * Update the specified resource in storage.\n     */\n    public function update(Request $request, string $id)\n    {\n        //\n    }\n\n    /**\n     * Remove the specified resource from storage.\n     */\n    public function destroy(string $id)\n    {\n        //\n    }\n}\n"
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+{
+    "sourceFile": "database/migrations/2025_05_08_182258_create_sizes_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1746728600342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746728624231,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     public function up(): void\n     {\n         Schema::create('sizes', function (Blueprint $table) {\n             $table->id();\n-            \n+            $table->string('name');\n             $table->timestamps();\n         });\n     }\n \n"
+                },
+                {
+                    "date": 1746728683860,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     public function up(): void\n     {\n         Schema::create('sizes', function (Blueprint $table) {\n             $table->id();\n-            $table->string('name');\n+            $table->string('size');\n             $table->timestamps();\n         });\n     }\n \n"
+                },
+                {
+                    "date": 1746728694575,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n     {\n         Schema::create('sizes', function (Blueprint $table) {\n             $table->id();\n             $table->string('size');\n-            $\n+            $table->string\n             $table->timestamps();\n         });\n     }\n \n"
+                },
+                {
+                    "date": 1746728706834,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n     {\n         Schema::create('sizes', function (Blueprint $table) {\n             $table->id();\n             $table->string('size');\n-            $table->string('stut')\n+            $table->string('stutus')\n             $table->timestamps();\n         });\n     }\n \n"
+                }
+            ],
+            "date": 1746728600342,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::create('sizes', function (Blueprint $table) {\n            $table->id();\n            \n            $table->timestamps();\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::dropIfExists('sizes');\n    }\n};\n"
+        }
+    ]
+}

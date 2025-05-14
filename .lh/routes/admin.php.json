@@ -1,0 +1,38 @@
+{
+    "sourceFile": "routes/admin.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1746386166266,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746386172147,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n <?php\n \n \n use Illuminate\\Support\\Facades\\Route;\n+\n"
+                },
+                {
+                    "date": 1746386667067,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,4 @@\n <?php\n+use Illuminate\\Support\\Facades\\Route;\n \n \n-use Illuminate\\Support\\Facades\\Route;\n-\n"
+                },
+                {
+                    "date": 1746386675514,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n <?php\n use Illuminate\\Support\\Facades\\Route;\n \n+Route::get('')\n \n"
+                },
+                {
+                    "date": 1746386689231,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n <?php\n use Illuminate\\Support\\Facades\\Route;\n \n-Route::get('/')\n+Route::get('/dash\n \n"
+                },
+                {
+                    "date": 1746428324513,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,7 @@\n use Illuminate\\Support\\Facades\\Route;\n \n Route::get('/dashboard', function () {\n     //return view('admin.index');\n-    return redirect('admin')\n+    return redirect('admin/')\n     });\n \n"
+                }
+            ],
+            "date": 1746386166266,
+            "name": "Commit-0",
+            "content": "<?php\n\n\nuse Illuminate\\Support\\Facades\\Route;\n"
+        }
+    ]
+}

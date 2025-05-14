@@ -1,0 +1,54 @@
+{
+    "sourceFile": "app/Models/AttributeValue.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1746960154496,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746960173678,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,15 @@\n+<?php\n+\n+namespace App\\Models;\n+\n+use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n+use Illuminate\\Database\\Eloquent\\Model;\n+\n+class AttributeValue extends Model\n+{\n+    use HasFactory;\n+    protected $fillable = [\n+        'attribute_id',\n+        'value',\n+    ];\n+}\n"
+                },
+                {
+                    "date": 1746962369856,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,20 +8,8 @@\n class AttributeValue extends Model\n {\n     use HasFactory;\n     protected $fillable = [\n-        'attribute_id',\n         'value',\n+        'value',\n     ];\n }\n-<?php\n-\n-namespace App\\Models;\n-\n-use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n-use Illuminate\\Database\\Eloquent\\Model;\n-\n-class AttributeValue extends Model\n-{\n-    use HasFactory;\n-    \n-}\n"
+                },
+                {
+                    "date": 1746963202839,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,9 @@\n class AttributeValue extends Model\n {\n     use HasFactory;\n     protected $fillable = [\n+        'attribute_id',\n         'value',\n-        'value',\n     ];\n+    \n }\n"
+                },
+                {
+                    "date": 1746963208158,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,6 +11,6 @@\n     protected $fillable = [\n         'attribute_id',\n         'value',\n     ];\n-    \n+    public function attribute()\n }\n"
+                },
+                {
+                    "date": 1746964179974,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,5 +12,8 @@\n         'attribute_id',\n         'value',\n     ];\n     public function attribute()\n+    {\n+        return $this->has(Attribute::class);\n+    }\n }\n"
+                },
+                {
+                    "date": 1746964190046,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,7 +13,7 @@\n         'value',\n     ];\n     public function attribute()\n     {\n-        return $this->has(Attribute::class);\n+        return $this->belongsTo(Attribute::class);\n     }\n }\n"
+                },
+                {
+                    "date": 1746964255380,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,7 +13,7 @@\n         'value',\n     ];\n     public function attribute()\n     {\n-        return $this->belongsTo(Attribute::class);\n+        return $this->hasone(Attribute::class);\n     }\n }\n"
+                },
+                {
+                    "date": 1746964260593,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,19 @@\n+<?php\n+\n+namespace App\\Models;\n+\n+use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n+use Illuminate\\Database\\Eloquent\\Model;\n+\n+class AttributeValue extends Model\n+{\n+    use HasFactory;\n+    protected $fillable = [\n+        'attribute_id',\n+        'value',\n+    ];\n+    public function attribute()\n+    {\n+        return $this->hasone(Attribute::class,);\n+    }\n+}\n"
+                },
+                {
+                    "date": 1746964266307,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,23 +16,4 @@\n     {\n         return $this->hasone(Attribute::class,);\n     }\n }\n-<?php\n-\n-namespace App\\Models;\n-\n-use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n-use Illuminate\\Database\\Eloquent\\Model;\n-\n-class AttributeValue extends Model\n-{\n-    use HasFactory;\n-    protected $fillable = [\n-        'attribute_id',\n-        'value',\n-    ];\n-    public function attribute()\n-    {\n-        return $this->hasone(Attribute::class);\n-    }\n-}\n"
+                }
+            ],
+            "date": 1746960154496,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass AttributeValue extends Model\n{\n    use HasFactory;\n    \n}\n"
+        }
+    ]
+}

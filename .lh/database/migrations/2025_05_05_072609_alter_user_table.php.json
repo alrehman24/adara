@@ -1,0 +1,26 @@
+{
+    "sourceFile": "database/migrations/2025_05_05_072609_alter_user_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1746429998430,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746430004167,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n      */\n     public function up(): void\n     {\n         Schema::table('users', function (Blueprint $table) {\n-            $table->string\n+            $table->string('')\n         });\n     }\n \n     /**\n"
+                },
+                {
+                    "date": 1746430013775,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n      */\n     public function up(): void\n     {\n         Schema::table('users', function (Blueprint $table) {\n-            $table->string('address')\n+            $table->string('address')->nullable();\n         });\n     }\n \n     /**\n"
+                }
+            ],
+            "date": 1746429998430,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::table('users', function (Blueprint $table) {\n            $table\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::table('users', function (Blueprint $table) {\n            //\n        });\n    }\n};\n"
+        }
+    ]
+}
