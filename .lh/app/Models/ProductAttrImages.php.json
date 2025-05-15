@@ -1,0 +1,26 @@
+{
+    "sourceFile": "app/Models/ProductAttrImages.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1747334482592,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1747334491603,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,11 @@\n \n class ProductAttrImages extends Model\n {\n     use HasFactory;\n-    \n+    protected $fillable = [\n+        'product_attr_id',\n+        'product_attr_id',\n+        'image',\n+\n+    ]\n }\n"
+                },
+                {
+                    "date": 1747334504772,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n {\n     use HasFactory;\n     protected $fillable = [\n         'product_attr_id',\n-        'product_attr_id',\n+        'product_id',\n         'image',\n \n-    ]\n+    ];\n }\n"
+                }
+            ],
+            "date": 1747334482592,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass ProductAttrImages extends Model\n{\n    use HasFactory;\n    \n}\n"
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "sourceFile": "database/migrations/2025_05_15_172557_create_product_attributes_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1747330592819,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1747330598609,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,8 +13,10 @@\n     {\n         Schema::create('product_attributes', function (Blueprint $table) {\n             $table->id();\n             $table->foreignId('product_id')->constrained('products');\n+            $table->foreignId('attribute_id')->constrained('attributes');\n+            $table->string('value');\n             $table->timestamps();\n         });\n     }\n \n"
+                },
+                {
+                    "date": 1747330608872,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n         Schema::create('product_attributes', function (Blueprint $table) {\n             $table->id();\n             $table->foreignId('product_id')->constrained('products');\n             $table->foreignId('attribute_id')->constrained('attributes');\n-            $table->string('value');\n+           \n             $table->timestamps();\n         });\n     }\n \n"
+                }
+            ],
+            "date": 1747330592819,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::create('product_attributes', function (Blueprint $table) {\n            $table->id();\n            \n            $table->timestamps();\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::dropIfExists('product_attributes');\n    }\n};\n"
+        }
+    ]
+}

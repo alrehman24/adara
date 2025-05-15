@@ -91,6 +91,31 @@
             </ul>
         </li>
 
+        <li>
+            <a href="#">
+                <div class="parent-icon"><i class='bx bx-cart'></i>
+                </div>
+                <div class="menu-title">Products</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ url('admin/product') }}">
+                        <div class="parent-icon"><i class='bx bx-home'></i>
+                        </div>
+                        <div class="menu-title">Product</div>
+                    </a>
+                </li>
+                {{-- <li>
+                    <a href="{{ url('admin/category_attribute') }}">
+                        <div class="parent-icon"><i class='bx bx-home'></i>
+                        </div>
+                        <div class="menu-title">Attribute</div>
+                    </a>
+                </li> --}}
+
+            </ul>
+        </li>
+
         <li class="menu-label">Brand</li>
         <li>
             <a href="{{ url('admin/brand') }}">

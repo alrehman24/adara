@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\sizeController;
 use App\Http\Controllers\Admin\TaxController;
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\ProductController;
 
 use App\Http\Controllers\ColorController;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +50,11 @@ Route::post('/brand', [BrandController::class,'store']);
 //Tax
 Route::get('/tax', [TaxController::class ,'index']);
 Route::post('/tax', [TaxController::class,'store']);
+
+//Product
+Route::get('/product', [ProductController::class ,'index']);
+Route::get('/manage_product/{id}', [ProductController::class ,'view_product']);
+Route::post('/updateproduct', [ProductController::class,'store']);
 
 
 // delete data

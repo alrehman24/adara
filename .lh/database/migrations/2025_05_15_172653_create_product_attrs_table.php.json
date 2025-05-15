@@ -1,0 +1,90 @@
+{
+    "sourceFile": "database/migrations/2025_05_15_172653_create_product_attrs_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 18,
+            "patches": [
+                {
+                    "date": 1747330939150,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1747330950181,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,10 @@\n     public function up(): void\n     {\n         Schema::create('product_attrs', function (Blueprint $table) {\n             $table->id();\n-            \n+            $table->foreignId('product_id')->constrained('attributes');\n+\n             $table->timestamps();\n         });\n     }\n \n"
+                },
+                {
+                    "date": 1747330958592,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,8 @@\n     public function up(): void\n     {\n         Schema::create('product_attrs', function (Blueprint $table) {\n             $table->id();\n-            $table->foreignId('product_id')->constrained('attributes');\n \n             $table->timestamps();\n         });\n     }\n"
+                },
+                {
+                    "date": 1747330966649,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,29 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+return new class extends Migration\n+{\n+    /**\n+     * Run the migrations.\n+     */\n+    public function up(): void\n+    {\n+        Schema::create('product_attrs', function (Blueprint $table) {\n+            $table->id();\n+            $table->unsignedBigInteger('category_id')->nullable();\n+\n+            $table->timestamps();\n+        });\n+    }\n+\n+    /**\n+     * Reverse the migrations.\n+     */\n+    public function down(): void\n+    {\n+        Schema::dropIfExists('product_attrs');\n+    }\n+};\n"
+                },
+                {
+                    "date": 1747330973562,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     public function up(): void\n     {\n         Schema::create('product_attrs', function (Blueprint $table) {\n             $table->id();\n-            $table->unsignedBigInteger('category_id')->nullable();\n+            $table->unsignedBigInteger('product_id')->nullable();\n \n             $table->timestamps();\n         });\n     }\n"
+                },
+                {
+                    "date": 1747330978808,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     public function up(): void\n     {\n         Schema::create('product_attrs', function (Blueprint $table) {\n             $table->id();\n-            $table->unsignedBigInteger('product_id')->nullable();\n+            $table->unsignedBigInteger('product_id');\n \n             $table->timestamps();\n         });\n     }\n@@ -26,32 +26,4 @@\n     {\n         Schema::dropIfExists('product_attrs');\n     }\n };\n-<?php\n-\n-use Illuminate\\Database\\Migrations\\Migration;\n-use Illuminate\\Database\\Schema\\Blueprint;\n-use Illuminate\\Support\\Facades\\Schema;\n-\n-return new class extends Migration\n-{\n-    /**\n-     * Run the migrations.\n-     */\n-    public function up(): void\n-    {\n-        Schema::create('product_attrs', function (Blueprint $table) {\n-            $table->id();\n-\n-            $table->timestamps();\n-        });\n-    }\n-\n-    /**\n-     * Reverse the migrations.\n-     */\n-    public function down(): void\n-    {\n-        Schema::dropIfExists('product_attrs');\n-    }\n-};\n"
+                },
+                {
+                    "date": 1747330986608,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,8 +15,9 @@\n             $table->id();\n             $table->unsignedBigInteger('product_id');\n \n             $table->timestamps();\n+            \n         });\n     }\n \n     /**\n"
+                },
+                {
+                    "date": 1747330993566,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,10 @@\n             $table->id();\n             $table->unsignedBigInteger('product_id');\n \n             $table->timestamps();\n-            \n+            $table->foreign('product_id')->references('id')->on('categories')->onDelete('cascade');\n+\n         });\n     }\n \n     /**\n"
+                },
+                {
+                    "date": 1747331012152,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,32 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+return new class extends Migration\n+{\n+    /**\n+     * Run the migrations.\n+     */\n+    public function up(): void\n+    {\n+        Schema::create('product_attrs', function (Blueprint $table) {\n+            $table->id();\n+            $table->unsignedBigInteger('product_id');\n+            $table->unsignedBigInteger('product_id');\n+\n+            $table->timestamps();\n+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');\n+\n+        });\n+    }\n+\n+    /**\n+     * Reverse the migrations.\n+     */\n+    public function down(): void\n+    {\n+        Schema::dropIfExists('product_attrs');\n+    }\n+};\n"
+                },
+                {
+                    "date": 1747331018265,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n     {\n         Schema::create('product_attrs', function (Blueprint $table) {\n             $table->id();\n             $table->unsignedBigInteger('product_id');\n-            $table->unsignedBigInteger('product_id');\n+            $table->unsignedBigInteger('color_id');\n \n             $table->timestamps();\n             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');\n \n"
+                },
+                {
+                    "date": 1747331031972,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,11 +14,15 @@\n         Schema::create('product_attrs', function (Blueprint $table) {\n             $table->id();\n             $table->unsignedBigInteger('product_id');\n             $table->unsignedBigInteger('color_id');\n+            $table->unsignedBigInteger('size_id');\n+            $table->unsignedBigInteger('quantity');\n \n             $table->timestamps();\n             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');\n+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');\n+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');\n \n         });\n     }\n \n@@ -29,35 +33,4 @@\n     {\n         Schema::dropIfExists('product_attrs');\n     }\n };\n-<?php\n-\n-use Illuminate\\Database\\Migrations\\Migration;\n-use Illuminate\\Database\\Schema\\Blueprint;\n-use Illuminate\\Support\\Facades\\Schema;\n-\n-return new class extends Migration\n-{\n-    /**\n-     * Run the migrations.\n-     */\n-    public function up(): void\n-    {\n-        Schema::create('product_attrs', function (Blueprint $table) {\n-            $table->id();\n-            $table->unsignedBigInteger('product_id');\n-\n-            $table->timestamps();\n-            $table->foreign('product_id')->references('id')->on('categories')->onDelete('cascade');\n-\n-        });\n-    }\n-\n-    /**\n-     * Reverse the migrations.\n-     */\n-    public function down(): void\n-    {\n-        Schema::dropIfExists('product_attrs');\n-    }\n-};\n"
+                },
+                {
+                    "date": 1747331039922,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,10 +19,10 @@\n             $table->unsignedBigInteger('quantity');\n \n             $table->timestamps();\n             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');\n-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');\n-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');\n+            $table->foreign('color_id')->references('id')->on('products')->onDelete('cascade');\n+            $table->foreign('size_id')->references('id')->on('products')->onDelete('cascade');\n \n         });\n     }\n \n"
+                },
+                {
+                    "date": 1747331058397,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,36 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+return new class extends Migration\n+{\n+    /**\n+     * Run the migrations.\n+     */\n+    public function up(): void\n+    {\n+        Schema::create('product_attrs', function (Blueprint $table) {\n+            $table->id();\n+            $table->unsignedBigInteger('product_id');\n+            $table->unsignedBigInteger('color_id');\n+            $table->unsignedBigInteger('size_id');\n+            $table->unsignedBigInteger('quantity');\n+\n+            $table->timestamps();\n+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');\n+            $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');\n+            $table->foreign('size_id')->references('id')->on('products')->onDelete('cascade');\n+\n+        });\n+    }\n+\n+    /**\n+     * Reverse the migrations.\n+     */\n+    public function down(): void\n+    {\n+        Schema::dropIfExists('product_attrs');\n+    }\n+};\n"
+                },
+                {
+                    "date": 1747331147459,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n             $table->id();\n             $table->unsignedBigInteger('product_id');\n             $table->unsignedBigInteger('color_id');\n             $table->unsignedBigInteger('size_id');\n-            $table->unsignedBigInteger('quantity');\n+            $table->unsignedBigInteger('sku');\n \n             $table->timestamps();\n             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');\n             $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');\n"
+                },
+                {
+                    "date": 1747331152565,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n             $table->id();\n             $table->unsignedBigInteger('product_id');\n             $table->unsignedBigInteger('color_id');\n             $table->unsignedBigInteger('size_id');\n-            $table->unsignedBigInteger('sku');\n+            $table->string('sku');\n \n             $table->timestamps();\n             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');\n             $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');\n"
+                },
+                {
+                    "date": 1747331160315,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n             $table->id();\n             $table->unsignedBigInteger('product_id');\n             $table->unsignedBigInteger('color_id');\n             $table->unsignedBigInteger('size_id');\n-            $table->string('sku');\n+            $table->string('sku')->nullable();\n \n             $table->timestamps();\n             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');\n             $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');\n"
+                },
+                {
+                    "date": 1747331167224,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,13 +16,17 @@\n             $table->unsignedBigInteger('product_id');\n             $table->unsignedBigInteger('color_id');\n             $table->unsignedBigInteger('size_id');\n             $table->string('sku')->nullable();\n+            $table->string('sku')->nullable();\n+            $table->string('sku')->nullable();\n+            $table->string('sku')->nullable();\n \n+\n             $table->timestamps();\n             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');\n             $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');\n-            $table->foreign('size_id')->references('id')->on('products')->onDelete('cascade');\n+            $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade');\n \n         });\n     }\n \n@@ -33,40 +37,4 @@\n     {\n         Schema::dropIfExists('product_attrs');\n     }\n };\n-<?php\n-\n-use Illuminate\\Database\\Migrations\\Migration;\n-use Illuminate\\Database\\Schema\\Blueprint;\n-use Illuminate\\Support\\Facades\\Schema;\n-\n-return new class extends Migration\n-{\n-    /**\n-     * Run the migrations.\n-     */\n-    public function up(): void\n-    {\n-        Schema::create('product_attrs', function (Blueprint $table) {\n-            $table->id();\n-            $table->unsignedBigInteger('product_id');\n-            $table->unsignedBigInteger('color_id');\n-            $table->unsignedBigInteger('size_id');\n-            $table->unsignedBigInteger('quantity');\n-\n-            $table->timestamps();\n-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');\n-            $table->foreign('color_id')->references('id')->on('products')->onDelete('cascade');\n-            $table->foreign('size_id')->references('id')->on('products')->onDelete('cascade');\n-\n-        });\n-    }\n-\n-    /**\n-     * Reverse the migrations.\n-     */\n-    public function down(): void\n-    {\n-        Schema::dropIfExists('product_attrs');\n-    }\n-};\n"
+                },
+                {
+                    "date": 1747331175087,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,10 +17,10 @@\n             $table->unsignedBigInteger('color_id');\n             $table->unsignedBigInteger('size_id');\n             $table->string('sku')->nullable();\n             $table->string('mrp')->nullable();\n+            $table->string('price')->nullable();\n             $table->string('sku')->nullable();\n-            $table->string('sku')->nullable();\n \n \n             $table->timestamps();\n             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');\n"
+                },
+                {
+                    "date": 1747331199034,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,40 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+return new class extends Migration\n+{\n+    /**\n+     * Run the migrations.\n+     */\n+    public function up(): void\n+    {\n+        Schema::create('product_attrs', function (Blueprint $table) {\n+            $table->id();\n+            $table->unsignedBigInteger('product_id');\n+            $table->unsignedBigInteger('color_id');\n+            $table->unsignedBigInteger('size_id');\n+            $table->string('sku')->nullable();\n+            $table->integer('mrp')->default();\n+            $table->string('price')->nullable();\n+            $table->string('sku')->nullable();\n+\n+\n+            $table->timestamps();\n+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');\n+            $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');\n+            $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade');\n+\n+        });\n+    }\n+\n+    /**\n+     * Reverse the migrations.\n+     */\n+    public function down(): void\n+    {\n+        Schema::dropIfExists('product_attrs');\n+    }\n+};\n"
+                }
+            ],
+            "date": 1747330939150,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::create('product_attrs', function (Blueprint $table) {\n            $table->id();\n            \n            $table->timestamps();\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::dropIfExists('product_attrs');\n    }\n};\n"
+        }
+    ]
+}

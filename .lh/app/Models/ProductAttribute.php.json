@@ -1,0 +1,34 @@
+{
+    "sourceFile": "app/Models/ProductAttribute.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1747333347519,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1747333353211,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n \n class ProductAttribute extends Model\n {\n     use HasFactory;\n-    \n+    product\n }\n"
+                },
+                {
+                    "date": 1747333359804,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n \n class ProductAttribute extends Model\n {\n     use HasFactory;\n-    product\n+    protec\n }\n"
+                },
+                {
+                    "date": 1747333380689,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,16 @@\n+<?php\n+\n+namespace App\\Models;\n+\n+use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n+use Illuminate\\Database\\Eloquent\\Model;\n+\n+class ProductAttribute extends Model\n+{\n+    use HasFactory;\n+    protected $fillable = [\n+        'product_id',\n+        'category_id',\n+        'value',\n+    ];\n+}\n"
+                },
+                {
+                    "date": 1747333390135,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,19 +10,7 @@\n     use HasFactory;\n     protected $fillable = [\n         'product_id',\n         'category_id',\n-        'value',\n+        'attribute_value_id',\n     ];\n }\n-<?php\n-\n-namespace App\\Models;\n-\n-use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n-use Illuminate\\Database\\Eloquent\\Model;\n-\n-class ProductAttribute extends Model\n-{\n-    use HasFactory;\n-    protec\n-}\n"
+                }
+            ],
+            "date": 1747333347519,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass ProductAttribute extends Model\n{\n    use HasFactory;\n    \n}\n"
+        }
+    ]
+}

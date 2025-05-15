@@ -1,0 +1,26 @@
+{
+    "sourceFile": "app/Http/Controllers/Admin/ProductController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1747334644104,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1747334665023,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,6 +11,55 @@\n     {\n         $data=Brand::get();\n         return view('admin.Brand.brand',get_defined_vars());\n     }\n-    \n+      /**\n+     * Store a newly created resource in storage.\n+     */\n+    public function store(Request $request)\n+    {\n+        $validationRules = [\n+            'text' => 'required|string'\n+        ];\n+\n+        if ($request->hasFile('image')) {\n+            $validationRules['image'] = 'image|mimes:jpeg,png,jpg,gif,svg|max:2048';\n+        }\n+\n+        $validation = Validator::make($request->all(), $validationRules);\n+\n+        if ($validation->fails()) {\n+            return response()->json([\n+                'status' => 400,\n+                'errors' => $validation->messages()\n+            ]);\n+        }\n+\n+        $userData = [\n+            'text' => $request->text\n+        ];\n+\n+        if ($request->hasFile('image')) {\n+            $image_name = $request->text . time() . '.' . $request->image->extension();\n+            $request->image->move(public_path('images/'), $image_name);\n+            $userData['image'] = 'images/'.$image_name;\n+        }\n+\n+        try {\n+            Brand::updateOrCreate(\n+                ['id' => $request->id],\n+                $userData\n+            );\n+\n+            return response()->json([\n+                'status' => 200,\n+                'message' => 'Brand updated successfully'\n+            ]);\n+        } catch (\\Exception $e) {\n+            return response()->json([\n+                'status' => 500,\n+                'message' => 'Error updating brand: ' . $e->getMessage()\n+            ]);\n+        }\n+    }\n+\n }\n"
+                },
+                {
+                    "date": 1747334683919,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n namespace App\\Http\\Controllers\\Admin;\n \n use App\\Http\\Controllers\\Controller;\n use Illuminate\\Http\\Request;\n-\n+use Validator;\n class ProductController extends Controller\n {\n     public function index()\n     {\n"
+                }
+            ],
+            "date": 1747334644104,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Http\\Controllers\\Admin;\n\nuse App\\Http\\Controllers\\Controller;\nuse Illuminate\\Http\\Request;\n\nclass ProductController extends Controller\n{\n    \n}\n"
+        }
+    ]
+}

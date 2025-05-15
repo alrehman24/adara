@@ -1,0 +1,46 @@
+{
+    "sourceFile": "app/Models/Product.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1747333130300,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1747333137632,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n \n class Product extends Model\n {\n     use HasFactory;\n-    \n+    protected \n }\n"
+                },
+                {
+                    "date": 1747333143145,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,6 @@\n \n class Product extends Model\n {\n     use HasFactory;\n-    protected \n+    protected fill\n }\n"
+                },
+                {
+                    "date": 1747333151229,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,8 @@\n \n class Product extends Model\n {\n     use HasFactory;\n-    protected fill\n+    protected $fillable = [\n+        \n+    ]\n }\n"
+                },
+                {
+                    "date": 1747333161104,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,7 +8,7 @@\n class Product extends Model\n {\n     use HasFactory;\n     protected $fillable = [\n-        \n-    ]\n+\n+    ];\n }\n"
+                },
+                {
+                    "date": 1747333171829,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,7 +8,9 @@\n class Product extends Model\n {\n     use HasFactory;\n     protected $fillable = [\n-\n+'name',\n+'slug',\n+''\n     ];\n }\n"
+                },
+                {
+                    "date": 1747333179442,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,7 +11,7 @@\n     protected $fillable = [\n 'name',\n 'slug',\n 'image',\n-\n+''\n     ];\n }\n"
+                },
+                {
+                    "date": 1747333184960,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,7 +12,7 @@\n 'name',\n 'slug',\n 'image',\n 'keywords',\n-\n+des\n     ];\n }\n"
+                }
+            ],
+            "date": 1747333130300,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass Product extends Model\n{\n    use HasFactory;\n    \n}\n"
+        }
+    ]
+}

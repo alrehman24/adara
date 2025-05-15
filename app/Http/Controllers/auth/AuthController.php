@@ -20,6 +20,12 @@ class AuthController extends Controller
         } else {
             //echo 'validation success';
             $cred = array('email' => $request->email, 'password' => $request->password);
+            // Hash the password using Bcrypt before attempting authentication
+            // $user = \App\Models\User::where('email', $request->email)->first();
+            // if ($user) {
+            //     $user->password = bcrypt($request->password);
+            //     $user->save();
+            // }
             if (Auth::attempt($cred)) {
                 $user = Auth::user();
                 if (Auth::user()->hasRole('admin')) {

@@ -1,0 +1,38 @@
+{
+    "sourceFile": "database/migrations/2025_05_15_183706_create_product_attr_images_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1747334239628,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1747334250733,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     public function up(): void\n     {\n         Schema::create('product_attr_images', function (Blueprint $table) {\n             $table->id();\n-            \n+            $\n             $table->timestamps();\n         });\n     }\n \n"
+                },
+                {
+                    "date": 1747334256849,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,30 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+return new class extends Migration\n+{\n+    /**\n+     * Run the migrations.\n+     */\n+    public function up(): void\n+    {\n+        Schema::create('product_attr_images', function (Blueprint $table) {\n+            $table->id();\n+            $table->unsignedBigInteger('product_attr_id');\n+            $table->string('image');\n+            \n+            $table->timestamps();\n+        });\n+    }\n+\n+    /**\n+     * Reverse the migrations.\n+     */\n+    public function down(): void\n+    {\n+        Schema::dropIfExists('product_attr_images');\n+    }\n+};\n"
+                },
+                {
+                    "date": 1747334262030,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,31 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+return new class extends Migration\n+{\n+    /**\n+     * Run the migrations.\n+     */\n+    public function up(): void\n+    {\n+        Schema::create('product_attr_images', function (Blueprint $table) {\n+            $table->id();\n+            $table->unsignedBigInteger('product_attr_id');\n+            $table->string('image');\n+            $table->unsignedBigInteger('product_attr_id');\n+\n+            $table->timestamps();\n+        });\n+    }\n+\n+    /**\n+     * Reverse the migrations.\n+     */\n+    public function down(): void\n+    {\n+        Schema::dropIfExists('product_attr_images');\n+    }\n+};\n"
+                },
+                {
+                    "date": 1747334276533,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,31 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+return new class extends Migration\n+{\n+    /**\n+     * Run the migrations.\n+     */\n+    public function up(): void\n+    {\n+        Schema::create('product_attr_images', function (Blueprint $table) {\n+            $table->id();\n+            $table->unsignedBigInteger('product_id');\n+            $table->string('image');\n+            $table->unsignedBigInteger('product_attr_id');\n+\n+            $table->timestamps();\n+        });\n+    }\n+\n+    /**\n+     * Reverse the migrations.\n+     */\n+    public function down(): void\n+    {\n+        Schema::dropIfExists('product_attr_images');\n+    }\n+};\n"
+                },
+                {
+                    "date": 1747334287743,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,32 @@\n+<?php\n+\n+use Illuminate\\Database\\Migrations\\Migration;\n+use Illuminate\\Database\\Schema\\Blueprint;\n+use Illuminate\\Support\\Facades\\Schema;\n+\n+return new class extends Migration\n+{\n+    /**\n+     * Run the migrations.\n+     */\n+    public function up(): void\n+    {\n+        Schema::create('product_attr_images', function (Blueprint $table) {\n+            $table->id();\n+            $table->unsignedBigInteger('product_id');\n+            $table->string('image');\n+            $table->unsignedBigInteger('product_attr_id');\n+\n+            $table->timestamps();\n+            \n+        });\n+    }\n+\n+    /**\n+     * Reverse the migrations.\n+     */\n+    public function down(): void\n+    {\n+        Schema::dropIfExists('product_attr_images');\n+    }\n+};\n"
+                }
+            ],
+            "date": 1747334239628,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::create('product_attr_images', function (Blueprint $table) {\n            $table->id();\n            \n            $table->timestamps();\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::dropIfExists('product_attr_images');\n    }\n};\n"
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+{
+    "sourceFile": "app/Models/ProductAttr.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1747333418314,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1747333425973,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,15 @@\n+<?php\n+\n+namespace App\\Models;\n+\n+use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n+use Illuminate\\Database\\Eloquent\\Model;\n+\n+class ProductAttr extends Model\n+{\n+    use HasFactory;\n+    protected $fillable = [\n+        'product_id',\n+        'attribute_id',\n+    ]\n+}\n"
+                },
+                {
+                    "date": 1747333435328,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,19 +9,7 @@\n {\n     use HasFactory;\n     protected $fillable = [\n         'product_id',\n-        'attribute_id',\n+        'color_id',\n     ]\n }\n-<?php\n-\n-namespace App\\Models;\n-\n-use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n-use Illuminate\\Database\\Eloquent\\Model;\n-\n-class ProductAttr extends Model\n-{\n-    use HasFactory;\n-    \n-}\n"
+                },
+                {
+                    "date": 1747333441300,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,6 +10,7 @@\n     use HasFactory;\n     protected $fillable = [\n         'product_id',\n         'color_id',\n+        'size_id',\n     ]\n }\n"
+                },
+                {
+                    "date": 1747333449342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,6 +11,7 @@\n     protected $fillable = [\n         'product_id',\n         'color_id',\n         'size_id',\n+        'sku'\n     ]\n }\n"
+                },
+                {
+                    "date": 1747333455265,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,6 +13,7 @@\n         'color_id',\n         'size_id',\n         'sku',\n        'price',\n+       \n     ]\n }\n"
+                },
+                {
+                    "date": 1747333475861,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,19 @@\n+<?php\n+\n+namespace App\\Models;\n+\n+use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n+use Illuminate\\Database\\Eloquent\\Model;\n+\n+class ProductAttr extends Model\n+{\n+    use HasFactory;\n+    protected $fillable = [\n+        'product_id',\n+        'color_id',\n+        'size_id',\n+        'sku',\n+       'price',\n+       'mrp'\n+    ]\n+}\n"
+                }
+            ],
+            "date": 1747333418314,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass ProductAttr extends Model\n{\n    use HasFactory;\n    \n}\n"
+        }
+    ]
+}
