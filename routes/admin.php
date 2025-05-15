@@ -4,6 +4,9 @@ use App\Http\Controllers\Admin\HomeBannerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\sizeController;
+use App\Http\Controllers\Admin\TaxController;
+use App\Http\Controllers\Admin\BrandController;
+
 use App\Http\Controllers\ColorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AttributeController;
@@ -38,6 +41,14 @@ Route::post('/category', [CategoryController::class,'store']);
 // Category Attribute
 Route::get('/category_attribute', [CategoryController::class,'index_category_attribute']);
 Route::post('/category_attribute', [CategoryController::class,'store_category_attribute']);
+
+//Brand
+Route::get('/brand', [BrandController::class ,'index']);
+Route::post('/brand', [BrandController::class,'store']);
+
+//Tax
+Route::get('/tax', [TaxController::class ,'index']);
+Route::post('/tax', [TaxController::class,'store']);
 
 
 // delete data

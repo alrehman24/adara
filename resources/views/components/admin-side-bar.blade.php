@@ -91,7 +91,22 @@
             </ul>
         </li>
 
-
+        <li class="menu-label">Brand</li>
+        <li>
+            <a href="{{ url('admin/brand') }}">
+                <div class="parent-icon"><i class='bx bx-home'></i>
+                </div>
+                <div class="menu-title">Brand</div>
+            </a>
+        </li>
+        <li class="menu-label">Tax</li>
+        <li>
+            <a href="{{ url('admin/tax') }}">
+                <div class="parent-icon"><i class='bx bx-home'></i>
+                </div>
+                <div class="menu-title">Tax</div>
+            </a>
+        </li>
         <li class="menu-label">Pages</li>
 
         <li>
@@ -101,6 +116,7 @@
                 <div class="menu-title">User Profile</div>
             </a>
         </li>
+
 
     </ul>
     <!--end navigation-->
