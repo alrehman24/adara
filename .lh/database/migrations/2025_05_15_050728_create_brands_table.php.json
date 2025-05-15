@@ -1,0 +1,22 @@
+{
+    "sourceFile": "database/migrations/2025_05_15_050728_create_brands_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1747285703361,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1747285711653,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,8 @@\n     {\n         Schema::create('brands', function (Blueprint $table) {\n             $table->id();\n             $table->string('text')->nullable();\n-            $table->string('link')->nullable();\n             $table->string('image')->nullable();\n             $table->timestamps();\n         });\n     }\n"
+                }
+            ],
+            "date": 1747285703361,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::create('brands', function (Blueprint $table) {\n            $table->id();\n            $table->string('text')->nullable();\n            $table->string('link')->nullable();\n            $table->string('image')->nullable();\n            $table->timestamps();\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::dropIfExists('brands');\n    }\n};\n"
+        }
+    ]
+}
