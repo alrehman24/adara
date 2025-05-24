@@ -8,7 +8,8 @@
             <hr>
             <form id="formSubmit" action="{{ url('admin/updateproduct') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-            <div class="card border-top border-0 border-4 border-info">
+           <input  type="hidden" name="id" value="{{ $data->id }}"/>
+                <div class="card border-top border-0 border-4 border-info">
                 <div class="card-body">
                     <form id="productForm">
                         <div class="border p-4 rounded">

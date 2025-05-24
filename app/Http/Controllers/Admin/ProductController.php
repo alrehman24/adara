@@ -15,39 +15,45 @@ use App\Models\Tax;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
+    protected const IMAGE_PATH = 'images/products/';
+    protected const ATTR_IMAGE_PATH = 'images/products/attr/';
+
     public function index()
     {
-        $data = Product::get();
-        return view('admin.Product.product', get_defined_vars());
+        try {
+            $data = Product::with(['category', 'brand', 'tax'])->get();
+            return view('admin.Product.product', compact('data'));
+        } catch (\Exception $e) {
+            Log::error('Error fetching products: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Unable to fetch products. Please try again.');
+        }
     }
     public function view_product($id = 0)
     {
-        if ($id == 0) {
-            $data = new Product();
+        try {
+            $data = $id > 0 ? Product::with(['attributes', 'images'])->findOrFail($id) : new Product();
+
+            // Load related data
+            $category = Category::all();
+            $brand = Brand::all();
+            $color = Color::all();
+            $size = Size::all();
+            $tax = Tax::all();
             $product_attr = new ProductAttr();
             $product_attr_images = new ProductAttrImages();
-            $category = Category::get();
-            $brand = Brand::get();
-            $color = Color::get();
-            $size = Size::get();
-            $tax = Tax::get();
-        } else {
-            $data = Product::find($id);
-            $validationRules = Validator::make($data, [
-                'id' => 'required|integer|exists:products,id',
-                'value' => 'required|string',
-            ]);
-            if ($validationRules->fails()) {
-                return redirect()->back()->withErrors($validationRules)->withInput();
-            } else {
-                $data = Product::find($id);
-            }
+
+            return view('admin.Product.manage_product', compact(
+                'data', 'category', 'brand', 'color', 'size', 'tax',
+                'product_attr', 'product_attr_images'
+            ));
+        } catch (\Exception $e) {
+            Log::error('Error viewing product: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Unable to view product. Please try again.');
         }
-        return view('admin.Product.manage_product', get_defined_vars());
-        prx(get_defined_vars());
     }
     /**
      * Store a newly created resource in storage.
@@ -57,24 +63,31 @@ class ProductController extends Controller
         try {
             DB::beginTransaction();
 
-            prx($request->all());
             $validationRules = [
-                'name' => 'required|string',
-                'slug' => 'required|string',
-                'image' => 'mimes:jpeg,png,jpg,gig|max:5120',
-                'category' => 'required|exists:categories,id' //,
-                // 'category' => 'required|exists:categories,id',
-                // 'category' => 'required|exists:categories,id',
-                // 'category' => 'required|exists:categories,id',
-                // 'text' => 'required|string',
-                // 'text' => 'required|string',
-                // 'text' => 'required|string',
-                // 'text' => 'required|string',
-
+                'name' => 'required|string|max:255',
+                // 'slug' => 'required|string|max:255|unique:products,slug,' . $request->id,
+                'category' => 'required|exists:categories,id',
+                'brand' => 'required|exists:brands,id',
+                'tax' => 'required|exists:taxes,id',
+                // 'item_code' => 'required|string|max:50|unique:products,item_code,' . $request->id,
+                'description' => 'nullable|string',
+                'keywords' => 'nullable|string',
+                'attribute' => 'required|array',
+                'attribute.*' => 'exists:attribute_values,id',
+                'sku' => 'required|array',
+                'sku.*' => 'required|string|distinct',
+                'color' => 'required|array',
+                'color.*' => 'exists:colors,id',
+                'size' => 'required|array',
+                'size.*' => 'exists:sizes,id',
+                'mrp' => 'required|array',
+                'mrp.*' => 'required|numeric|min:0',
+                'price' => 'required|array',
+                'price.*' => 'required|numeric|min:0',
             ];
 
             if ($request->hasFile('image')) {
-                $validationRules['image'] = 'image|mimes:jpeg,png,jpg,gif,svg|max:2048';
+                $validationRules['image'] = 'image|mimes:jpeg,png,jpg,gif,svg|max:5120';
             }
 
             $validation = Validator::make($request->all(), $validationRules);
@@ -84,63 +97,100 @@ class ProductController extends Controller
                     'status' => 400,
                     'errors' => $validation->messages()
                 ]);
-            } else {
-                if ($request->id > 0) {
-                    $image = Product::find($request->id);
-                    if ($request->hasFile('image')) {
-                        $imageName =  saveImage($request, 'image', 'images/products/');
-                    }
-                } else {
-                    if ($request->hasFile('image')) {
+            }
 
-                        $imageName =  saveImage($request, 'image', 'images/products/');
+            $imageName = null;
+            if ($request->hasFile('image')) {
+                $imageName = saveImage($request->file('image'), self::IMAGE_PATH);
+            }
+
+            // Create or update product
+            $product = Product::updateOrCreate(
+                ['id' => $request->id],
+                [
+                    'name' => $request->name,
+                    'slug' => $request->slug,
+                    'category_id' => $request->category,
+                    'brand_id' => $request->brand,
+                    'tax_id' => $request->tax,
+                    'description' => $request->description,
+                    'image' => $imageName ?? ($request->id ? Product::find($request->id)->image : null),
+                    'item_code' => $request->item_code,
+                    'keywords' => $request->keywords
+                ]
+            );
+
+            // Update product attributes
+            $product->attributes()->delete();
+            foreach ($request->attribute as $val) {
+                $product->attributes()->create([
+                    'category_id' => $request->category,
+                    'attribute_value_id' => $val
+                ]);
+            }
+
+            // Update product variants and their images
+            foreach ($request->sku as $key => $sku) {
+                $productAttr = $product->productAttrs()->create([
+                    'color_id' => $request->color[$key],
+                    'size_id' => $request->size[$key],
+                    'sku_id' => $sku,
+                    'mrp_id' => $request->mrp[$key],
+                    'price' => $request->price[$key],
+                    'length' => $request->length[$key] ?? null,
+                    'breadth' => $request->breadth[$key] ?? null,
+                    'height' => $request->height[$key] ?? null,
+                    'weight' => $request->weight[$key] ?? null,
+                ]);
+
+                // Handle variant images
+                if (isset($request->imageValue[$key]) && is_array($request->imageValue[$key])) {
+                    foreach ($request->imageValue[$key] as $image) {
+                        if ($image instanceof \Illuminate\Http\UploadedFile) {
+                            $attrImageName = saveImage($image, self::ATTR_IMAGE_PATH);
+                            $productAttr->images()->create([
+                                'product_id' => $product->id,
+                                'image' => $attrImageName
+                            ]);
+                        }
                     }
                 }
             }
-            exit;
-            $userData = [
-                'text' => $request->text
-            ];
 
-            if ($request->hasFile('image')) {
-
-                $imageName =  saveImage($request, 'image', 'images/products/');
-            }
-
-            try {
-                Product::updateOrCreate(
-                    ['id' => $request->id],
-                    $userData
-                );
-
-                return response()->json([
-                    'status' => 200,
-                    'message' => 'Brand updated successfully'
-                ]);
-            } catch (\Exception $e) {
-                return response()->json([
-                    'status' => 500,
-                    'message' => 'Error updating brand: ' . $e->getMessage()
-                ]);
-            }
             DB::commit();
+            return response()->json([
+                'status' => 200,
+                'message' => 'Product ' . ($request->id ? 'updated' : 'created') . ' successfully'
+            ]);
+
         } catch (\Exception $e) {
             DB::rollBack();
+            Log::error('Error storing product: ' . $e->getMessage());
             return response()->json([
                 'status' => 500,
-                'message' => 'Error updating brand: ' . $e->getMessage()
+                'message' => 'Error processing product: ' . $e->getMessage()
             ]);
         }
     }
 
     public function getAttributes($category_id)
     {
-        $attributes = CategoryAttribute::where('category_id', $category_id)->with('attribute', 'values')->get();
-        // prx($attributes->toArray());
-        return response()->json([
-            'status' => 200,
-            'data' => $attributes,
-            'message' => 'attribute data '
-        ]);
+        try {
+            $attributes = CategoryAttribute::where('category_id', $category_id)
+                ->with(['attribute', 'values'])
+                ->get();
+
+            return response()->json([
+                'status' => 200,
+                'data' => $attributes,
+                'message' => 'Attributes retrieved successfully'
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Error fetching attributes: ' . $e->getMessage());
+            return response()->json([
+                'status' => 500,
+                'message' => 'Error fetching attributes'
+            ]);
+        }
     }
 }
