@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 9,
+            "activePatchIndex": 12,
             "patches": [
                 {
                     "date": 1746960154496,
@@ -44,6 +44,18 @@
                 {
                     "date": 1746964266307,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,23 +16,4 @@\n     {\n         return $this->hasone(Attribute::class,);\n     }\n }\n-<?php\n-\n-namespace App\\Models;\n-\n-use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n-use Illuminate\\Database\\Eloquent\\Model;\n-\n-class AttributeValue extends Model\n-{\n-    use HasFactory;\n-    protected $fillable = [\n-        'attribute_id',\n-        'value',\n-    ];\n-    public function attribute()\n-    {\n-        return $this->hasone(Attribute::class);\n-    }\n-}\n"
+                },
+                {
+                    "date": 1748093422434,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,7 +13,7 @@\n         'value',\n     ];\n     public function attribute()\n     {\n-        return $this->hasone(Attribute::class,);\n+        return $this->belongsTo(Attribute::class, 'attribute_id');\n     }\n }\n"
+                },
+                {
+                    "date": 1748093519828,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,7 +13,7 @@\n         'value',\n     ];\n     public function attribute()\n     {\n-        return $this->belongsTo(Attribute::class, 'attribute_id');\n+        return $this->hasone(Attribute::class,'id','attribute_id');\n     }\n }\n"
+                },
+                {
+                    "date": 1748093535989,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,7 +13,7 @@\n         'value',\n     ];\n     public function attribute()\n     {\n-        return $this->hasone(Attribute::class,'id','attribute_id');\n+        return $this->belongsTo(Attribute::class, 'attribute_id');\n     }\n }\n"
                 }
             ],
             "date": 1746960154496,

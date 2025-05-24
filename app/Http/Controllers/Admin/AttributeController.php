@@ -60,7 +60,7 @@ class AttributeController extends Controller
     {
         $data=AttributeValue::with('attribute')->get();
 //         echo '<pre>';
-//         print_r($data);
+//         print_r($data->toArray());
 // exit;
         $attribute=Attribute::get();
         return view('admin.Attribute.attribute_value',get_defined_vars());

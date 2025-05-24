@@ -13,6 +13,10 @@ class CategoryAttribute extends Model
         'category_id',
         'attribute_id',
     ];
+    public function values()
+    {
+        return $this->hasMany(AttributeValue::class, 'attribute_id','attribute_id');
+    }
     public function attribute()
     {
         return $this->hasOne(Attribute::class, 'id','attribute_id');

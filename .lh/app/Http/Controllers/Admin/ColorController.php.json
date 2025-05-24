@@ -1,0 +1,26 @@
+{
+    "sourceFile": "app/Http/Controllers/Admin/ColorController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1747495864698,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1747496007077,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n <?php\n \n-namespace App\\Http\\Controllers\\Admin;;\n+namespace App\\Http\\Controllers\\Admin;\n \n use Illuminate\\Http\\Request;\n use Validator;\n use App\\Models\\color;\n"
+                },
+                {
+                    "date": 1747496089279,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,53 @@\n use Illuminate\\Http\\Request;\n \n class ColorController extends Controller\n {\n-    //\n+    public function index()\n+    {\n+        $data=color::get();\n+        return view('admin.Color.color',get_defined_vars());\n+    }\n+    public function store(Request $request)\n+    {\n+        $validationRules = [\n+            'text' => 'required|string',\n+             'value' => 'required|string'\n+        ];\n+\n+\n+\n+        $validation = Validator::make($request->all(), $validationRules);\n+\n+        if ($validation->fails()) {\n+            return response()->json([\n+                'status' => 400,\n+                'errors' => $validation->messages()\n+            ]);\n+        }\n+\n+        $userData = [\n+            'text' => $request->text,\n+            'value' => $request->text\n+\n+        ];\n+\n+\n+\n+        try {\n+            color::updateOrCreate(\n+                ['id' => $request->id],\n+                $userData\n+            );\n+\n+            return response()->json([\n+                'status' => 200,\n+                'message' => 'Color updated successfully'\n+            ]);\n+        } catch (\\Exception $e) {\n+            return response()->json([\n+                'status' => 500,\n+                'message' => 'Error updating color: ' . $e->getMessage()\n+            ]);\n+        }\n+    }\n }\n"
+                }
+            ],
+            "date": 1747495864698,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Http\\ControllersAdmin;;\n\nuse Illuminate\\Http\\Request;\nuse Validator;\nuse App\\Models\\color;\nclass ColorController extends Controller\n{\n    public function index()\n    {\n        $data=color::get();\n        return view('admin.Color.color',get_defined_vars());\n    }\n    public function store(Request $request)\n    {\n        $validationRules = [\n            'text' => 'required|string',\n             'value' => 'required|string'\n        ];\n\n\n\n        $validation = Validator::make($request->all(), $validationRules);\n\n        if ($validation->fails()) {\n            return response()->json([\n                'status' => 400,\n                'errors' => $validation->messages()\n            ]);\n        }\n\n        $userData = [\n            'text' => $request->text,\n            'value' => $request->text\n\n        ];\n\n\n\n        try {\n            color::updateOrCreate(\n                ['id' => $request->id],\n                $userData\n            );\n\n            return response()->json([\n                'status' => 200,\n                'message' => 'Color updated successfully'\n            ]);\n        } catch (\\Exception $e) {\n            return response()->json([\n                'status' => 500,\n                'message' => 'Error updating color: ' . $e->getMessage()\n            ]);\n        }\n    }\n}\n"
+        }
+    ]
+}

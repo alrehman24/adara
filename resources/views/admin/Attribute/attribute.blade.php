@@ -34,11 +34,11 @@
                 </div>
             </div>
 
-            <h6 class="mb-0 text-uppercase">Home Banner</h6>
+            <h6 class="mb-0 text-uppercase">Attribute Name</h6>
             <hr />
             <div class="col">
                 <button type="button" onclick="saveData('','','','')" class="btn btn-info px-5 radius-30"
-                    data-bs-toggle="modal" data-bs-target="#exampleModal">Add Home Banner</button>
+                    data-bs-toggle="modal" data-bs-target="#exampleModal">Add Attribute Name</button>
             </div>
             <div class="card">
                 <div class="card-body">

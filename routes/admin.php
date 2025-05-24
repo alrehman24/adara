@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\TaxController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ProductController;
 
-use App\Http\Controllers\ColorController;
+use App\Http\Controllers\Admin\ColorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -27,10 +27,12 @@ Route::post('/home_banner', [HomeBannerController::class,'store']);
 Route::get('/manage_size', [sizeController::class,'index']);
 Route::post('/updatesize', [sizeController::class,'store']);
 //color
-Route::get('/manage_size', [ColorController::class,'index']);
-Route::post('/updatesize', [ColorController::class,'store']);
+Route::get('/manage_color', [ColorController::class,'index']);
+Route::post('/updatecolor', [ColorController::class,'store']);
 
 //Attribute
+Route::get('/attribute_name', [AttributeController::class,'index_attribute_name']);
+Route::post('/update_attribute_name', [AttributeController::class,'store_attribute_name']);
 
 Route::get('/attribute_value', [AttributeController::class,'index_attribute_value']);
 Route::post('/update_attribute_value', [AttributeController::class,'store_attribute_value']);
@@ -55,6 +57,7 @@ Route::post('/tax', [TaxController::class,'store']);
 Route::get('/product', [ProductController::class ,'index']);
 Route::get('/manage_product/{id}', [ProductController::class ,'view_product']);
 Route::post('/updateproduct', [ProductController::class,'store']);
+Route::get('/get_attributes/{id}', [ProductController::class,'getAttributes']);
 
 
 // delete data

@@ -1,15 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
-use App\Models\color;
+use App\Models\Color;
+
 class ColorController extends Controller
 {
     public function index()
     {
-        $data=color::get();
+        $data=Color::get();
         return view('admin.Color.color',get_defined_vars());
     }
     public function store(Request $request)
@@ -39,7 +41,7 @@ class ColorController extends Controller
 
 
         try {
-            color::updateOrCreate(
+            Color::updateOrCreate(
                 ['id' => $request->id],
                 $userData
             );

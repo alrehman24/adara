@@ -36,10 +36,10 @@
             </a>
         </li>
         <li>
-            <a href="{{ url('admin/manage_size') }}">
+            <a href="{{ url('admin/manage_color') }}">
                 <div class="parent-icon"><i class='bx bx-home'></i>
                 </div>
-                <div class="menu-title">Manage Size</div>
+                <div class="menu-title">Manage Color</div>
             </a>
         </li>
 

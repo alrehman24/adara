@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <h6 class="mb-0 text-uppercase">Home Banner</h6>
+            <h6 class="mb-0 text-uppercase">Attribute Value</h6>
             <hr />
             <div class="col">
                 <button type="button" onclick="saveData('','','','')" class="btn btn-info px-5 radius-30"
@@ -47,8 +47,9 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
+                                    <th>Attribute name</th>
                                     <th>Value</th>
-                                    <th>Attribute ID</th>
+
 
 
                                     <th>Action</th>
@@ -56,12 +57,11 @@
                             </thead>
                             <tbody>
                                 @foreach ($data as $list)
+
                                     <tr>
                                         <td>{{ $list->id }}</td>
+                                        <td>{{ $list->attribute->name }}</td>
                                         <td>{{ $list->value }}</td>
-                                        <td>{{ $list->attribute->name }}--{{ $list->attribute_id }}</td>
-                                        <td>{{ $list->image }}</td>
-
                                         <td>
                                             <button type="button"
                                                 onclick="saveData('{{ $list->id }}','{{ $list->value }}','{{ $list->attribute_id }}')"
@@ -71,18 +71,14 @@
                                                 onclick="deleteData('{{ $list->id }}','attribute_values')"
                                                 class="btn btn-info px-5 radius-30">Delete</button>
                                         </td>
-
                                     </tr>
                                 @endforeach
-
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Value</th>
                                     <th>Attribute ID</th>
-
-
+                                    <th>Value</th>
                                     <th>Action</th>
                                 </tr>
                             </tfoot>

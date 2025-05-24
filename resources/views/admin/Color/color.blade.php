@@ -93,7 +93,7 @@
         </div>
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <form id="formSubmit" action="{{ url('admin/updatesize') }}" method="POST" enctype="multipart/form-data">
+        <form id="formSubmit" action="{{ url('admin/updatecolor') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="modal-dialog model-lg">
                 <div class="modal-content">
