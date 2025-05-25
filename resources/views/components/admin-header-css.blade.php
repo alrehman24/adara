@@ -28,5 +28,6 @@
     <!-- Js -->
     {{-- <script src="https://code.jquery.com/jquery-3.6.1.min.js" crossorigin="anonymous"></script> --}}
 
+    {{-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> --}}
     <title>Rocker - Bootstrap 5 Admin Dashboard Template</title>
 </head>

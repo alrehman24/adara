@@ -1,5 +1,5 @@
 <?php
-function prx($arr)
+function pd($arr)
 {
     echo "<pre>";
     print_r($arr);

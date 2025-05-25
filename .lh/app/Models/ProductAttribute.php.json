@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1747333347519,
@@ -24,6 +24,22 @@
                 {
                     "date": 1747333390135,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,19 +10,7 @@\n     use HasFactory;\n     protected $fillable = [\n         'product_id',\n         'category_id',\n-        'value',\n+        'attribute_value_id',\n     ];\n }\n-<?php\n-\n-namespace App\\Models;\n-\n-use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n-use Illuminate\\Database\\Eloquent\\Model;\n-\n-class ProductAttribute extends Model\n-{\n-    use HasFactory;\n-    protec\n-}\n"
+                },
+                {
+                    "date": 1748170382860,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,5 +12,9 @@\n         'product_id',\n         'category_id',\n         'attribute_value_id',\n     ];\n+    public function attribute_value()\n+    {\n+        return $this->hasMany(AttributeValue::class,'attribute_value_id','id');\n+    }\n }\n"
+                },
+                {
+                    "date": 1748170395078,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,7 +14,7 @@\n         'attribute_value_id',\n     ];\n     public function attribute_value()\n     {\n-        return $this->hasMany(AttributeValue::class,'attribute_value_id','id');\n+        return $this->hasMany(AttributeValue::class,'id','id');\n     }\n }\n"
+                },
+                {
+                    "date": 1748171875030,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,7 +14,7 @@\n         'attribute_value_id',\n     ];\n     public function attribute_value()\n     {\n-        return $this->hasMany(AttributeValue::class,'id','attribute_value_id');\n+        return $this->hasOne(AttributeValue::class,'id','attribute_value_id');\n     }\n }\n"
+                },
+                {
+                    "date": 1748172259604,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n         'product_id',\n         'category_id',\n         'attribute_value_id',\n     ];\n-    public function attribute_value()\n+    public function attribute_values()\n     {\n         return $this->hasOne(AttributeValue::class,'id','attribute_value_id');\n     }\n }\n"
                 }
             ],
             "date": 1747333347519,

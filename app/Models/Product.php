@@ -40,16 +40,16 @@ class Product extends Model
 
     public function attributes(): HasMany
     {
-        return $this->hasMany(ProductAttribute::class);
+        return $this->hasMany(ProductAttribute::class)->with('attribute_values');
     }
 
     public function productAttrs(): HasMany
     {
-        return $this->hasMany(ProductAttr::class);
+        return $this->hasMany(ProductAttr::class,'product_id','id')->with('images');
     }
 
-    public function images(): HasMany
-    {
-        return $this->hasMany(ProductAttrImages::class);
-    }
+    // public function images(): HasMany
+    // {
+    //     return $this->hasMany(ProductAttrImages::class);
+    // }
 }

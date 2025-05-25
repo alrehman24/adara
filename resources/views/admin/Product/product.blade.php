@@ -59,11 +59,10 @@
                                     <tr>
                                         <td>{{ $list->id }}</td>
                                         <td>{{ $list->name }}</td>
-                                        <td>{{ $list->link }}</td>
-                                        <td><img src="{{ asset('/') }}"{{ $list->image }}</td>
+                                        <td><img class="w-100" src="{{ asset($list->image) }}" /></td>
 
                                         <td>
-                                            <a href="{{ url('manage_product') }}/{{ $list->id }}">View </a>
+                                            <a href="{{ url('admin/manage_product') }}/{{ $list->id }}">View </a>
                                             <button type="button"
                                                 class="btn btn-info px-5 radius-30" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal">Update</button>

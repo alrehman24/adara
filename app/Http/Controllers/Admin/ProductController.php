@@ -26,7 +26,8 @@ class ProductController extends Controller
     {
         try {
             $data = Product::with(['category', 'brand', 'tax'])->get();
-            return view('admin.Product.product', compact('data'));
+            // pd($data->toArray());
+            return view('admin.Product.product', get_defined_vars());
         } catch (\Exception $e) {
             Log::error('Error fetching products: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Unable to fetch products. Please try again.');
@@ -34,26 +35,29 @@ class ProductController extends Controller
     }
     public function view_product($id = 0)
     {
-        try {
-            $data = $id > 0 ? Product::with(['attributes', 'images'])->findOrFail($id) : new Product();
-
-            // Load related data
-            $category = Category::all();
-            $brand = Brand::all();
-            $color = Color::all();
-            $size = Size::all();
-            $tax = Tax::all();
-            $product_attr = new ProductAttr();
-            $product_attr_images = new ProductAttrImages();
-
-            return view('admin.Product.manage_product', compact(
-                'data', 'category', 'brand', 'color', 'size', 'tax',
-                'product_attr', 'product_attr_images'
-            ));
-        } catch (\Exception $e) {
-            Log::error('Error viewing product: ' . $e->getMessage());
-            return redirect()->back()->with('error', 'Unable to view product. Please try again.');
+        // try {
+        $data = $id > 0 ? Product::with(['attributes', 'productAttrs'])->findOrFail($id) : new Product();
+        // pd($data->toArray());
+        // Load related data
+        $category = Category::all();
+        $brand = Brand::all();
+        $color = Color::all();
+        $size = Size::all();
+        $tax = Tax::all();
+        if ($id > 0) {
+            $attributes = CategoryAttribute::where('category_id', $data->category_id)
+                ->with(['attribute', 'values'])
+                ->get();
         }
+        //pd($attributes->toArray());
+        $product_attr = new ProductAttr();
+        $product_attr_images = new ProductAttrImages();
+
+        return view('admin.Product.manage_product', get_defined_vars());
+        // } catch (\Exception $e) {
+        //     Log::error('Error viewing product: ' . $e->getMessage());
+        //     return redirect()->back()->with('error', 'Unable to view product. Please try again.');
+        // }
     }
     /**
      * Store a newly created resource in storage.
@@ -62,7 +66,7 @@ class ProductController extends Controller
     {
         try {
             DB::beginTransaction();
-
+            // Validation rules
             $validationRules = [
                 'name' => 'required|string|max:255',
                 // 'slug' => 'required|string|max:255|unique:products,slug,' . $request->id,
@@ -130,39 +134,54 @@ class ProductController extends Controller
             }
 
             // Update product variants and their images
+            //$product->productAttrs()->delete();
             foreach ($request->sku as $key => $sku) {
-                $productAttr = $product->productAttrs()->create([
+                $paData = [
                     'color_id' => $request->color[$key],
                     'size_id' => $request->size[$key],
-                    'sku_id' => $sku,
-                    'mrp_id' => $request->mrp[$key],
+                    'sku' => $request->sku[$key],
+                    'mrp' => $request->mrp[$key],
                     'price' => $request->price[$key],
                     'length' => $request->length[$key] ?? null,
                     'breadth' => $request->breadth[$key] ?? null,
                     'height' => $request->height[$key] ?? null,
                     'weight' => $request->weight[$key] ?? null,
-                ]);
+                ];
+                // print_r($paData);
+                $productAttr = $product->productAttrs()->updateOrCreate(['id' => $request->productAttrs_ids[$key]], $paData);
 
                 // Handle variant images
-                if (isset($request->imageValue[$key]) && is_array($request->imageValue[$key])) {
-                    foreach ($request->imageValue[$key] as $image) {
-                        if ($image instanceof \Illuminate\Http\UploadedFile) {
-                            $attrImageName = saveImage($image, self::ATTR_IMAGE_PATH);
-                            $productAttr->images()->create([
-                                'product_id' => $product->id,
-                                'image' => $attrImageName
-                            ]);
+                if (isset($request->image_values[$key])) {
+                    $imageValue = 'attr_image_' . $request->image_values[$key];
+
+                    // Check if the image field exists in the request
+                    if ($request->hasFile($imageValue)) {
+                        foreach ($request->file($imageValue) as $image) {
+                            // Verify it's a valid uploaded file
+                            if ($image instanceof \Illuminate\Http\UploadedFile && $image->isValid()) {
+                                try {
+                                    $attrImageName = saveImage($image, self::ATTR_IMAGE_PATH);
+                                    $productAttr->images()->create([
+                                        'product_id' => $product->id,
+                                        'image' => $attrImageName
+                                    ]);
+                                } catch (\Exception $e) {
+                                    // Log error if image upload fails
+                                    Log::error('Failed to upload image: ' . $e->getMessage());
+                                }
+                            }
                         }
                     }
                 }
             }
 
             DB::commit();
+            // pd($request->all());
+
             return response()->json([
                 'status' => 200,
                 'message' => 'Product ' . ($request->id ? 'updated' : 'created') . ' successfully'
             ]);
-
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error('Error storing product: ' . $e->getMessage());
