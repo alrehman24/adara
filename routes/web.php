@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('admin.');
 });
+Route::get('/apiDocs', function () {
+    return view('apiDocs');
+});
 Route::get('/login', function () {
     return view('auth.signin');
 });

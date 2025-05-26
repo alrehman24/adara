@@ -1,0 +1,30 @@
+{
+    "sourceFile": "routes/api.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1748200333579,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748200367298,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,8 @@\n | routes are loaded by the RouteServiceProvider and all of them will\n | be assigned to the \"api\" middleware group. Make something great!\n |\n */\n-Route::post('/auth/register', [AuthController::class, 'register']);\n+Route::post('/auth/register', [AuthC::class, 'register']);\n Route::middleware('auth:sanctum')->get('/user', function (Request $request) {\n     return $request->user();\n });\n"
+                },
+                {
+                    "date": 1748202259584,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n <?php\n \n+use App\\Http\\Controllers\\auth\\AuthController;\n use Illuminate\\Http\\Request;\n use Illuminate\\Support\\Facades\\Route;\n \n /*\n@@ -12,8 +13,10 @@\n | routes are loaded by the RouteServiceProvider and all of them will\n | be assigned to the \"api\" middleware group. Make something great!\n |\n */\n-Route::post('/auth/register', [AuthC::class, 'register']);\n+Route::post('/auth/register', [AuthController::class, 'register']);\n+Route::post('/auth/register', [AuthController::class, 'register']);\n+\n Route::middleware('auth:sanctum')->get('/user', function (Request $request) {\n     return $request->user();\n });\n"
+                },
+                {
+                    "date": 1748202288553,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n | be assigned to the \"api\" middleware group. Make something great!\n |\n */\n Route::post('/auth/register', [AuthController::class, 'register']);\n-Route::post('/auth/login', [AuthController::class, 'register']);\n+Route::post('/auth/login', [AuthController::class, 'login']);\n \n Route::middleware('auth:sanctum')->get('/user', function (Request $request) {\n     return $request->user();\n });\n"
+                }
+            ],
+            "date": 1748200333578,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Http\\Request;\nuse Illuminate\\Support\\Facades\\Route;\n\n/*\n|--------------------------------------------------------------------------\n| API Routes\n|--------------------------------------------------------------------------\n|\n| Here is where you can register API routes for your application. These\n| routes are loaded by the RouteServiceProvider and all of them will\n| be assigned to the \"api\" middleware group. Make something great!\n|\n*/\nRoute::post('/auth/register', [AuthController::class, 'register']);\nRoute::middleware('auth:sanctum')->get('/user', function (Request $request) {\n    return $request->user();\n});\n"
+        }
+    ]
+}

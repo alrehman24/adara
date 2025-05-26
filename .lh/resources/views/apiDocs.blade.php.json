@@ -1,0 +1,30 @@
+{
+    "sourceFile": "resources/views/apiDocs.blade.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1748198883551,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748198912452,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n <html lang=\"en\">\n   <head>\n     <meta charset=\"UTF-8\">\n     <title>Swagger UI</title>\n-    <link rel=\"stylesheet\" type=\"text/css\" href=\"./swagger-ui.css\" >\n+    <link rel=\"stylesheet\" type=\"text/css\" href=\"{{  }}/swagger-ui.css\" >\n     <link rel=\"icon\" type=\"image/png\" href=\"./favicon-32x32.png\" sizes=\"32x32\" />\n     <link rel=\"icon\" type=\"image/png\" href=\"./favicon-16x16.png\" sizes=\"16x16\" />\n     <style>\n       html\n"
+                },
+                {
+                    "date": 1748198922714,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n <html lang=\"en\">\n   <head>\n     <meta charset=\"UTF-8\">\n     <title>Swagger UI</title>\n-    <link rel=\"stylesheet\" type=\"text/css\" href=\"{{ asset() }}/swagger-ui.css\" >\n+    <link rel=\"stylesheet\" type=\"text/css\" href=\"{{ asset('api-docs') }}/swagger-ui.css\" >\n     <link rel=\"icon\" type=\"image/png\" href=\"./favicon-32x32.png\" sizes=\"32x32\" />\n     <link rel=\"icon\" type=\"image/png\" href=\"./favicon-16x16.png\" sizes=\"16x16\" />\n     <style>\n       html\n"
+                },
+                {
+                    "date": 1748198932663,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n <html lang=\"en\">\n   <head>\n     <meta charset=\"UTF-8\">\n     <title>Swagger UI</title>\n-    <link rel=\"stylesheet\" type=\"text/css\" href=\"{{ asset('api-docs/') }}/swagger-ui.css\" >\n+    <link rel=\"stylesheet\" type=\"text/css\" href=\"{{ asset('api-docs/') }}/\" >\n     <link rel=\"icon\" type=\"image/png\" href=\"./favicon-32x32.png\" sizes=\"32x32\" />\n     <link rel=\"icon\" type=\"image/png\" href=\"./favicon-16x16.png\" sizes=\"16x16\" />\n     <style>\n       html\n"
+                }
+            ],
+            "date": 1748198883551,
+            "name": "Commit-0",
+            "content": "<!-- HTML for static distribution bundle build -->\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Swagger UI</title>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"./swagger-ui.css\" >\n    <link rel=\"icon\" type=\"image/png\" href=\"./favicon-32x32.png\" sizes=\"32x32\" />\n    <link rel=\"icon\" type=\"image/png\" href=\"./favicon-16x16.png\" sizes=\"16x16\" />\n    <style>\n      html\n      {\n        box-sizing: border-box;\n        overflow: -moz-scrollbars-vertical;\n        overflow-y: scroll;\n      }\n\n      *,\n      *:before,\n      *:after\n      {\n        box-sizing: inherit;\n      }\n\n      body\n      {\n        margin:0;\n        background: #fafafa;\n      }\n    </style>\n  </head>\n\n  <body>\n    <div id=\"swagger-ui\"></div>\n\n    <script src=\"./swagger-ui-bundle.js\"> </script>\n    <script src=\"./swagger-ui-standalone-preset.js\"> </script>\n    <script>\n    window.onload = function() {\n      // Begin Swagger UI call region\n      const ui = SwaggerUIBundle({\n        url: \"swagger.json\",\n        dom_id: '#swagger-ui',\n        deepLinking: true,\n        presets: [\n          SwaggerUIBundle.presets.apis,\n          SwaggerUIStandalonePreset\n        ],\n        plugins: [\n          SwaggerUIBundle.plugins.DownloadUrl\n        ],\n        layout: \"StandaloneLayout\",\n      })\n      // End Swagger UI call region\n\n      window.ui = ui\n    }\n  </script>\n  </body>\n</html>\n"
+        }
+    ]
+}
