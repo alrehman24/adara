@@ -81,7 +81,7 @@
               "description": "Enter Email",
               "required": true,
               "type": "string"
-            }, 
+            },
             {
               "name": "password",
               "in": "formData",
@@ -89,7 +89,75 @@
               "required": true,
               "type": "string"
             }
-  
+
+          ],
+          "responses": {
+            "200": {
+              "description": "Data"
+            }
+          }
+        }
+      },  "/user": {
+        "get": {
+          "tags": [
+            "User"
+          ],
+          "summary": "User List",
+          "operationId": "user",
+          "produces": [
+            "application/json"
+          ],
+          "security": [
+            {
+              "APIKeyHeader": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Enter Bearer topken",
+              "required": true,
+              "type": "string"
+            }
+
+          ],
+          "responses": {
+            "200": {
+              "description": "Data"
+            }
+          }
+        }
+      },  "/updateUser": {
+        "post": {
+          "tags": [
+            "User"
+          ],
+          "summary": "User List",
+          "operationId": "updateUser",
+          "produces": [
+            "application/json"
+          ],
+          "security": [
+            {
+              "APIKeyHeader": []
+            }
+          ],
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "description": "Enter Bearer topken",
+              "required": true,
+              "type": "string"
+            }, {
+                "name": "name",
+                "in": "formData",
+                "description": "Enter name",
+                "required": true,
+                "type": "string"
+              }
+
           ],
           "responses": {
             "200": {

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1748200333579,
@@ -20,6 +20,10 @@
                 {
                     "date": 1748202288553,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n | be assigned to the \"api\" middleware group. Make something great!\n |\n */\n Route::post('/auth/register', [AuthController::class, 'register']);\n-Route::post('/auth/login', [AuthController::class, 'register']);\n+Route::post('/auth/login', [AuthController::class, 'login']);\n \n Route::middleware('auth:sanctum')->get('/user', function (Request $request) {\n     return $request->user();\n });\n"
+                },
+                {
+                    "date": 1748246076729,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,5 +19,5 @@\n \n Route::middleware('auth:sanctum')->get('/user', function (Request $request) {\n     return $request->user();\n });\n-\n+Route\n"
                 }
             ],
             "date": 1748200333578,

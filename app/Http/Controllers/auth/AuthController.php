@@ -36,14 +36,13 @@ class AuthController extends Controller
                 if (Auth::user()->hasRole('admin')) {
                     return response()->json(['status' => 200, 'message' => 'login success', 'url' => 'admin/dashboard']);
                 } else {
-                   // Auth::logout();
+                    // Auth::logout();
                     // return response()->json(['status' => 200, 'message' => 'login success']);
-                 // $user=User::find(Auth::user()->id)->first();
-                  $user['token']=$user->createToken('auth_token')->plainTextToken;
-                  return $this->success([
-                        ['user'=>$user]
-                    ],'success login');
-
+                    // $user=User::find(Auth::user()->id)->first();
+                    $user['token'] = $user->createToken('auth_token')->plainTextToken;
+                    return $this->success([
+                        ['user' => $user]
+                    ], 'success login');
                 }
                 // $token=$user->createToken('auth_token')->plainTextToken;
                 // return response()->json(['status'=>'success','message'=>'login success','token'=>$token]);
@@ -81,5 +80,24 @@ class AuthController extends Controller
         return $this->success([
             'token' => $user->createToken('API Token')->plainTextToken
         ]);
+    }
+    public function updateUser(Request $request)
+    {
+        $validation = Validator::make($request->all(), [
+            'name'    => 'required|string|max:255'
+        ]);
+
+        if ($validation->fails()) {
+            return $this->error($validation->errors()->first(), 400, []);
+        } else {
+
+            $user = User::updateOrCreate(['id' => Auth::id(),], [
+                'name' => $request->name
+            ]);
+
+            return $this->success([
+                 'user'=>$user
+            ],'updated successfully');
+        }
     }
 }
