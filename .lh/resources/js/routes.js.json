@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 7,
             "patches": [
                 {
                     "date": 1748278150972,
@@ -20,6 +20,22 @@
                 {
                     "date": 1748278350184,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n import { createWebHistory, createRouter } from 'vue-router'\n import test from './test.vue'\n \n-\n const routes = [\n \n     {\n         name: 'test',\n@@ -15,6 +14,5 @@\n const router = createRouter({\n     history: createWebHistory(),\n     routes,\n });\n-\n export default router;\n"
+                },
+                {
+                    "date": 1748283998423,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,9 @@\n import { createWebHistory, createRouter } from 'vue-router'\n import test from './test.vue'\n+import test from './test.vue'\n \n+\n const routes = [\n \n     {\n         name: 'test',\n"
+                },
+                {
+                    "date": 1748284004300,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import { createWebHistory, createRouter } from 'vue-router'\n import test from './test.vue'\n-import test from './test.vue'\n+import Layout from './test.vue'\n \n \n const routes = [\n \n"
+                },
+                {
+                    "date": 1748284012651,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import { createWebHistory, createRouter } from 'vue-router'\n import test from './test.vue'\n-import Layout from './'\n+import Layout from './La'\n \n \n const routes = [\n \n"
+                },
+                {
+                    "date": 1748284018492,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,20 @@\n+import { createWebHistory, createRouter } from 'vue-router'\n+import test from './test.vue'\n+import Layout from '.'\n+\n+\n+const routes = [\n+\n+    {\n+        name: 'test',\n+        path: '/',\n+        component: test,\n+\n+    },\n+\n+];\n+const router = createRouter({\n+    history: createWebHistory(),\n+    routes,\n+});\n+export default router;\n"
                 }
             ],
             "date": 1748278150972,

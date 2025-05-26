@@ -1,0 +1,34 @@
+{
+    "sourceFile": "resources/views/frontTemplate/Layout.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1748283889728,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748283890718,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,1 @@\n-<template\r\n+<template></template>\n"
+                },
+                {
+                    "date": 1748283900408,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,3 @@\n-<template></template>\n+<template>\n+    \n+</template>\n"
+                },
+                {
+                    "date": 1748283926759,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2323,4 +2323,5 @@\n             </div>\n         </footer>\n         <!-- footer-area-end -->\n </template>\n+\n"
+                },
+                {
+                    "date": 1748283944285,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2324,6 +2324,6 @@\n         </footer>\n         <!-- footer-area-end -->\n </template>\n <script>\n-export de\n+export default\n </script>\n"
+                }
+            ],
+            "date": 1748283889727,
+            "name": "Commit-0",
+            "content": "<template\r\n"
+        }
+    ]
+}
