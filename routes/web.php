@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('admin.');
+    //return view('admin.');
+    return view('index');
 });
 Route::get('/apiDocs', function () {
     return view('apiDocs');

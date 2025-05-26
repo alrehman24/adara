@@ -1,0 +1,26 @@
+{
+    "sourceFile": "resources/js/app.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1748277646601,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748277655070,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,2 @@\n // import './bootstrap';\n-import {}\n+import {createApp}\n"
+                },
+                {
+                    "date": 1748277666634,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,3 @@\n // import './bootstrap';\n import { createApp } from \"vue\";\n-import App\n+import App from \n"
+                }
+            ],
+            "date": 1748277646601,
+            "name": "Commit-0",
+            "content": "// import './bootstrap';\n"
+        }
+    ]
+}
