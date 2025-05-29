@@ -1,0 +1,42 @@
+{
+    "sourceFile": "app/Http/Controllers/Front/HomePageController.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1748545746692,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748545752342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,6 +6,6 @@\n use Illuminate\\Http\\Request;\n \n class HomePageController extends Controller\n {\n-    \n+    public function index()\n }\n"
+                },
+                {
+                    "date": 1748545760311,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,5 +7,12 @@\n \n class HomePageController extends Controller\n {\n     public function index()\n+    {\n+        $data = [\n+            'title' => 'Home Page',\n+            'content' => 'Home Page Content',\n+        ];\n+        return view('front.home', $data);\n+    }\n }\n"
+                },
+                {
+                    "date": 1748545767458,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n use Illuminate\\Http\\Request;\n \n class HomePageController extends Controller\n {\n-    public function index()\n+    public function get()\n     {\n         $data = [\n             'title' => 'Home Page',\n             'content' => 'Home Page Content',\n"
+                },
+                {
+                    "date": 1748545998753,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,13 +6,10 @@\n use Illuminate\\Http\\Request;\n \n class HomePageController extends Controller\n {\n-    public function get()\n+    public function getHomeData()\n     {\n-        $data = [\n-            'title' => 'Home Page',\n-            'content' => 'Home Page Content',\n-        ];\n+        $data =\n         return view('front.home', $data);\n     }\n }\n"
+                },
+                {
+                    "date": 1748546004881,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,8 @@\n class HomePageController extends Controller\n {\n     public function getHomeData()\n     {\n-        $data[] =\n+        $data[''] =\n         return view('front.home', $data);\n     }\n }\n"
+                },
+                {
+                    "date": 1748546010430,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,8 @@\n class HomePageController extends Controller\n {\n     public function getHomeData()\n     {\n-        $data['banner'] =\n+        $data['banner'] =Home\n         return view('front.home', $data);\n     }\n }\n"
+                }
+            ],
+            "date": 1748545746692,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Http\\Controllers\\Front;\n\nuse App\\Http\\Controllers\\Controller;\nuse Illuminate\\Http\\Request;\n\nclass HomePageController extends Controller\n{\n    \n}\n"
+        }
+    ]
+}
