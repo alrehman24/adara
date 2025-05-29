@@ -64,8 +64,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            DB::beginTransaction();
+      //  try {
+      //      DB::beginTransaction();
             // Validation rules
             $validationRules = [
                 'name' => 'required|string|max:255',
@@ -134,7 +134,7 @@ class ProductController extends Controller
             }
 
             // Update product variants and their images
-            //$product->productAttrs()->delete();
+           // pd($request->productAttrs_ids);
             foreach ($request->sku as $key => $sku) {
                 $paData = [
                     'color_id' => $request->color[$key],
@@ -175,21 +175,21 @@ class ProductController extends Controller
                 }
             }
 
-            DB::commit();
+        //    DB::commit();
             // pd($request->all());
 
             return response()->json([
                 'status' => 200,
                 'message' => 'Product ' . ($request->id ? 'updated' : 'created') . ' successfully'
             ]);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            Log::error('Error storing product: ' . $e->getMessage());
-            return response()->json([
-                'status' => 500,
-                'message' => 'Error processing product: ' . $e->getMessage()
-            ]);
-        }
+        // } catch (\Exception $e) {
+        //     DB::rollBack();
+        //     Log::error('Error storing product: ' . $e->getMessage());
+        //     return response()->json([
+        //         'status' => 500,
+        //         'message' => 'Error processing product: ' . $e->getMessage()
+        //     ]);
+        // }
     }
 
     public function getAttributes($category_id)

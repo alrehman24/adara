@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 7,
             "patches": [
                 {
                     "date": 1746561295284,
@@ -16,6 +16,26 @@
                 {
                     "date": 1746561352127,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,10 @@\n \n class HomeBanner extends Model\n {\n     use HasFactory;\n-    $fi\n+    protected $fillable = [\n+        'text',\n+        'link',\n+        'image'\n+    ];\n }\n"
+                },
+                {
+                    "date": 1748546101364,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,17 @@\n+<?php\n+\n+namespace App\\Models;\n+\n+use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n+use Illuminate\\Database\\Eloquent\\Model;\n+\n+class HomeBanner extends Model\n+{\n+    use HasFactory;\n+    protected $fillable = [\n+        'text',\n+        'link',\n+        'image'\n+    ];\n+    \n+}\n"
+                },
+                {
+                    "date": 1748546107541,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,31 +3,15 @@\n namespace App\\Models;\n \n use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n use Illuminate\\Database\\Eloquent\\Model;\n-\n+use \n class HomeBanner extends Model\n {\n     use HasFactory;\n     protected $fillable = [\n         'text',\n         'link',\n         'image'\n     ];\n-    \n-}\n-<?php\n \n-namespace App\\Models;\n-\n-use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n-use Illuminate\\Database\\Eloquent\\Model;\n-\n-class HomeBanner extends Model\n-{\n-    use HasFactory;\n-    protected $fillable = [\n-        'text',\n-        'link',\n-        'image'\n-    ];\n }\n"
+                },
+                {
+                    "date": 1748549764075,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,15 +3,16 @@\n namespace App\\Models;\n \n use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n use Illuminate\\Database\\Eloquent\\Model;\n-use \n+use URL;\n class HomeBanner extends Model\n {\n     use HasFactory;\n     protected $fillable = [\n         'text',\n         'link',\n         'image'\n     ];\n+    \n \n }\n"
+                },
+                {
+                    "date": 1748549776503,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,7 +12,7 @@\n         'text',\n         'link',\n         'image'\n     ];\n-    protected\n+    protected function image\n \n }\n"
+                },
+                {
+                    "date": 1748549782390,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,5 +12,7 @@\n         'text',\n         'link',\n         'image'\n     ];\n-    protected function image(): Att\n\\ No newline at end of file\n+    protected function image(): Attribute\n+\n+}\n"
                 }
             ],
             "date": 1746561295284,

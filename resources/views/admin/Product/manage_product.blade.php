@@ -154,10 +154,11 @@
                                                 Attribute</button>
                                         </div>
                                         @php
-                                            $count = 1;
+                                            $count = 0;
                                             // pd($data->productAttrs->toArray());
                                         @endphp
                                         @foreach ($data->productAttrs as $pAttr)
+                                        <?php $count++; ?>
                                         <input type="hidden" name="productAttrs_ids[]" value="{{ $pAttr->id }}" />
                                             <div class="row" id='attrRec_{{ $count }}'>
                                                 <div class="col-sm-3">
@@ -250,7 +251,7 @@
                                                     </div>
                                                 @endif
                                             </div>
-                                            <?php $count++; ?>
+
                                         @endforeach
                                     </div>
 
@@ -287,8 +288,9 @@
                 '    </div>');
         }
         $(document).ready(function() {
+
             $('#addAttributeButton').click(function() {
-                $('#addAttr').append('  <div class="row" id="attrRec_' + attrCounter +
+                $('#addAttr').append('  <input type="hidden" name="productAttrs_ids[]" value="0" /> <div class="row" id="attrRec_' + attrCounter +
                     '"><div class="col-sm-3">' +
                     '<select name="color[]" id="color" class="form-control">' +
                     '    @foreach ($color as $list)' +

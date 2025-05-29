@@ -59,7 +59,7 @@
                                     <tr>
                                         <td>{{ $list->id }}</td>
                                         <td>{{ $list->name }}</td>
-                                        <td><img class="w-100" src="{{ asset($list->image) }}" /></td>
+                                        <td><img style="max-width: 100px; max-height: 100px;" src="{{ asset($list->image) }}" /></td>
 
                                         <td>
                                             <a href="{{ url('admin/manage_product') }}/{{ $list->id }}">View </a>
