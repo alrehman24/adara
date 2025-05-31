@@ -19,4 +19,10 @@ class HomePageController extends Controller
         $data['brands']=Brand::get();
         return $this->success(['data'=>$data],'Profile Updated Successfully');
     }
+    public function getCategoriesData()
+    {
+        $data['categories'] =Category::with('subcategories')->where('parent_id',Null)->get();
+        return $this->success($data,'Categories Fetched Successfully');
+
+    }
 }

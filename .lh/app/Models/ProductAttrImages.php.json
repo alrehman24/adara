@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1747334482592,
@@ -16,6 +16,30 @@
                 {
                     "date": 1747334504772,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n {\n     use HasFactory;\n     protected $fillable = [\n         'product_attr_id',\n-        'product_attr_id',\n+        'product_id',\n         'image',\n \n-    ]\n+    ];\n }\n"
+                },
+                {
+                    "date": 1748696915641,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,5 +13,11 @@\n         'product_id',\n         'image',\n \n     ];\n+    protected function image(): Attribute\n+    {\n+        return Attribute::make(\n+            get: fn ($value)=> URL::to(''.$value)\n+        );\n+    }\n }\n"
+                },
+                {
+                    "date": 1748696922617,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,10 @@\n namespace App\\Models;\n \n use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n use Illuminate\\Database\\Eloquent\\Model;\n-\n+use Attribute;\n+use \n class ProductAttrImages extends Model\n {\n     use HasFactory;\n     protected $fillable = [\n"
+                },
+                {
+                    "date": 1748697308609,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,10 +3,11 @@\n namespace App\\Models;\n \n use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n use Illuminate\\Database\\Eloquent\\Model;\n-use Attribute;\n-use \n+use Illuminate\\Database\\Eloquent\\Casts\\Attribute;\n+use URL;\n+\n class ProductAttrImages extends Model\n {\n     use HasFactory;\n     protected $fillable = [\n"
+                },
+                {
+                    "date": 1748697323948,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \n use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n use Illuminate\\Database\\Eloquent\\Model;\n use Illuminate\\Database\\Eloquent\\Casts\\Attribute;\n-use URL;\n+use U;\n \n class ProductAttrImages extends Model\n {\n     use HasFactory;\n"
+                },
+                {
+                    "date": 1748697333829,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \n use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n use Illuminate\\Database\\Eloquent\\Model;\n use Illuminate\\Database\\Eloquent\\Casts\\Attribute;\n-use U;\n+use illum;\n \n class ProductAttrImages extends Model\n {\n     use HasFactory;\n"
+                },
+                {
+                    "date": 1748697341055,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \n use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n use Illuminate\\Database\\Eloquent\\Model;\n use Illuminate\\Database\\Eloquent\\Casts\\Attribute;\n-use illum;\n+use Illuminate\\Support\\Facades\\URL;\n \n class ProductAttrImages extends Model\n {\n     use HasFactory;\n"
                 }
             ],
             "date": 1747334482592,

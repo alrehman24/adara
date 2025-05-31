@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\URL;
 
 class Product extends Model
 {
@@ -22,7 +24,12 @@ class Product extends Model
         'brand_id',
         'tax_id',
     ];
-
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value)=> URL::to(''.$value)
+        );
+    }
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);

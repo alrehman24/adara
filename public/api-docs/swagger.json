@@ -193,6 +193,56 @@
             }
           }
         }
+      },  "/getHeaderData": {
+        "post": {
+          "tags": [
+            "Home Page Data"
+          ],
+          "summary": "Home Page Data",
+          "operationId": "getHomeData",
+          "produces": [
+            "application/json"
+          ],
+          "security": [
+            {
+              "APIKeyHeader": []
+            }
+          ],
+          "parameters": [
+
+
+          ],
+          "responses": {
+            "200": {
+              "description": "Data"
+            }
+          }
+        }
+      },  "/getHeaderCategoriesData": {
+        "get": {
+          "tags": [
+            "Home Page Data"
+          ],
+          "summary": "Home Page Data",
+          "operationId": "getHeaderCategoriesData",
+          "produces": [
+            "application/json"
+          ],
+          "security": [
+            {
+              "APIKeyHeader": []
+            }
+          ],
+          "parameters": [
+
+
+          ],
+          "responses": {
+            "200": {
+              "description": "Data"
+            }
+          }
+        }
       }
 
 

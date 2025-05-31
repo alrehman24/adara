@@ -3,11 +3,19 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1747286511596,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748695757879,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,5 +11,11 @@\n     protected $fillable = [\n         'text',\n         'image',\n     ];\n+    protected function image(): Attribute\n+    {\n+        return Attribute::make(\n+            get: fn ($value)=> URL::to(''.$value)\n+        );\n+    }\n }\n"
+                },
+                {
+                    "date": 1748695777743,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n namespace App\\Models;\n \n use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\n use Illuminate\\Database\\Eloquent\\Model;\n-use \n+use Attri\n \n class Brand extends Model\n {\n     use HasFactory;\n"
                 }
             ],
             "date": 1747286511596,
