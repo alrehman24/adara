@@ -1,0 +1,30 @@
+{
+    "sourceFile": "resources/js/components/Product.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1748783896696,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748783915386,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,6 +23,7 @@\n </template>\n <script>\n export default{\n     name: 'Product',\n+    p\n }\n </script>\n"
+                },
+                {
+                    "date": 1748783929834,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,8 +24,8 @@\n <script>\n export default{\n     name: 'Product',\n     props: {\n-        homeProducts: Array\n+        product: Array\n     },\n }\n </script>\n"
+                },
+                {
+                    "date": 1748783949172,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,8 +24,8 @@\n <script>\n export default{\n     name: 'Product',\n     props: {\n-        : Array\n+        item: Array\n     },\n }\n </script>\n"
+                }
+            ],
+            "date": 1748783896696,
+            "name": "Commit-0",
+            "content": "<template>\n    <div v-for=\"item in this.$helpers.getShortArray(homeProducts, 8)\" :key=\"item.id\"\n                                class=\"col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-one\"\n                                style=\"position: absolute; left: 25%; top: 0px;\">\n                                <div class=\"new-arrival-item text-center mb-50\">\n                                    <div class=\"thumb mb-25\">\n                                        <div class=\"discount-tag\">- 20%</div>\n                                        <a href=\"shop-details.html\"><img style=\"max-height: 400px;\" :src=\"item.image\"\n                                                alt=\"\"></a>\n                                        <div class=\"product-overlay-action\">\n                                            <ul>\n                                                <li><a href=\"cart.html\"><i class=\"far fa-heart\"></i></a></li>\n                                                <li><a href=\"shop-details.html\"><i class=\"far fa-eye\"></i></a></li>\n                                            </ul>\n                                        </div>\n                                    </div>\n                                    <div class=\"content\">\n                                        <h5><a href=\"shop-details.html\">{{ item.name }}</a></h5>\n                                        <span class=\"price\">{{ item.min_price }}</span>\n                                    </div>\n                                </div>\n                            </div>\n</template>\n<script>\nexport default{\n    name: 'Product',\n}\n</script>\n"
+        }
+    ]
+}

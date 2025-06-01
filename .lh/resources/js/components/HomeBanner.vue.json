@@ -1,0 +1,22 @@
+{
+    "sourceFile": "resources/js/components/HomeBanner.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1748772733392,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748772739585,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n     </section>\n </template>\n <script>\n export default {\n-    name: 'Banner',\n+    name: 'HomeBanner',\n     props: {\n         homeBanners: {\n             type: Array,\n             default: () => [],\n"
+                }
+            ],
+            "date": 1748772733392,
+            "name": "Commit-0",
+            "content": "<template>\n    <section class=\"slider-area position-relative\">\n        <div class=\"third-slider-active\">\n            <div v-for=\"item in homeBanners\" :key=\"item.id\" class=\"third-slider-item third-slider-bg\"\n                style=\"background-image: url('/front_assets/img/slider/third_slider_bg.jpg')\">\n                <div class=\"container custom-container-two\">\n                    <div class=\"third-slider-wrap\">\n                        <div class=\"row align-items-center\">\n                            <div class=\"col-lg-6\">\n                                <div class=\"slider-content\">\n\n                                    <h2 class=\"title\" data-animation-in=\"fadeInUp\" data-delay-in=\".4\"\n                                        data-duration-in=\"1.5\">{{ item.text }}</h2>\n\n                                    <a href=\"shop-sidebar.html\" class=\"btn\" data-animation-in=\"fadeInUp\"\n                                        data-delay-in=\".8\" data-duration-in=\"1.5\">Shop now</a>\n                                </div>\n                            </div>\n                            <div class=\"col-lg-6\">\n                                <div class=\"third-slider-img\">\n                                    <div class=\"img-shape\"\n                                        data-background=\"/front_assets/img/slider/third_slide_shape.png\"\n                                        data-animation-in=\"zoomIn\" data-delay-in=\"1\" data-duration-in=\"1.5\">\n                                    </div>\n                                    <img style=\"max-width: 400px;\" :src=\"item.image\" alt=\"\" class=\"main-img\"\n                                        data-animation-in=\"slideInRight2\" data-delay-in=\"1\" data-duration-in=\"1.5\">\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n\n        </div>\n    </section>\n</template>\n<script>\nexport default {\n    name: 'Banner',\n    props: {\n        homeBanners: {\n            type: Array,\n            default: () => [],\n        },\n    }\n}\n</script>\n"
+        }
+    ]
+}

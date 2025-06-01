@@ -52,15 +52,20 @@
                                     <ul class="navigation">
 
                                         <li v-for="item in headerCatergories" :key="item.id" class="has--mega--menu">
-                                            <a href="">{{ item.name }}</a>
+                                            <router-link :to="'/category/' + item.slug">{{ item.name }}</router-link>
                                             <ul class="mega-menu">
                                                 <li class="mega-menu-wrap">
                                                     <ul class="mega-menu-col">
-                                                        <li class="mega-title"><a href="shop.html">{{ item.name }}
-                                                                PAGES</a></li>
+                                                        <li class="mega-title">
+                                                            <router-link :to="'/category/' + item.slug">{{ item.name }}
+                                                                PAGES</router-link>
+                                                        </li>
 
-                                                        <li v-for="subitem in item.subcategories" :key="subitem.id"><a
-                                                                href="shop-sidebar.html">{{ subitem.name }}</a></li>
+                                                        <li v-for="subitem in item.subcategories" :key="subitem.id">
+
+                                                            <router-link :to="'/category/' + subitem.slug">{{ subitem.name
+                                                                }}</router-link>
+                                                        </li>
 
                                                     </ul>
 
@@ -304,12 +309,12 @@
 
     </header>
     <!-- header-area-end -->
+    <main>
+        <router-view></router-view>
+        <!-- <slot name="content">
 
-    <slot name="content">
-
-    </slot>
-
-
+        </slot> -->
+    </main>
     <!-- footer-area -->
     <footer class="dark-bg pt-55 pb-80">
         <div class="container">
@@ -388,7 +393,7 @@ export default {
     },
     mounted() {
         var src = [
-            '/front_assets/js/popper.min.js', '/front_assets/js/bootstrap.min.js', '/front_assets/js/isotope.pkgd.min.js'
+            'front_assets/js/vendor/jquery-3.5.0.min.js', '/front_assets/js/popper.min.js', '/front_assets/js/bootstrap.min.js', '/front_assets/js/isotope.pkgd.min.js'
             , '/front_assets/js/imagesloaded.pkgd.min.js', '/front_assets/js/jquery.magnific-popup.min.js', '/front_assets/js/jquery.mCustomScrollbar.concat.min.js'
             , '/front_assets/js/bootstrap-datepicker.min.js', '/front_assets/js/jquery.nice-select.min.js', '/front_assets/js/jquery.countdown.min.js'
             , '/front_assets/js/swiper-bundle.min.js', '/front_assets/js/jarallax.min.js', '/front_assets/js/slick.min.js',
@@ -401,20 +406,13 @@ export default {
             document.body.appendChild(script);
         }
         this.getCategories();
-
     },
     methods: {
         async getCategories() {
             const urls = getUrlList();
-
             try {
                 const response = await axios.get(urls.getHeaderCategoriesData);
-                console.log(response);
-
                 this.headerCatergories = response.data.data.categories;
-                console.log(this.headerCatergories);
-
-
             } catch (error) {
                 console.error('Error fetching categories:', error);
             }

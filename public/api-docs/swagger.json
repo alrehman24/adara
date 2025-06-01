@@ -14,6 +14,12 @@
     },{
         "name": "Home Page Data",
         "description": "All Home Page Data Operations"
+      },{
+        "name": "category Data",
+        "description": "All category Page Data Operations"
+      },{
+        "name": "product Page Data",
+        "description": "All product Page Data Operations"
       }
 
   ],
@@ -169,7 +175,7 @@
           }
         }
       },  "/getHomeData": {
-        "post": {
+        "get": {
           "tags": [
             "Home Page Data"
           ],
@@ -235,6 +241,37 @@
           ],
           "parameters": [
 
+
+          ],
+          "responses": {
+            "200": {
+              "description": "Data"
+            }
+          }
+        }
+      },  "/getCategoryData/{slug}": {
+        "get": {
+          "tags": [
+            "category Data"
+          ],
+          "summary": "category Data",
+          "operationId": "getCategoryData",
+          "produces": [
+            "application/json"
+          ],
+          "security": [
+            {
+              "APIKeyHeader": []
+            }
+          ],
+          "parameters": [
+{
+  "name": "slug",
+  "in": "path",
+  "description": "Enter slug",
+  "required": true,
+  "type": "string"
+}
 
           ],
           "responses": {

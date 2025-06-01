@@ -32,5 +32,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
 });
 //front end data
-Route::post('/getHomeData', [HomePageController::class, 'getHomeData']);
+Route::get('/getHomeData', [HomePageController::class, 'getHomeData']);
 Route::get('/getHeaderCategoriesData', [HomePageController::class, 'getCategoriesData']);
+Route::get('/getCategoryData/{slug?}', [HomePageController::class, 'getCategoryData']);

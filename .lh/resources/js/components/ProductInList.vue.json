@@ -1,0 +1,30 @@
+{
+    "sourceFile": "resources/js/components/ProductInList.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1748783843595,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748783851822,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,24 @@\n-<template\n+<template>\n+    <div v-for=\"item in this.$helpers.getShortArray(homeProducts, 8)\" :key=\"item.id\"\n+                                class=\"col-xl-3 col-lg-4 col-sm-6 grid-item grid-sizer cat-one\"\n+                                style=\"position: absolute; left: 25%; top: 0px;\">\n+                                <div class=\"new-arrival-item text-center mb-50\">\n+                                    <div class=\"thumb mb-25\">\n+                                        <div class=\"discount-tag\">- 20%</div>\n+                                        <a href=\"shop-details.html\"><img style=\"max-height: 400px;\" :src=\"item.image\"\n+                                                alt=\"\"></a>\n+                                        <div class=\"product-overlay-action\">\n+                                            <ul>\n+                                                <li><a href=\"cart.html\"><i class=\"far fa-heart\"></i></a></li>\n+                                                <li><a href=\"shop-details.html\"><i class=\"far fa-eye\"></i></a></li>\n+                                            </ul>\n+                                        </div>\n+                                    </div>\n+                                    <div class=\"content\">\n+                                        <h5><a href=\"shop-details.html\">{{ item.name }}</a></h5>\n+                                        <span class=\"price\">{{ item.min_price }}</span>\n+                                    </div>\n+                                </div>\n+                            </div>\n+</template>\n+<scritp></scritp>\n"
+                },
+                {
+                    "date": 1748783865932,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,13 +21,6 @@\n                                 </div>\n                             </div>\n </template>\n <script>\n-import { defineComponent } from '@vue/composition-api'\n \n-export default defineComponent({\n-    setup() {\n-        \n-    },\n-})\n </script>\n-</script>\n"
+                },
+                {
+                    "date": 1748783872134,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,6 +21,8 @@\n                                 </div>\n                             </div>\n </template>\n <script>\n-export default\n+export default{\n+    \n+}\n </script>\n"
+                }
+            ],
+            "date": 1748783843595,
+            "name": "Commit-0",
+            "content": "<template\n"
+        }
+    ]
+}

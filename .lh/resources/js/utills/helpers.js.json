@@ -1,0 +1,26 @@
+{
+    "sourceFile": "resources/js/utills/helpers.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1748773366990,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748773384006,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,5 +7,11 @@\n     },\n     slugify(text) {\n       return text.toLowerCase().replace(/\\s+/g, '-');\n     }\n+    getShortArray(arr, maxLength) {\n+        if (arr.length > maxLength) {\n+            return arr.slice(0, maxLength);\n+        }\n+        return arr;\n+    }\n   }\n"
+                },
+                {
+                    "date": 1748773394700,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n       return str.charAt(0).toUpperCase() + str.slice(1);\n     },\n     slugify(text) {\n       return text.toLowerCase().replace(/\\s+/g, '-');\n-    }\n+    },\n     getShortArray(arr, maxLength) {\n         if (arr.length > maxLength) {\n             return arr.slice(0, maxLength);\n         }\n"
+                }
+            ],
+            "date": 1748773366990,
+            "name": "Commit-0",
+            "content": "export default {\n    formatPrice(value) {\n      return `$${Number(value).toFixed(2)}`;\n    },\n    capitalizeFirst(str) {\n      return str.charAt(0).toUpperCase() + str.slice(1);\n    },\n    slugify(text) {\n      return text.toLowerCase().replace(/\\s+/g, '-');\n    }\n  }\n"
+        }
+    ]
+}

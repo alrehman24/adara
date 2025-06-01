@@ -1,0 +1,30 @@
+{
+    "sourceFile": "resources/js/components/Banner.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1748772533404,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748772538476,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,36 @@\n+<template>\n+    <section class=\"slider-area position-relative\">\n+        <div class=\"third-slider-active\">\n+            <div v-for=\"item in homeBanners\" :key=\"item.id\" class=\"third-slider-item third-slider-bg\"\n+                style=\"background-image: url('/front_assets/img/slider/third_slider_bg.jpg')\">\n+                <div class=\"container custom-container-two\">\n+                    <div class=\"third-slider-wrap\">\n+                        <div class=\"row align-items-center\">\n+                            <div class=\"col-lg-6\">\n+                                <div class=\"slider-content\">\n+\n+                                    <h2 class=\"title\" data-animation-in=\"fadeInUp\" data-delay-in=\".4\"\n+                                        data-duration-in=\"1.5\">{{ item.text }}</h2>\n+\n+                                    <a href=\"shop-sidebar.html\" class=\"btn\" data-animation-in=\"fadeInUp\"\n+                                        data-delay-in=\".8\" data-duration-in=\"1.5\">Shop now</a>\n+                                </div>\n+                            </div>\n+                            <div class=\"col-lg-6\">\n+                                <div class=\"third-slider-img\">\n+                                    <div class=\"img-shape\"\n+                                        data-background=\"/front_assets/img/slider/third_slide_shape.png\"\n+                                        data-animation-in=\"zoomIn\" data-delay-in=\"1\" data-duration-in=\"1.5\">\n+                                    </div>\n+                                    <img style=\"max-width: 400px;\" :src=\"item.image\" alt=\"\" class=\"main-img\"\n+                                        data-animation-in=\"slideInRight2\" data-delay-in=\"1\" data-duration-in=\"1.5\">\n+                                </div>\n+                            </div>\n+                        </div>\n+                    </div>\n+                </div>\n+            </div>\n+\n+        </div>\n+    </section>\n+</template>\n"
+                },
+                {
+                    "date": 1748772546679,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,5 +33,14 @@\n \n         </div>\n     </section>\n </template>\n-<s\n+<script>\n+import { defineComponent } from '@vue/composition-api'\n+\n+export default defineComponent({\n+    setup() {\n+        \n+    },\n+})\n+</script>\n+\n"
+                },
+                {
+                    "date": 1748772555959,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,7 +34,9 @@\n         </div>\n     </section>\n </template>\n <script>\n-\n+export default {\n+                \n+}\n </script>\n \n"
+                }
+            ],
+            "date": 1748772533404,
+            "name": "Commit-0",
+            "content": "<templ\n"
+        }
+    ]
+}

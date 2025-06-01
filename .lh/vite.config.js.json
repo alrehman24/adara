@@ -3,11 +3,31 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1748277416966,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748774048323,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import { defineConfig } from 'vite';\n import laravel from 'laravel-vite-plugin';\n import vue from '@vitejs/plugin-vue';\n-\n+import AutoImport from 'unplugin-auto-import/vite'\n export default defineConfig({\n     plugins: [\n         laravel({\n             input: [\n"
+                },
+                {
+                    "date": 1748774065604,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import { defineConfig } from 'vite';\n import laravel from 'laravel-vite-plugin';\n import vue from '@vitejs/plugin-vue';\n-import AutoImport from 'unplugin-auto-import/vite'\n+\n export default defineConfig({\n     plugins: [\n         laravel({\n             input: [\n"
+                },
+                {
+                    "date": 1748774150854,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,8 +11,13 @@\n                 'resources/css/app.css',\n             ],\n             refresh: true,\n         }),\n+        AutoImport({\n+            imports: [],\n+            dts: false,\n+            dirs: ['src/utils'],  // 👈 Auto import from your helpers folder\n+          })\n         vue({\n             template: {\n                 transformAssetUrls: {\n                     base: null,\n"
+                },
+                {
+                    "date": 1748774174730,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n         }),\n         AutoImport({\n             imports: [],\n             dts: false,\n-            dirs: ['src/utils'],  // 👈 Auto import from your helpers folder\n+            dirs: ['src/resources/js/utils'],  // 👈 Auto import from your helpers folder\n           }),\n         vue({\n             template: {\n                 transformAssetUrls: {\n"
+                },
+                {
+                    "date": 1748774180421,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,34 @@\n+import { defineConfig } from 'vite';\n+import laravel from 'laravel-vite-plugin';\n+import vue from '@vitejs/plugin-vue';\n+\n+export default defineConfig({\n+    plugins: [\n+        laravel({\n+            input: [\n+                'resources/sass/app.scss',\n+                'resources/js/app.js',\n+                'resources/css/app.css',\n+            ],\n+            refresh: true,\n+        }),\n+        AutoImport({\n+            imports: [],\n+            dts: false,\n+            dirs: ['resources/js/utils'],  // 👈 Auto import from your helpers folder\n+          }),\n+        vue({\n+            template: {\n+                transformAssetUrls: {\n+                    base: null,\n+                    includeAbsolute: false,\n+                },\n+            },\n+        }),\n+    ],\n+    resolve: {\n+        alias: {\n+            vue: 'vue/dist/vue.esm-bundler.js',\n+        },\n+    },\n+});\n"
                 }
             ],
             "date": 1748277416966,

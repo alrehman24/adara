@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('front_assets/css/default.css')}}">
     <link rel="stylesheet" href="{{ asset('front_assets/css/style.css')}}">
     <link rel="stylesheet" href="{{ asset('front_assets/css/responsive.css')}}">
-    <script src="{{ asset('front_assets/js/vendor/jquery-3.5.0.min.js')}}"></script>
+
 
 </head>
 
@@ -34,21 +34,6 @@
     @vite('resources/js/app.js')
 </body>
 
-{{-- <script src="{{ asset('front_assets/js/popper.min.js')}}"></script>
-<script src="{{ asset('front_assets/js/bootstrap.min.js')}}"></script>
-<script src="{{ asset('front_assets/js/isotope.pkgd.min.js')}}"></script>
-<script src="{{ asset('front_assets/js/imagesloaded.pkgd.min.js')}}"></script>
-<script src="{{ asset('front_assets/js/jquery.magnific-popup.min.js')}}"></script>
-<script src="{{ asset('front_assets/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
-<script src="{{ asset('front_assets/js/bootstrap-datepicker.min.js')}}"></script>
-<script src="{{ asset('front_assets/js/jquery.nice-select.min.js')}}"></script>
-<script src="{{ asset('front_assets/js/jquery.countdown.min.js')}}"></script>
-<script src="{{ asset('front_assets/js/swiper-bundle.min.js')}}"></script>
-<script src="{{ asset('front_assets/js/jarallax.min.js')}}"></script>
-<script src="{{ asset('front_assets/js/slick.min.js')}}"></script>
-<script src="{{ asset('front_assets/js/wow.min.js')}}"></script>
-<script src="{{ asset('front_assets/js/nav-tool.js')}}"></script>
-<script src="{{ asset('front_assets/js/plugins.js')}}"></script>
-<script src="{{ asset('front_assets/js/main.js')}}"></script> --}}
+
 
 </html>

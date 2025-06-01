@@ -1,0 +1,38 @@
+{
+    "sourceFile": "resources/js/utils/helpers.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1748775223476,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748775404227,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,20 +1,17 @@\n-// Change from default export to named exports\n-export function formatPrice(value) {\n-  return `$${Number(value).toFixed(2)}`;\n-}\n-\n-export function capitalizeFirst(str) {\n-  return str.charAt(0).toUpperCase() + str.slice(1);\n-}\n-\n-export function slugify(text) {\n-  return text.toLowerCase().replace(/\\s+/g, '-');\n-}\n-\n-export function getShortArray(arr, maxLength) {\n-    if (arr.length > maxLength) {\n-        return arr.slice(0, maxLength);\n+export default {\n+    formatPrice(value) {\n+      return `$${Number(value).toFixed(2)}`;\n+    },\n+    capitalizeFirst(str) {\n+      return str.charAt(0).toUpperCase() + str.slice(1);\n+    },\n+    slugify(text) {\n+      return text.toLowerCase().replace(/\\s+/g, '-');\n+    },\n+    getShortArray(arr, maxLength) {\n+        if (arr.length > maxLength) {\n+            return arr.slice(0, maxLength);\n+        }\n+        return arr;\n     }\n-    return arr;\n-}\n   }\n"
+                },
+                {
+                    "date": 1748775429692,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,17 @@\n+export default {\n+    formatPrice(value) {\n+      return `$${Number(value).toFixed(2)}`;\n+    },\n+    capitalizeFirst(str) {\n+      return str.charAt(0).toUpperCase() + str.slice(1);\n+    },\n+    slugify(text) {\n+      return text.toLowerCase().replace(/\\s+/g, '-');\n+    },\n+    getShortArray(arr, maxLength) {\n+        if (arr.length > maxLength) {\n+            return arr.slice(0, maxLength);\n+        }\n+        return arr;\n+    }\n+  }\n"
+                },
+                {
+                    "date": 1748779006538,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,21 +14,4 @@\n         }\n         return arr;\n     }\n   }\n-export default {\n-    formatPrice(value) {\n-      return `$${Number(value).toFixed(2)}`;\n-    },\n-    capitalizeFirst(str) {\n-      return str.charAt(0).toUpperCase() + str.slice(1);\n-    },\n-    slugify(text) {\n-      return text.toLowerCase().replace(/\\s+/g, '-');\n-    },\n-    getShortArray(arr, maxLength) {\n-        if (arr.length > maxLength) {\n-            return arr.slice(0, maxLength);\n-        }\n-        return arr;\n-    }\n-  }\n"
+                },
+                {
+                    "date": 1748790676121,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,4 +14,5 @@\n         }\n         return arr;\n     }\n   }\n+  \n"
+                },
+                {
+                    "date": 1748790684795,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n             return arr.slice(0, maxLength);\n         }\n         return arr;\n     }\n-    function preloader() {\n+     preloader() {\n         $('#ctn-preloader').addClass('loaded');\n         $(\"#loading\").fadeOut(500);\n         // Una vez haya terminado el preloader aparezca el scroll\n         if ($('#ctn-preloader').hasClass('loaded')) {\n"
+                }
+            ],
+            "date": 1748775223476,
+            "name": "Commit-0",
+            "content": "// Change from default export to named exports\nexport function formatPrice(value) {\n  return `$${Number(value).toFixed(2)}`;\n}\n\nexport function capitalizeFirst(str) {\n  return str.charAt(0).toUpperCase() + str.slice(1);\n}\n\nexport function slugify(text) {\n  return text.toLowerCase().replace(/\\s+/g, '-');\n}\n\nexport function getShortArray(arr, maxLength) {\n    if (arr.length > maxLength) {\n        return arr.slice(0, maxLength);\n    }\n    return arr;\n}\n  }\n"
+        }
+    ]
+}
