@@ -21,4 +21,8 @@ class Brand extends Model
             get: fn ($value)=> URL::to(''.$value)
         );
     }
+    public function products()
+    {
+        return $this->hasMany(Product::class,'brand_id','id');
+    }
 }

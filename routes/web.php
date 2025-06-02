@@ -39,3 +39,6 @@ Route::get('/logout', function () {
 //     $role->slug = 'customer';
 //     $role->save();
 // });
+Route::get('/{any}', function () {
+    return view('index');// or 'welcome' or whatever blade file loads your Vue app
+})->where('any', '.*');

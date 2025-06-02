@@ -26,10 +26,14 @@ class ProductAttr extends Model
 
     public function images()
     {
-        return $this->hasMany(ProductAttrImages::class,'product_attr_id','id');
+        return $this->hasMany(ProductAttrImages::class, 'product_attr_id', 'id');
     }
     public function attribute_values()
     {
-        return $this->hasMany(AttributeValue::class,'attribute_value_id','id');
+        return $this->hasMany(AttributeValue::class, 'attribute_value_id', 'id');
+    }
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
     }
 }

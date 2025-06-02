@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1746386462522,
@@ -12,6 +12,10 @@
                 {
                     "date": 1746386495124,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,12 +34,12 @@\n                 ->group(base_path('routes/api.php'));\n \n             Route::middleware('web')\n                 ->group(base_path('routes/web.php'));\n-                Route::middleware('api')\n+                Route::middleware('admin')\n                 ->prefix('api')\n                 ->group(base_path('routes/api.php'));\n \n-                \n+\n         });\n     }\n }\n"
+                },
+                {
+                    "date": 1748801838706,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,12 +34,10 @@\n                 ->group(base_path('routes/api.php'));\n \n             Route::middleware('web')\n                 ->group(base_path('routes/web.php'));\n-                Route::middleware('admin')\n+            Route::middleware('admin')\n                 ->prefix('admin')\n                 ->group(base_path('routes/admin.php'));\n-\n-\n         });\n     }\n }\n"
                 }
             ],
             "date": 1746386462522,
