@@ -63,8 +63,9 @@
 
                                                         <li v-for="subitem in item.subcategories" :key="subitem.id">
 
-                                                            <router-link :to="'/category/' + subitem.slug">{{ subitem.name
-                                                                }}</router-link>
+                                                            <router-link :to="'/category/' + subitem.slug">{{
+                                                                subitem.name
+                                                            }}</router-link>
                                                         </li>
 
                                                     </ul>
@@ -389,6 +390,14 @@ export default {
     data() {
         return {
             headerCatergories: [],
+            user_info: {
+                'user_id': '',
+                'auth': false,
+
+            },
+            cartCount: 0,
+            cartProduct: [],
+            cartTotal: 0,
         }
     },
     mounted() {
@@ -406,8 +415,39 @@ export default {
             document.body.appendChild(script);
         }
         this.getCategories();
+        this.getUser();
     },
     methods: {
+        async getUser() {
+            if (localStorage.getItem('user_info')) {
+                var user = localStorage.getItem('user_info');
+                var testUser = JSON.parse(user);
+                this.user_info.user_id = testUser.user_id;
+                this.getUserData();
+            } else {
+                this.getUserData();
+            }
+        },
+        async getUserData() {
+            try {
+                let data = await axios.post(getUrlList().getUserData, {
+                    'token': this.user_info.user_id,
+
+                });
+                if (data.data.status == 200) {
+                    this.cartCount = data.data.data.cart_count;
+                    this.cartProduct = data.data.data.cart_product;
+                    this.cartTotal = data.data.data.cart_total;
+                } else {
+                    this.cartCount = 0;
+                    this.cartProduct = [];
+                    this.cartTotal = 0;
+                }
+
+            } catch {
+
+            }
+        },
         async getCategories() {
             const urls = getUrlList();
             try {

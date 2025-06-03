@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Traits\ApiResponse;
 use App\Models\Color;
 use App\Models\Size;
+use App\Models\TempUser;
 
 class HomePageController extends Controller
 {
@@ -76,5 +77,37 @@ class HomePageController extends Controller
         })->max('price');
 
         return $this->success($data, 'Category page data Fetched Successfully');
+    }
+    public function getUserData(Request $request)
+    {
+
+        /// return $request->all();
+        $token = $request->token;
+        $checkUser = TempUser::where('token', $token)->first();
+        if ($checkUser) {
+            $data['user_type'] = $checkUser->user_type;
+            $data['token'] = $checkUser->token;
+            if (checkTokenExpiry($checkUser->updated_at, 60)) {
+                $token = generateToken();
+                $checkUser->token = $token;
+                $checkUser->updated_at = date('Y-m-d H:i:s');
+                $checkUser->save();
+                $data['token'] = $token;
+            }
+        } else {
+            $user_id = rand(11111,99999);
+            $token = generateToken();
+            TempUser::create([
+                'user_id' => $user_id,
+                'token' => $token,
+                'user_type' => '2',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ]);
+            $data['user_type'] = '2';
+            $data['token'] = $token;
+        }
+        return $this->success($data, ' data fatched Successfully');
+
     }
 }

@@ -1,0 +1,26 @@
+{
+    "sourceFile": "database/migrations/2025_06_03_173634_create_temp_users_table.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1748972214752,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748972221614,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     public function up(): void\n     {\n         Schema::create('temp_users', function (Blueprint $table) {\n             $table->id();\n-            $table->unsi\n+            $table->unsignedBigInteger('user_id')->nullable();\n             $table->timestamps();\n         });\n     }\n \n"
+                },
+                {
+                    "date": 1748972232630,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n     {\n         Schema::create('temp_users', function (Blueprint $table) {\n             $table->id();\n             $table->unsignedBigInteger('user_id')->nullable();\n-\n+$table\n             $table->timestamps();\n         });\n     }\n \n"
+                }
+            ],
+            "date": 1748972214752,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse Illuminate\\Database\\Migrations\\Migration;\nuse Illuminate\\Database\\Schema\\Blueprint;\nuse Illuminate\\Support\\Facades\\Schema;\n\nreturn new class extends Migration\n{\n    /**\n     * Run the migrations.\n     */\n    public function up(): void\n    {\n        Schema::create('temp_users', function (Blueprint $table) {\n            $table->id();\n            $table\n            $table->timestamps();\n        });\n    }\n\n    /**\n     * Reverse the migrations.\n     */\n    public function down(): void\n    {\n        Schema::dropIfExists('temp_users');\n    }\n};\n"
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "sourceFile": "app/Models/Cart.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1748972076663,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1748972086759,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,7 +10,7 @@\n     use HasFactory;\n     protected $fillable = [\n         'product_id',\n         'user_id',\n-        'quantity',\n+        'qty',\n     ];\n }\n"
+                },
+                {
+                    "date": 1748972120069,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,7 +13,7 @@\n         'user_id',\n         'qty',\n         'user_type',\n         'product_attr_id',\n-        \n+\n     ];\n }\n"
+                }
+            ],
+            "date": 1748972076662,
+            "name": "Commit-0",
+            "content": "<?php\n\nnamespace App\\Models;\n\nuse Illuminate\\Database\\Eloquent\\Factories\\HasFactory;\nuse Illuminate\\Database\\Eloquent\\Model;\n\nclass Cart extends Model\n{\n    use HasFactory;\n    \n}\n"
+        }
+    ]
+}
