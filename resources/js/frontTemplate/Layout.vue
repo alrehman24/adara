@@ -43,10 +43,11 @@
                         <div class="menu-wrap">
                             <nav class="menu-nav show">
                                 <div class="logo">
-                                    <a href="index.html" class="main-logo"><img src="/front_assets/img/logo/fw_logo.png"
-                                            alt="Logo"></a>
-                                    <a href="index.html" class="sticky-logo"><img src="/front_assets/img/logo/logo.png"
-                                            alt="Logo"></a>
+                                    <router-link :to="'/'" class="main-logo">
+                                        <img src="/front_assets/img/logo/fw_logo.png" alt="Logo"></router-link>
+                                    <router-link :to="'/'" class="sticky-logo">
+                                        <img src="/front_assets/img/logo/logo.png" alt="Logo"></router-link>
+
                                 </div>
                                 <div class="navbar-wrap main-menu d-none d-lg-flex">
                                     <ul class="navigation">
@@ -97,55 +98,7 @@
                                     <ul>
                                         <li class="header-search"><a href="#" data-toggle="modal"
                                                 data-target="#search-modal"><i class="flaticon-search"></i></a></li>
-                                        <li class="header-shop-cart"><a href="#"><i
-                                                    class="flaticon-shopping-bag"></i><span>0</span></a>
-                                            <ul class="minicart">
-                                                <li class="d-flex align-items-start">
-                                                    <div class="cart-img">
-                                                        <a href="#"><img src="../assets/img/product/cart_p01.jpg"
-                                                                alt=""></a>
-                                                    </div>
-                                                    <div class="cart-content">
-                                                        <h4><a href="#">Exclusive Winter Jackets</a></h4>
-                                                        <div class="cart-price">
-                                                            <span class="new">$229.9</span>
-                                                            <span><del>$229.9</del></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="del-icon">
-                                                        <a href="#"><i class="far fa-trash-alt"></i></a>
-                                                    </div>
-                                                </li>
-                                                <li class="d-flex align-items-start">
-                                                    <div class="cart-img">
-                                                        <a href="#"><img src="../assets/img/product/cart_p02.jpg"
-                                                                alt=""></a>
-                                                    </div>
-                                                    <div class="cart-content">
-                                                        <h4><a href="#">Winter Jackets For Women</a></h4>
-                                                        <div class="cart-price">
-                                                            <span class="new">$229.9</span>
-                                                            <span><del>$229.9</del></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="del-icon">
-                                                        <a href="#"><i class="far fa-trash-alt"></i></a>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="total-price">
-                                                        <span class="f-left">Total:</span>
-                                                        <span class="f-right">$239.9</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="checkout-link">
-                                                        <a href="#">Shopping Cart</a>
-                                                        <a class="black-color" href="#">Checkout</a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                        <HeaderCart />
                                         <li class="header-profile"><a href="#"><i class="flaticon-user-profile"></i></a>
                                         </li>
                                     </ul>
@@ -156,8 +109,8 @@
                         <div class="mobile-menu">
                             <div class="close-btn"><i class="flaticon-targeting-cross"></i></div>
                             <nav class="menu-box">
-                                <div class="nav-logo"><a href="index.html"><img src="../assets/img/logo/logo.png" alt=""
-                                            title=""></a>
+                                <div class="nav-logo"><a href="index.html"><img src="/front_assets/img/logo/logo.png"
+                                            alt="" title=""></a>
                                 </div>
                                 <div class="menu-outer">
                                     <ul class="navigation">
@@ -226,7 +179,7 @@
 
         <!-- off-canvas-start -->
         <div class="sidebar-toggle-btn"><a href="#" class="navSidebar-button"><img
-                    src="../assets/img/icon/sidebar_toggle_icon.png" alt=""></a></div>
+                    src="/front_assets/img/icon/sidebar_toggle_icon.png" alt=""></a></div>
         <div class="sidebar-off-canvas info-group">
             <div class="off-canvas-overlay"></div>
             <div class="off-canvas-widget scroll">
@@ -240,7 +193,7 @@
                         <div class="sidebar-info-contents">
                             <div class="content-inner">
                                 <div class="logo mb-30">
-                                    <a href="index.html"><img src="../assets/img/logo/logo.png" alt=""></a>
+                                    <a href="index.html"><img src="/front_assets/img/logo/logo.png" alt=""></a>
                                 </div>
                                 <div class="content-box">
                                     <p>WooCommerce and WordPress are both free, open source software reasons many ...
@@ -323,7 +276,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="footer-logo">
-                            <a href="index.html"><img src="../assets/img/logo/w_logo.png" alt=""></a>
+                            <a href="index.html"><img src="/front_assets/img/logo/w_logo.png" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -366,7 +319,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="pay-method-img">
-                            <img src="../assets/img/images/payment_method_img.png" alt="">
+                            <img src="/front_assets/img/images/payment_method_img.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -384,45 +337,43 @@
 <script>
 import axios from 'axios'
 import getUrlList from '../provider.js';
-
+import HeaderCart from '../components/HeaderCart.vue';
+import { userUserStore } from '../stores/userStore.js';
+import { cartStore } from '../stores/cartStore.js';
 export default {
     name: 'Layout',
     data() {
         return {
             headerCatergories: [],
-            user_info: {
-                'user_id': '',
-                'auth': false,
+            // user_info: {
+            //     'user_id': '',
+            //     'auth': false,
 
-            },
-            cartCount: 0,
-            cartProduct: [],
-            cartTotal: 0,
+            // },
+            // cartCount: 0,
+            // cartProduct: [],
+            // cartTotal: 0,
         }
     },
-    mounted() {
-        var src = [
-            '/front_assets/js/vendor/jquery-3.5.0.min.js', '/front_assets/js/popper.min.js', '/front_assets/js/bootstrap.min.js', '/front_assets/js/isotope.pkgd.min.js'
-            , '/front_assets/js/imagesloaded.pkgd.min.js', '/front_assets/js/jquery.magnific-popup.min.js', '/front_assets/js/jquery.mCustomScrollbar.concat.min.js'
-            , '/front_assets/js/bootstrap-datepicker.min.js', '/front_assets/js/jquery.nice-select.min.js', '/front_assets/js/jquery.countdown.min.js'
-            , '/front_assets/js/swiper-bundle.min.js', '/front_assets/js/jarallax.min.js', '/front_assets/js/slick.min.js',
-            '/front_assets/js/wow.min.js', '/front_assets/js/nav-tool.js', '/front_assets/js/plugins.js', '/front_assets/js/main.js'
-        ];
-        for (var i = 0; i < src.length; i++) {
-            var script = document.createElement('script');
-            script.src = src[i];
-            script.async = false;
-            document.body.appendChild(script);
-        }
-        this.getCategories();
-        this.getUser();
+    components: {
+        HeaderCart
     },
+    computed: {
+        userStore() {
+            return userUserStore()
+        },
+        user_info() {
+            return this.userStore.user_info
+        },
+        cartStore() {
+            return cartStore()
+        }
+
+    },
+
     methods: {
         async getUser() {
-            if (localStorage.getItem('user_info')) {
-                var user = localStorage.getItem('user_info');
-                var testUser = JSON.parse(user);
-                this.user_info.user_id = testUser.user_id;
+            if (this.user_info.user_id) {
                 this.getUserData();
             } else {
                 this.getUserData();
@@ -435,13 +386,18 @@ export default {
 
                 });
                 if (data.data.status == 200) {
-                    this.cartCount = data.data.data.cart_count;
-                    this.cartProduct = data.data.data.cart_product;
-                    this.cartTotal = data.data.data.cart_total;
+                    if (data.data.data.user_type == 1) {//Auth user
+                        this.user_info.auth = true;
+                        this.user_info.user_id = data.data.data.token;
+                        this.userStore.setUserInfo(this.user_info);
+                    } else {
+                        this.user_info.auth = false;
+                        this.user_info.user_id = data.data.data.token;
+                        this.userStore.setUserInfo(this.user_info);
+                        //not auth user stor
+                    }
                 } else {
-                    this.cartCount = 0;
-                    this.cartProduct = [];
-                    this.cartTotal = 0;
+                    console.log('data not found');
                 }
 
             } catch {
@@ -457,6 +413,12 @@ export default {
                 console.error('Error fetching categories:', error);
             }
         }
-    }
+    }, mounted() {
+
+        this.getCategories();
+        this.getUser();
+        this.cartStore.getCartData();
+        // loadJS();
+    },
 }
 </script>

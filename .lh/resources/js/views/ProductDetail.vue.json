@@ -1,0 +1,34 @@
+{
+    "sourceFile": "resources/js/views/ProductDetail.vue",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1749066859646,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1749066964596,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,3 @@\n+<template>\n+    \n+</template>\n"
+                },
+                {
+                    "date": 1749066973856,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,4 @@\n <template>\n-    \n+\n </template>\n+<script></script>\n"
+                },
+                {
+                    "date": 1749066980086,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,21 @@\n <template>\n \n </template>\n <script>\n-\n+export default {\n+    data() {\n+        return {\n+            product: {},\n+            quantity: 1,\n+            size: '',\n+            color: '',\n+            cart: [],\n+        }\n+    },\n+    methods: {\n+        addToCart(product) {\n+            this.cart.push(product);\n+        }\n+    }\n+}\n </script>\n"
+                },
+                {
+                    "date": 1749066988821,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,20 +2,7 @@\n \n </template>\n <script>\n export default {\n-    data() {\n-        return {\n-            product: {},\n-            quantity: 1,\n-            size: '',\n-            color: '',\n-            cart: [],\n-        }\n-    },\n-    methods: {\n-        addToCart(product) {\n-            this.cart.push(product);\n-        }\n-    }\n+   \n }\n </script>\n"
+                }
+            ],
+            "date": 1749066859646,
+            "name": "Commit-0",
+            "content": ""
+        }
+    ]
+}

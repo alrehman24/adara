@@ -147,14 +147,43 @@ export default {
     },
     mounted() {
         this.getHomeData();
+        var srcList = [
+            '/front_assets/js/vendor/jquery-3.5.0.min.js', '/front_assets/js/popper.min.js', '/front_assets/js/bootstrap.min.js', '/front_assets/js/isotope.pkgd.min.js'
+            , '/front_assets/js/imagesloaded.pkgd.min.js', '/front_assets/js/jquery.magnific-popup.min.js', '/front_assets/js/jquery.mCustomScrollbar.concat.min.js'
+            , '/front_assets/js/bootstrap-datepicker.min.js', '/front_assets/js/jquery.nice-select.min.js', '/front_assets/js/jquery.countdown.min.js'
+            , '/front_assets/js/swiper-bundle.min.js', '/front_assets/js/jarallax.min.js', '/front_assets/js/slick.min.js',
+            '/front_assets/js/wow.min.js', '/front_assets/js/nav-tool.js', '/front_assets/js/plugins.js', '/front_assets/js/main.js'
+        ];
+        const loadScriptsSequentially = async () => {
+            for (const src of srcList) {
+                await new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    script.src = src;
+                    script.async = false;
+                    script.onload = () => resolve();
+                    script.onerror = () => reject(`Failed to load ${src}`);
+                    document.body.appendChild(script);
+                });
+            }
+
+            // Call the global loadJS function AFTER all scripts are loaded
+            if (typeof loadJS === 'function') {
+                loadJS(); // safe to call now
+            } else {
+                console.error("loadJS is not defined");
+            }
+        };
+        loadScriptsSequentially().catch(error => console.error(error));
+
     },
+
     methods: {
         async getHomeData() {
             const urls = getUrlList();
 
             try {
                 const response = await axios.get(urls.getHomeData);
-                console.log(response.data.data);
+               // console.log(response.data.data);
 
                 this.homeBanners = response.data.data.banners;
                 this.homeBrands = response.data.data.brands;

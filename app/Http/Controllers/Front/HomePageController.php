@@ -13,6 +13,9 @@ use App\Traits\ApiResponse;
 use App\Models\Color;
 use App\Models\Size;
 use App\Models\TempUser;
+use Illuminate\Support\Facades\Validator;
+use App\Models\Cart;
+
 
 class HomePageController extends Controller
 {
@@ -23,9 +26,11 @@ class HomePageController extends Controller
         $data['categories'] = Category::with('products:id,category_id,name,slug,image,item_code')->get();
         $data['brands'] = Brand::get();
         $data['products'] = Product::with(['productAttrs' => function ($query) {
-            $query->select('product_id', 'price');
+            $query->select('id', 'product_id', 'price');
         }])->get()->map(function ($product) {
-            $product->min_price = $product->productAttrs->min('price');
+            $productAttr = $product->productAttrs->first();
+            $product->min_price = $productAttr->price;
+            $product->productAttr_id = $productAttr->id;
             unset($product->productAttrs);
             return $product;
         });
@@ -35,6 +40,19 @@ class HomePageController extends Controller
     {
         $data['categories'] = Category::with('subcategories')->where('parent_id', Null)->get();
         return $this->success($data, 'Categories Fetched Successfully');
+    }
+    public function getProductData($slug)
+    {
+        $validation = Validator::make(['slug' => $slug], [
+            'slug' => 'required|exists:products,slug',
+        ]);
+        if ($validation->fails()) {
+            return $this->error($validation->errors()->first(), 400);
+        } else {
+
+            $data['product'] = Product::where('slug', $slug)->with('productAttrs')->get()->first();
+            return $this->success($data, 'Product data Fetched Successfully');
+        }
     }
     public function getCategoryData($slug)
     {
@@ -95,7 +113,7 @@ class HomePageController extends Controller
                 $data['token'] = $token;
             }
         } else {
-            $user_id = rand(11111,99999);
+            $user_id = rand(11111, 99999);
             $token = generateToken();
             TempUser::create([
                 'user_id' => $user_id,
@@ -108,6 +126,69 @@ class HomePageController extends Controller
             $data['token'] = $token;
         }
         return $this->success($data, ' data fatched Successfully');
+    }
+    public function getCartData(Request $request)
+    {
+        $validation = Validator::make($request->all(), [
+            'token' => 'required|exists:temp_users,token'
+        ]);
+        if ($validation->fails()) {
+            return $this->error($validation->errors()->first(), 400);
+        } else {
+            $userID = TempUser::where('token', $request->token)->first();
+            $data = Cart::where('user_id', $userID->user_id)->with(['product:id,name', 'productAttr:id,price'])->get();
 
+
+            return $this->success($data, 'cart data fatched Successfully');
+        }
+    }
+    public function addToCart(Request $request)
+    {
+        $validation = Validator::make($request->all(), [
+            'token' => 'required|exists:temp_users,token',
+            'product_id' => 'required|exists:products,id',
+            'product_attr_id' => 'required|exists:product_attrs,id',
+            'qty' => 'required|numeric|min:1',
+
+        ]);
+
+        if ($validation->fails()) {
+            return $this->error($validation->errors()->first(), 400);
+        } else {
+
+
+            $userID = TempUser::where('token', $request->token)->first();
+            $data = Cart::where(['user_id' => $userID->user_id, 'product_id' => $request->product_id, 'product_attr_id' => $request->product_attr_id])->first();
+            if ($data) {
+                $data->qty = $data->qty + $request->qty;
+                $data->save();
+            } else {
+                $data = Cart::create([
+                    'user_id' => $userID->user_id,
+                    'product_id' => $request->product_id,
+                    'product_attr_id' => $request->product_attr_id,
+                    'qty' => $request->qty,
+                ]);
+            }
+
+            return $this->success($data, 'cart data fatched Successfully');
+        }
+    }
+    public function removeCartItem(Request $request)
+    {
+        $validation = Validator::make($request->all(), [
+            'token' => 'required|exists:temp_users,token',
+            'cart_id' => 'required|exists:carts,id'
+
+        ]);
+
+        if ($validation->fails()) {
+            return $this->error($validation->errors()->first(), 400);
+        } else {
+
+            Cart::where('id', $request->cart_id)->delete();
+
+            return $this->success(array(), 'cart item deleted successfully');
+        }
     }
 }

@@ -6,6 +6,11 @@ export function getUrlList()
           getHomeData: baseUrl + 'getHomeData',
           getCategoryData: baseUrl + 'getCategoryData',
           getUserData: baseUrl + 'getUserData',
+          getCartData: baseUrl + 'getCartData',
+          addToCart: baseUrl + 'addToCart',
+          getProductData: baseUrl + 'getProductData',
+          removeCartItem: baseUrl + 'removeCartItem',
+
 
      }
 }

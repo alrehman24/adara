@@ -16,4 +16,14 @@ class Cart extends Model
         'product_attr_id',
 
     ];
+    public function product()
+    {
+        return $this->hasOne(Product::class, 'id', 'product_id');
+
+    }
+    public function productAttr()
+    {
+        return $this->hasOne(ProductAttr::class, 'id', 'product_attr_id');
+
+    }
 }

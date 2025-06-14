@@ -1,0 +1,42 @@
+{
+    "sourceFile": "resources/js/stores/cartStore.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1749153273385,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1749153279265,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,1 @@\n-import \r\n+import {}\n"
+                },
+                {
+                    "date": 1749153285720,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,1 @@\n-import {}\n+import { defineStore } from \"pinia\";\n"
+                },
+                {
+                    "date": 1749153293395,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,2 @@\n import { defineStore } from \"pinia\";\n+import \n"
+                },
+                {
+                    "date": 1749153307101,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,2 +1,2 @@\n import { defineStore } from \"pinia\";\n-import \n+import axios\n"
+                },
+                {
+                    "date": 1749153316161,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,3 @@\n import { defineStore } from \"pinia\";\n import axios from \"axios\";\n-import \n+import getUrlList from \"../provider\";\n"
+                },
+                {
+                    "date": 1749153328074,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,10 @@\n import { defineStore } from \"pinia\";\n import axios from \"axios\";\n import getUrlList from \"../provider\";\n export const cartStore = defineStore(\"cart\", {\n-    \n+    state: () => ({\n+        cartCount: 0,\n+        cartProducts: [],\n+        cartTotal: 0,\n+    }),\n })\n"
+                }
+            ],
+            "date": 1749153273385,
+            "name": "Commit-0",
+            "content": "import \r\n"
+        }
+    ]
+}

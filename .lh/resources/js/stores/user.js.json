@@ -1,0 +1,22 @@
+{
+    "sourceFile": "resources/js/stores/user.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1749062322929,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1749062332411,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,1 @@\n-import \r\n+import {define}\n"
+                }
+            ],
+            "date": 1749062322928,
+            "name": "Commit-0",
+            "content": "import \r\n"
+        }
+    ]
+}

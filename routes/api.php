@@ -36,3 +36,9 @@ Route::get('/getHomeData', [HomePageController::class, 'getHomeData']);
 Route::get('/getHeaderCategoriesData', [HomePageController::class, 'getCategoriesData']);
 Route::get('/getCategoryData/{slug?}', [HomePageController::class, 'getCategoryData']);
 Route::post('/getUserData/', [HomePageController::class, 'getUserData']);
+Route::post('/getCartData/', [HomePageController::class, 'getCartData']);
+Route::post('/addToCart/', [HomePageController::class, 'addToCart']);
+Route::get('/getProductData/{slug}', [HomePageController::class, 'getProductData']);
+Route::post('/removeCartItem/', [HomePageController::class, 'removeCartItem']);
+
+

@@ -8,7 +8,7 @@
                 <div class="product-overlay-action">
                     <ul>
                         <li><a href="cart.html"><i class="far fa-heart"></i></a></li>
-                        <li><a href="shop-details.html"><i class="far fa-eye"></i></a></li>
+                        <li><a href="javascript:void(0)" @click="addToCart(product.id, product.productAttr_id, 1)"><i class="far fa-eye"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -20,12 +20,23 @@
     </div>
 </template>
 <script>
+import { cartStore } from '../stores/cartStore';
 export default {
     name: 'Product',
     props: {
         product: Object,
 
+    }, computed: {
+
+        cartStore() {
+            return cartStore()
+        }
     },
+    methods: {
+        addToCart(product_id, product_attr_id, quantity) {
+            this.cartStore.addToCart(product_id, product_attr_id, quantity);
+        }
+    }
 
 }
 </script>
